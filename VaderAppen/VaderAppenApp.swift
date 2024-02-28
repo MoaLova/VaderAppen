@@ -2,7 +2,7 @@
 //  VaderAppenApp.swift
 //  VaderAppen
 //
-//  Created by Sarah Lidberg on 2024-02-28.
+//  Created by luma on 2024-02-28.
 //
 
 import SwiftUI
