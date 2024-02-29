@@ -3,87 +3,49 @@
 //  VaderAppen
 //
 //  Created by Moa.Svensson on 2024-02-28.
-//
+//att göra: //Använd @FetchRequest för att hämta data från din Core Data-stack och @Environment(\.managedObjectContext) för att få tillgång till managedObjectContext som krävs för att skapa eller modifiera entiteter.
+//Skapa en tjänstklass i ditt projekt som hanterar nätverksanrop till OpenWeatherMap API. Använd URLSession för att utföra dessa anrop och decodera svaret med hjälp av JSONDecoder.
 
-//Hej
-//Moi
 
 import SwiftUI
-import CoreData
 
 struct ContentView: View {
-    @Environment(\.managedObjectContext) private var viewContext
-
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
-        animation: .default)
-    private var items: FetchedResults<Item>
-
     var body: some View {
         NavigationView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-                    } label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
-                    }
-                }
-                .onDelete(perform: deleteItems)
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                }
-            }
-            Text("Select an item")
-        }
-    }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            WeatherView()
+                .navigationTitle("Weather Me")
+            Button("Get weather"){
+                
             }
         }
     }
 }
 
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    //formatter.timeStyle = .medium
-    return formatter
-}()
 
-#Preview {
-    ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-}
+
+//struct ContentView: View {
+//    @State var weather: String = ""
+//    @State var cityName: String = ""
+//    @State var temperature: String = ""
+    //@State var description: String = ""
+    
+//    var body: some View {
+//        VStack{
+//            Text(cityName)
+//                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+//                .padding()
+////            Text(description)
+////                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+////                .padding()
+//            Text(temperature)
+//                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+//                .padding()
+//            Text(weather)
+//                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+//                .padding()
+//            Button("get weather"){
+//            }
+//        }
+//    }
+//}
+//api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=3c73acdc0f41c548c2a6b2bf65f0fa97
