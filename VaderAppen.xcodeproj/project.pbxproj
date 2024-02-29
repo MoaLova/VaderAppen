@@ -14,6 +14,7 @@
 		2F47B1632B8F70280073A041 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F47B1622B8F70280073A041 /* Persistence.swift */; };
 		2F47B1662B8F70280073A041 /* VaderAppen.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2F47B1642B8F70280073A041 /* VaderAppen.xcdatamodeld */; };
 		E1BD3B672B90BFDC00F80535 /* SavedLocationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BD3B662B90BFDC00F80535 /* SavedLocationsView.swift */; };
+		E1BD3B692B90E49E00F80535 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BD3B682B90E49E00F80535 /* QuizView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		2F47B1622B8F70280073A041 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		2F47B1652B8F70280073A041 /* VaderAppen.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VaderAppen.xcdatamodel; sourceTree = "<group>"; };
 		E1BD3B662B90BFDC00F80535 /* SavedLocationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedLocationsView.swift; sourceTree = "<group>"; };
+		E1BD3B682B90E49E00F80535 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 			children = (
 				2F47B1592B8F70260073A041 /* VaderAppenApp.swift */,
 				E1BD3B662B90BFDC00F80535 /* SavedLocationsView.swift */,
+				E1BD3B682B90E49E00F80535 /* QuizView.swift */,
 				2F47B15B2B8F70260073A041 /* LocationView.swift */,
 				2F47B15D2B8F70280073A041 /* Assets.xcassets */,
 				2F47B1622B8F70280073A041 /* Persistence.swift */,
@@ -151,6 +154,7 @@
 				2F47B15C2B8F70260073A041 /* LocationView.swift in Sources */,
 				2F47B15A2B8F70260073A041 /* VaderAppenApp.swift in Sources */,
 				E1BD3B672B90BFDC00F80535 /* SavedLocationsView.swift in Sources */,
+				E1BD3B692B90E49E00F80535 /* QuizView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
