@@ -42,7 +42,7 @@ struct ContentView: View{
                 Rectangle()
                 
                     .stroke(Color.black, lineWidth: 3)
-                    .frame(width: 340, height: 550)
+                    .frame(width: 340, height: 556)
                     .foregroundColor(.white)
                     .position(x: 200, y: -10)
                 
@@ -53,13 +53,13 @@ struct ContentView: View{
                                 .fill(Color.gray)
                                 .cornerRadius(8)
                                 .frame(maxWidth: .infinity)
-                                .frame(height: 510)
+                                .frame(height: 530)
                                 .padding(.horizontal)
                         }
                     }
                     .padding(.vertical)
                 }
-                .frame(width: 320, height: 520)
+                .frame(width: 360, height: 556)
                 .clipped()
                 .position(x: 200, y: -10)
             }
