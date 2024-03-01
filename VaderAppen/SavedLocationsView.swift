@@ -11,6 +11,7 @@ struct SwiftUIView: View{
     
     @State var text : String = ""
     
+    
     var body: some View{
         VStack{
             HStack{
@@ -27,7 +28,6 @@ struct SwiftUIView: View{
                         .frame(width: 70, height: 50)
                         .position(x: 130, y: 10)
                     }
-                
             }
                 
                 
@@ -44,6 +44,8 @@ struct SwiftUIView: View{
                     .frame(width: 340, height: 550)
                     .foregroundColor(.white)
                     .position(x: 200, y: -10)
+                
+    
                 
                 Button(action:{
                     print("Tapped")
