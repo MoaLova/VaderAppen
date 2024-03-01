@@ -8,11 +8,28 @@
 import SwiftUI
 
 struct SavedLocationItemView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+    
+    @State var locationSaved: SavedLocation
+    
+    var body: some View{
+       
+        HStack{
+          Image(systemName: "icloud")
+          .resizable()
+            .foregroundColor(.blue)
+            .frame(width: 140, height: 90)
+            .overlay(
+            Text(locationSaved.location)
+            .foregroundColor(.black)
+            .font(.headline)
+           )
+           
+        }
     }
 }
 
 #Preview {
-    SavedLocationItemView()
+    SavedLocationItemView(locationSaved: SavedLocation(location: "location"))
 }
+
+

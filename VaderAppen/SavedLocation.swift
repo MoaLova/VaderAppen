@@ -6,3 +6,11 @@
 //
 
 import Foundation
+import SwiftUI
+
+struct SavedLocation{
+    var id = UUID()
+    var location: String
+   
+
+}
