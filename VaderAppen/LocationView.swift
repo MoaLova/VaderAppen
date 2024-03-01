@@ -38,13 +38,31 @@ struct ContentView: View{
                 .position(x: 190, y: -120)
                 .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                 
-                
+            ZStack {
                 Rectangle()
                 
                     .stroke(Color.black, lineWidth: 3)
-                    .frame(width: 340, height: 550)
+                    .frame(width: 340, height: 556)
                     .foregroundColor(.white)
                     .position(x: 200, y: -10)
+                
+                ScrollView {
+                    VStack(spacing: 10){
+                        ForEach(0...1, id: \.self) { index in
+                            Rectangle()
+                                .fill(Color.gray)
+                                .cornerRadius(8)
+                                .frame(maxWidth: .infinity)
+                                .frame(height: 530)
+                                .padding(.horizontal)
+                        }
+                    }
+                    .padding(.vertical)
+                }
+                .frame(width: 360, height: 556)
+                .clipped()
+                .position(x: 200, y: -10)
+            }
             
             HStack{
                 
