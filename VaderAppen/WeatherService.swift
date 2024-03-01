@@ -6,10 +6,16 @@
 //en API-service-klass som är en singelton (shared), den hanterar API-anrop
 
 import Foundation
-
 class WeatherService {
     func fetchWeather(cityName: String, completion: @escaping (WeatherResponse?) -> Void) {
-        let urlString = "https://api.openweathermap.org/data/2.5/weather?q=\(cityName)&appid=3c73acdc0f41c548c2a6b2bf65f0fa97&units=metric"
+        // Läser API-nyckeln från en miljövariabel
+        guard let apiKey = ProcessInfo.processInfo.environment["OPENWEATHERMAP_API_KEY"] else {
+            print("API-nyckeln saknas")
+            completion(nil)
+            return
+        }
+        
+        let urlString = "https://api.openweathermap.org/data/2.5/weather?q=\(cityName)&appid=\(apiKey)&units=metric"
         
         guard let url = URL(string: urlString) else { return }
         
@@ -23,14 +29,3 @@ class WeatherService {
         }.resume()
     }
 }
-
-
-
-//
-//struct WeatherService{
-//    static let shared = WeatherService()
-//    
-//    func getWeather(){
-//        
-//    }
-//}
