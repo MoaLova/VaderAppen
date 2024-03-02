@@ -17,7 +17,7 @@ struct WeatherView: View {
                 .font(.largeTitle)
                 .padding()
             
-            Button("Fetch Weather") {
+            Button("Weather in Stockholm") {
                 viewModel.fetchWeather(cityName: "Stockholm")
             }
             .padding()

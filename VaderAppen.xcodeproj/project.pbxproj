@@ -8,11 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		2F47B15A2B8F70260073A041 /* VaderAppenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F47B1592B8F70260073A041 /* VaderAppenApp.swift */; };
-		2F47B15C2B8F70260073A041 /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F47B15B2B8F70260073A041 /* LocationView.swift */; };
+		2F47B15C2B8F70260073A041 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F47B15B2B8F70260073A041 /* ContentView.swift */; };
 		2F47B15E2B8F70280073A041 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F47B15D2B8F70280073A041 /* Assets.xcassets */; };
 		2F47B1612B8F70280073A041 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F47B1602B8F70280073A041 /* Preview Assets.xcassets */; };
 		2F47B1632B8F70280073A041 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F47B1622B8F70280073A041 /* Persistence.swift */; };
 		2F47B1662B8F70280073A041 /* VaderAppen.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2F47B1642B8F70280073A041 /* VaderAppen.xcdatamodeld */; };
+		D22B9B602B936708002198B3 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22B9B582B936708002198B3 /* WeatherModel.swift */; };
+		D22B9B612B936708002198B3 /* VaderAppen.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D22B9B592B936708002198B3 /* VaderAppen.xcdatamodeld */; };
+		D22B9B622B936708002198B3 /* SavedLocationItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22B9B5B2B936708002198B3 /* SavedLocationItemView.swift */; };
+		D22B9B632B936708002198B3 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22B9B5C2B936708002198B3 /* WeatherViewModel.swift */; };
+		D22B9B642B936708002198B3 /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22B9B5D2B936708002198B3 /* WeatherView.swift */; };
+		D22B9B652B936708002198B3 /* SavedLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22B9B5E2B936708002198B3 /* SavedLocation.swift */; };
+		D22B9B662B936708002198B3 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22B9B5F2B936708002198B3 /* WeatherService.swift */; };
 		E1BD3B672B90BFDC00F80535 /* SavedLocationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BD3B662B90BFDC00F80535 /* SavedLocationsView.swift */; };
 		E1BD3B692B90E49E00F80535 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BD3B682B90E49E00F80535 /* QuizView.swift */; };
 /* End PBXBuildFile section */
@@ -20,11 +27,18 @@
 /* Begin PBXFileReference section */
 		2F47B1562B8F70260073A041 /* VaderAppen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VaderAppen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F47B1592B8F70260073A041 /* VaderAppenApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaderAppenApp.swift; sourceTree = "<group>"; };
-		2F47B15B2B8F70260073A041 /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
+		2F47B15B2B8F70260073A041 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2F47B15D2B8F70280073A041 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2F47B1602B8F70280073A041 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2F47B1622B8F70280073A041 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		2F47B1652B8F70280073A041 /* VaderAppen.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VaderAppen.xcdatamodel; sourceTree = "<group>"; };
+		D22B9B582B936708002198B3 /* WeatherModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
+		D22B9B5A2B936708002198B3 /* VaderAppen.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VaderAppen.xcdatamodel; sourceTree = "<group>"; };
+		D22B9B5B2B936708002198B3 /* SavedLocationItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedLocationItemView.swift; sourceTree = "<group>"; };
+		D22B9B5C2B936708002198B3 /* WeatherViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
+		D22B9B5D2B936708002198B3 /* WeatherView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
+		D22B9B5E2B936708002198B3 /* SavedLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedLocation.swift; sourceTree = "<group>"; };
+		D22B9B5F2B936708002198B3 /* WeatherService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
 		E1BD3B662B90BFDC00F80535 /* SavedLocationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedLocationsView.swift; sourceTree = "<group>"; };
 		E1BD3B682B90E49E00F80535 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -59,10 +73,17 @@
 		2F47B1582B8F70260073A041 /* VaderAppen */ = {
 			isa = PBXGroup;
 			children = (
+				D22B9B5E2B936708002198B3 /* SavedLocation.swift */,
+				D22B9B5B2B936708002198B3 /* SavedLocationItemView.swift */,
+				D22B9B592B936708002198B3 /* VaderAppen.xcdatamodeld */,
+				D22B9B582B936708002198B3 /* WeatherModel.swift */,
+				D22B9B5F2B936708002198B3 /* WeatherService.swift */,
+				D22B9B5D2B936708002198B3 /* WeatherView.swift */,
+				D22B9B5C2B936708002198B3 /* WeatherViewModel.swift */,
 				2F47B1592B8F70260073A041 /* VaderAppenApp.swift */,
 				E1BD3B662B90BFDC00F80535 /* SavedLocationsView.swift */,
 				E1BD3B682B90E49E00F80535 /* QuizView.swift */,
-				2F47B15B2B8F70260073A041 /* LocationView.swift */,
+				2F47B15B2B8F70260073A041 /* ContentView.swift */,
 				2F47B15D2B8F70280073A041 /* Assets.xcassets */,
 				2F47B1622B8F70280073A041 /* Persistence.swift */,
 				2F47B1642B8F70280073A041 /* VaderAppen.xcdatamodeld */,
@@ -149,13 +170,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2F35F802B90C8C200922925 /* WeatherService.swift in Sources */,
+				D22B9B642B936708002198B3 /* WeatherView.swift in Sources */,
+				D22B9B622B936708002198B3 /* SavedLocationItemView.swift in Sources */,
 				2F47B1632B8F70280073A041 /* Persistence.swift in Sources */,
 				2F47B1662B8F70280073A041 /* VaderAppen.xcdatamodeld in Sources */,
-				2F47B15C2B8F70260073A041 /* LocationView.swift in Sources */,
+				2F47B15C2B8F70260073A041 /* ContentView.swift in Sources */,
+				D22B9B602B936708002198B3 /* WeatherModel.swift in Sources */,
+				D22B9B632B936708002198B3 /* WeatherViewModel.swift in Sources */,
 				2F47B15A2B8F70260073A041 /* VaderAppenApp.swift in Sources */,
+				D22B9B612B936708002198B3 /* VaderAppen.xcdatamodeld in Sources */,
 				E1BD3B672B90BFDC00F80535 /* SavedLocationsView.swift in Sources */,
+				D22B9B652B936708002198B3 /* SavedLocation.swift in Sources */,
 				E1BD3B692B90E49E00F80535 /* QuizView.swift in Sources */,
+				D22B9B662B936708002198B3 /* WeatherService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,6 +394,16 @@
 				2F47B1652B8F70280073A041 /* VaderAppen.xcdatamodel */,
 			);
 			currentVersion = 2F47B1652B8F70280073A041 /* VaderAppen.xcdatamodel */;
+			path = VaderAppen.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		D22B9B592B936708002198B3 /* VaderAppen.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D22B9B5A2B936708002198B3 /* VaderAppen.xcdatamodel */,
+			);
+			currentVersion = D22B9B5A2B936708002198B3 /* VaderAppen.xcdatamodel */;
 			path = VaderAppen.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
