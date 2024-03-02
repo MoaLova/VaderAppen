@@ -149,6 +149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2F35F802B90C8C200922925 /* WeatherService.swift in Sources */,
 				2F47B1632B8F70280073A041 /* Persistence.swift in Sources */,
 				2F47B1662B8F70280073A041 /* VaderAppen.xcdatamodeld in Sources */,
 				2F47B15C2B8F70260073A041 /* LocationView.swift in Sources */,
