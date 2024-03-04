@@ -6,15 +6,26 @@
 //
 
 import SwiftUI
+import CoreData
+import UIKit
 
-@main
-struct VaderAppenApp: App {
-    let persistenceController = PersistenceController.shared
 
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+class AppDelegate: NSObject, UIApplicationDelegate {
+    private func applicationDidFinishLaunching(_ notification: Notification) {
+        guard let app = notification.object as? UIApplication else {
+            fatalError("no application object")
+        }}
+    
+    @main
+    struct VaderAppenApp: App {
+        let persistenceController = PersistenceController.shared
+        
+        var body: some Scene {
+            WindowGroup {
+                ContentView()
+                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            }
         }
     }
 }
+

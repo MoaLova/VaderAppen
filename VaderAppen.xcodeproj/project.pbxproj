@@ -15,6 +15,9 @@
 		2F47B1662B8F70280073A041 /* VaderAppen.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2F47B1642B8F70280073A041 /* VaderAppen.xcdatamodeld */; };
 		2F47B1B22B920B410073A041 /* SavedLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F47B1B12B920B410073A041 /* SavedLocation.swift */; };
 		2F47B1B42B920D300073A041 /* SavedLocationItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F47B1B32B920D300073A041 /* SavedLocationItemView.swift */; };
+		2F47B1D82B9610EB0073A041 /* coreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2F47B1D62B9610EB0073A041 /* coreData.xcdatamodeld */; };
+		2F47B1DF2B9613FD0073A041 /* Quiz+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F47B1DD2B9613FD0073A041 /* Quiz+CoreDataClass.swift */; };
+		2F47B1E02B9613FD0073A041 /* Quiz+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F47B1DE2B9613FD0073A041 /* Quiz+CoreDataProperties.swift */; };
 		E1BD3B672B90BFDC00F80535 /* SavedLocationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BD3B662B90BFDC00F80535 /* SavedLocationsView.swift */; };
 		E1BD3B692B90E49E00F80535 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BD3B682B90E49E00F80535 /* QuizView.swift */; };
 /* End PBXBuildFile section */
@@ -29,6 +32,9 @@
 		2F47B1652B8F70280073A041 /* VaderAppen.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VaderAppen.xcdatamodel; sourceTree = "<group>"; };
 		2F47B1B12B920B410073A041 /* SavedLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedLocation.swift; sourceTree = "<group>"; };
 		2F47B1B32B920D300073A041 /* SavedLocationItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedLocationItemView.swift; sourceTree = "<group>"; };
+		2F47B1D72B9610EB0073A041 /* coreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = coreData.xcdatamodel; sourceTree = "<group>"; };
+		2F47B1DD2B9613FD0073A041 /* Quiz+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Quiz+CoreDataClass.swift"; sourceTree = "<group>"; };
+		2F47B1DE2B9613FD0073A041 /* Quiz+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Quiz+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E1BD3B662B90BFDC00F80535 /* SavedLocationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedLocationsView.swift; sourceTree = "<group>"; };
 		E1BD3B682B90E49E00F80535 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -47,6 +53,8 @@
 		2F47B14D2B8F70260073A041 = {
 			isa = PBXGroup;
 			children = (
+				2F47B1DD2B9613FD0073A041 /* Quiz+CoreDataClass.swift */,
+				2F47B1DE2B9613FD0073A041 /* Quiz+CoreDataProperties.swift */,
 				2F47B1582B8F70260073A041 /* VaderAppen */,
 				2F47B1572B8F70260073A041 /* Products */,
 			);
@@ -73,6 +81,7 @@
 				2F47B15F2B8F70280073A041 /* Preview Content */,
 				2F47B1B12B920B410073A041 /* SavedLocation.swift */,
 				2F47B1B32B920D300073A041 /* SavedLocationItemView.swift */,
+				2F47B1D62B9610EB0073A041 /* coreData.xcdatamodeld */,
 			);
 			path = VaderAppen;
 			sourceTree = "<group>";
@@ -155,10 +164,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F47B1DF2B9613FD0073A041 /* Quiz+CoreDataClass.swift in Sources */,
 				2F47B1632B8F70280073A041 /* Persistence.swift in Sources */,
+				2F47B1E02B9613FD0073A041 /* Quiz+CoreDataProperties.swift in Sources */,
 				2F47B1662B8F70280073A041 /* VaderAppen.xcdatamodeld in Sources */,
 				2F47B15C2B8F70260073A041 /* LocationView.swift in Sources */,
 				2F47B15A2B8F70260073A041 /* VaderAppenApp.swift in Sources */,
+				2F47B1D82B9610EB0073A041 /* coreData.xcdatamodeld in Sources */,
 				2F47B1B42B920D300073A041 /* SavedLocationItemView.swift in Sources */,
 				E1BD3B672B90BFDC00F80535 /* SavedLocationsView.swift in Sources */,
 				E1BD3B692B90E49E00F80535 /* QuizView.swift in Sources */,
@@ -375,6 +387,16 @@
 			);
 			currentVersion = 2F47B1652B8F70280073A041 /* VaderAppen.xcdatamodel */;
 			path = VaderAppen.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		2F47B1D62B9610EB0073A041 /* coreData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2F47B1D72B9610EB0073A041 /* coreData.xcdatamodel */,
+			);
+			currentVersion = 2F47B1D72B9610EB0073A041 /* coreData.xcdatamodel */;
+			path = coreData.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
