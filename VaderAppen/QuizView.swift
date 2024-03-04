@@ -17,17 +17,6 @@ struct QuizView: View {
                     .position(x:50, y: 10 )
                 
                 
-                Button(action: {
-                    print("nein")
-                    
-                }){Image(systemName: "cloud.sun")
-                        .resizable()
-                        .foregroundColor(.black)
-                        .frame(width: 70, height: 50)
-                        .position(x: 130, y: 10)
-                    }
-                
-                
             }
                 
                 

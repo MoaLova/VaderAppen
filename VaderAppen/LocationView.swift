@@ -12,7 +12,8 @@ import CoreData
 
 struct ContentView: View{
     
-    @State var showingAnotherView = false
+    @State var showingAnotherView1 = false
+    @State var showingAnotherView2 = false
     @State var text : String = ""
     
     var body: some View{
@@ -23,7 +24,7 @@ struct ContentView: View{
                 
                 
                 Button(action: {
-                    self.showingAnotherView.toggle()
+                    self.showingAnotherView1.toggle()
                     print("GoToSavedLocationView")
                     
                     
@@ -33,8 +34,8 @@ struct ContentView: View{
                         .frame(width: 50, height: 50)
                         .position(x: 50, y: 15)
                     }
-                .sheet(isPresented: $showingAnotherView) {
-                    
+                .sheet(isPresented: $showingAnotherView1) {
+                   
                 } content: {
                     SwiftUIView()
                 }
@@ -95,16 +96,19 @@ struct ContentView: View{
                     
                     
                     Button(action:{
-                    print("Button tapped")
-                      }) {
+                        self.showingAnotherView2.toggle()
+                    }) {
                     Image(systemName: "questionmark")
                         .resizable()
                         .foregroundColor(.black)
                         .frame(width: 80, height: 80)
                         .position(x:80, y:140)
                  }
-
-            }
+                    .sheet(isPresented: $showingAnotherView2) {
+                       
+                    } content: {
+                        QuizView()}
+                    }
                 
                 ZStack{
                     
