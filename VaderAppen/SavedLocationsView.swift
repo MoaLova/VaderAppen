@@ -9,6 +9,8 @@ import SwiftUI
 
 struct SwiftUIView: View {
     
+    @State var showingAnotherView = false
+    
     @State var text : String = ""
     @State var locationSaved: [SavedLocation] = [
            SavedLocation(location: "Malmö"),
@@ -60,14 +62,21 @@ struct SwiftUIView: View {
                         .position(x: 80, y: 140)
                     
                     Button(action:{
-                        print("Button tapped")
-                    }) {
-                        Image(systemName: "questionmark")
-                            .resizable()
-                            .foregroundColor(.black)
-                            .frame(width: 80, height: 80)
-                            .position(x: 80, y: 140)
-                    }
+                        self.showingAnotherView.toggle()
+                        print("GoToQuizView")
+                    
+                      }) {
+                    Image(systemName: "questionmark")
+                        .resizable()
+                        .foregroundColor(.black)
+                        .frame(width: 80, height: 80)
+                        .position(x:80, y:140)
+                 }
+                      .sheet(isPresented: $showingAnotherView) {
+                          
+                      } content: {
+                         QuizView()
+                      }
                 }
                 
                 ZStack {

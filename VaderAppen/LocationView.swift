@@ -13,6 +13,8 @@ import CoreData
 struct ContentView: View{
     
     @State var showingAnotherView = false
+    @State var showingAnotherView1 = false
+    
     @State var text : String = ""
     
     var body: some View{
@@ -95,7 +97,9 @@ struct ContentView: View{
                     
                     
                     Button(action:{
-                    print("Button tapped")
+                        self.showingAnotherView1.toggle()
+                        print("GoToQuizView")
+                    
                       }) {
                     Image(systemName: "questionmark")
                         .resizable()
@@ -103,6 +107,11 @@ struct ContentView: View{
                         .frame(width: 80, height: 80)
                         .position(x:80, y:140)
                  }
+                      .sheet(isPresented: $showingAnotherView1) {
+                          
+                      } content: {
+                         QuizView()
+                      }
 
             }
                 
