@@ -12,6 +12,9 @@ import CoreData
 
 struct ContentView: View{
     
+    @State var showingAnotherView = false
+    @State var showingAnotherView1 = false
+    
     @State var text : String = ""
     
     var body: some View{
@@ -22,16 +25,36 @@ struct ContentView: View{
                 
                 
                 Button(action: {
-                    print("nein")
+                    self.showingAnotherView.toggle()
+                    print("GoToSavedLocationView")
+                    
+                    
+                }){Image(systemName: "goforward")
+                        .resizable()
+                        .foregroundColor(.pink)
+                        .frame(width: 50, height: 50)
+                        .position(x: 50, y: 15)
+                    }
+                .sheet(isPresented: $showingAnotherView) {
+                    
+                } content: {
+                    SwiftUIView()
+                }
+                
+                
+                Button(action: {
+                    print("SaveToLocation")
                     
                 }){Image(systemName: "heart.fill")
                         .resizable()
                         .foregroundColor(.pink)
                         .frame(width: 50, height: 50)
-                        .position(x: 130, y: 10)
+                        .position(x: 50, y: 10)
                     }
                 
+                
             }
+            
                 
                 
                 Text("Location")
@@ -74,7 +97,9 @@ struct ContentView: View{
                     
                     
                     Button(action:{
-                    print("Button tapped")
+                        self.showingAnotherView1.toggle()
+                        print("GoToQuizView")
+                    
                       }) {
                     Image(systemName: "questionmark")
                         .resizable()
@@ -82,6 +107,11 @@ struct ContentView: View{
                         .frame(width: 80, height: 80)
                         .position(x:80, y:140)
                  }
+                      .sheet(isPresented: $showingAnotherView1) {
+                          
+                      } content: {
+                         QuizView()
+                      }
 
             }
                 
