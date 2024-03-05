@@ -10,9 +10,12 @@ import CoreData
 
 class QuizCoreDataView: ObservableObject {
     
-    let container = NSPersistentContainer(name: "QuizData")
+    let container: NSPersistentContainer
+    @Published var savedEntitites: [AnswersEntity] = []
+  
     
     init(){
+        container = NSPersistentContainer(name: "QuizData")
         container.loadPersistentStores{(description, error) in
             if let error = error {
                 print("Error loading core data \(error)")
@@ -20,9 +23,34 @@ class QuizCoreDataView: ObservableObject {
                 print("Success coreData")
             }
         }
+        fetchAnswers()
     }
+    
     func fetchAnswers(){
         let request = NSFetchRequest<AnswersEntity>(entityName: "AnswersEntity")
+        
+        do{
+          savedEntitites = try container.viewContext.fetch(request)
+        }catch let error{
+            print("Error fetching. \(error)")
+        }
+       
+    }
+    
+    func addAnswers(text: String){
+        let newAnswer = AnswersEntity(context: container.viewContext)
+        newAnswer.answer = text
+        saveData()
+        
+    }
+    
+    func saveData(){
+        do{
+            try container.viewContext.save()
+            fetchAnswers()
+        } catch let error {
+            print("error saving \(error)")
+        }
     }
     
 }
@@ -37,10 +65,6 @@ struct QuizCoreData: View {
     }
 }
 
-struct QuizCoreData_Previews: PreviewProvider {
-    static var previews: some View {
-        QuizCoreData()
-    }
-}
+
     
    
