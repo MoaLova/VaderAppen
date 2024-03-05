@@ -6,13 +6,41 @@
 //
 
 import SwiftUI
+import CoreData
+
+class QuizCoreDataView: ObservableObject {
+    
+    let container = NSPersistentContainer(name: "QuizData")
+    
+    init(){
+        container.loadPersistentStores{(description, error) in
+            if let error = error {
+                print("Error loading core data \(error)")
+            }else {
+                print("Success coreData")
+            }
+        }
+    }
+    func fetchAnswers(){
+        let request = NSFetchRequest<AnswersEntity>(entityName: "AnswersEntity")
+    }
+    
+}
 
 struct QuizCoreData: View {
+    
+    
+    @StateObject var ViewModel = QuizCoreDataView()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        QuizCoreData()
     }
 }
 
-#Preview {
-    QuizCoreData()
+struct QuizCoreData_Previews: PreviewProvider {
+    static var previews: some View {
+        QuizCoreData()
+    }
 }
+    
+   
