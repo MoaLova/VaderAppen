@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2F47B15A2B8F70260073A041 /* VaderAppenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F47B1592B8F70260073A041 /* VaderAppenApp.swift */; };
-		2F47B15C2B8F70260073A041 /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F47B15B2B8F70260073A041 /* LocationView.swift */; };
+		2F47B15C2B8F70260073A041 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F47B15B2B8F70260073A041 /* ContentView.swift */; };
 		2F47B15E2B8F70280073A041 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F47B15D2B8F70280073A041 /* Assets.xcassets */; };
 		2F47B1612B8F70280073A041 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F47B1602B8F70280073A041 /* Preview Assets.xcassets */; };
 		2F47B1B22B920B410073A041 /* SavedLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F47B1B12B920B410073A041 /* SavedLocation.swift */; };
@@ -22,7 +22,7 @@
 /* Begin PBXFileReference section */
 		2F47B1562B8F70260073A041 /* VaderAppen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VaderAppen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F47B1592B8F70260073A041 /* VaderAppenApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaderAppenApp.swift; sourceTree = "<group>"; };
-		2F47B15B2B8F70260073A041 /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
+		2F47B15B2B8F70260073A041 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2F47B15D2B8F70280073A041 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2F47B1602B8F70280073A041 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2F47B1B12B920B410073A041 /* SavedLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedLocation.swift; sourceTree = "<group>"; };
@@ -66,7 +66,7 @@
 				2F47B1592B8F70260073A041 /* VaderAppenApp.swift */,
 				E1BD3B662B90BFDC00F80535 /* SavedLocationsView.swift */,
 				E1BD3B682B90E49E00F80535 /* QuizView.swift */,
-				2F47B15B2B8F70260073A041 /* LocationView.swift */,
+				2F47B15B2B8F70260073A041 /* ContentView.swift */,
 				E1BD3B6A2B9746C200F80535 /* QuizCoreData.swift */,
 				E1BD3B6C2B97470800F80535 /* QuizData.xcdatamodeld */,
 				2F47B15D2B8F70280073A041 /* Assets.xcassets */,
@@ -156,7 +156,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1BD3B6E2B97470800F80535 /* QuizData.xcdatamodeld in Sources */,
-				2F47B15C2B8F70260073A041 /* LocationView.swift in Sources */,
+				2F47B15C2B8F70260073A041 /* ContentView.swift in Sources */,
 				E1BD3B6B2B9746C200F80535 /* QuizCoreData.swift in Sources */,
 				2F47B15A2B8F70260073A041 /* VaderAppenApp.swift in Sources */,
 				2F47B1B42B920D300073A041 /* SavedLocationItemView.swift in Sources */,
