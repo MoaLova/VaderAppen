@@ -12,6 +12,9 @@ import CoreData
 
 struct ContentView: View{
     
+    @State var showingAnotherView = false
+    @State var showingAnotherView1 = false
+    
     @State var text : String = ""
     
     var body: some View{
@@ -22,29 +25,67 @@ struct ContentView: View{
                 
                 
                 Button(action: {
-                    print("nein")
+                    self.showingAnotherView.toggle()
+                    print("GoToSavedLocationView")
+                    
+                    
+                }){Image(systemName: "goforward")
+                        .resizable()
+                        .foregroundColor(.pink)
+                        .frame(width: 50, height: 50)
+                        .position(x: 50, y: 15)
+                    }
+                .sheet(isPresented: $showingAnotherView) {
+                    
+                } content: {
+                    SwiftUIView()
+                }
+                
+                
+                Button(action: {
+                    print("SaveToLocation")
                     
                 }){Image(systemName: "heart.fill")
                         .resizable()
                         .foregroundColor(.pink)
                         .frame(width: 50, height: 50)
-                        .position(x: 130, y: 10)
+                        .position(x: 50, y: 10)
                     }
                 
+                
             }
+            
                 
                 
                 Text("Location")
                 .position(x: 190, y: -120)
                 .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                 
-                
+            ZStack {
                 Rectangle()
                 
                     .stroke(Color.black, lineWidth: 3)
-                    .frame(width: 340, height: 550)
+                    .frame(width: 340, height: 556)
                     .foregroundColor(.white)
                     .position(x: 200, y: -10)
+                
+                ScrollView {
+                    VStack(spacing: 10){
+                        ForEach(0...1, id: \.self) { index in
+                            Rectangle()
+                                .fill(Color.gray)
+                                .cornerRadius(8)
+                                .frame(maxWidth: .infinity)
+                                .frame(height: 530)
+                                .padding(.horizontal)
+                        }
+                    }
+                    .padding(.vertical)
+                }
+                .frame(width: 360, height: 556)
+                .clipped()
+                .position(x: 200, y: -10)
+            }
             
             HStack{
                 
@@ -56,7 +97,9 @@ struct ContentView: View{
                     
                     
                     Button(action:{
-                    print("Button tapped")
+                        self.showingAnotherView1.toggle()
+                        print("GoToQuizView")
+                    
                       }) {
                     Image(systemName: "questionmark")
                         .resizable()
@@ -64,6 +107,11 @@ struct ContentView: View{
                         .frame(width: 80, height: 80)
                         .position(x:80, y:140)
                  }
+                      .sheet(isPresented: $showingAnotherView1) {
+                          
+                      } content: {
+                         QuizView()
+                      }
 
             }
                 

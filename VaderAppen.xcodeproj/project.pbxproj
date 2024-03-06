@@ -11,8 +11,12 @@
 		2F47B15C2B8F70260073A041 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F47B15B2B8F70260073A041 /* ContentView.swift */; };
 		2F47B15E2B8F70280073A041 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F47B15D2B8F70280073A041 /* Assets.xcassets */; };
 		2F47B1612B8F70280073A041 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F47B1602B8F70280073A041 /* Preview Assets.xcassets */; };
-		2F47B1632B8F70280073A041 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F47B1622B8F70280073A041 /* Persistence.swift */; };
-		2F47B1662B8F70280073A041 /* VaderAppen.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2F47B1642B8F70280073A041 /* VaderAppen.xcdatamodeld */; };
+		2F47B1B22B920B410073A041 /* SavedLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F47B1B12B920B410073A041 /* SavedLocation.swift */; };
+		2F47B1B42B920D300073A041 /* SavedLocationItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F47B1B32B920D300073A041 /* SavedLocationItemView.swift */; };
+		E1BD3B672B90BFDC00F80535 /* SavedLocationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BD3B662B90BFDC00F80535 /* SavedLocationsView.swift */; };
+		E1BD3B692B90E49E00F80535 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BD3B682B90E49E00F80535 /* QuizView.swift */; };
+		E1BD3B6B2B9746C200F80535 /* QuizCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BD3B6A2B9746C200F80535 /* QuizCoreData.swift */; };
+		E1BD3B6E2B97470800F80535 /* QuizData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E1BD3B6C2B97470800F80535 /* QuizData.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,8 +25,12 @@
 		2F47B15B2B8F70260073A041 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2F47B15D2B8F70280073A041 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2F47B1602B8F70280073A041 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		2F47B1622B8F70280073A041 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
-		2F47B1652B8F70280073A041 /* VaderAppen.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VaderAppen.xcdatamodel; sourceTree = "<group>"; };
+		2F47B1B12B920B410073A041 /* SavedLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedLocation.swift; sourceTree = "<group>"; };
+		2F47B1B32B920D300073A041 /* SavedLocationItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedLocationItemView.swift; sourceTree = "<group>"; };
+		E1BD3B662B90BFDC00F80535 /* SavedLocationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedLocationsView.swift; sourceTree = "<group>"; };
+		E1BD3B682B90E49E00F80535 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
+		E1BD3B6A2B9746C200F80535 /* QuizCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizCoreData.swift; sourceTree = "<group>"; };
+		E1BD3B6D2B97470800F80535 /* QuizData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = QuizData.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,11 +64,15 @@
 			isa = PBXGroup;
 			children = (
 				2F47B1592B8F70260073A041 /* VaderAppenApp.swift */,
+				E1BD3B662B90BFDC00F80535 /* SavedLocationsView.swift */,
+				E1BD3B682B90E49E00F80535 /* QuizView.swift */,
 				2F47B15B2B8F70260073A041 /* ContentView.swift */,
+				E1BD3B6A2B9746C200F80535 /* QuizCoreData.swift */,
+				E1BD3B6C2B97470800F80535 /* QuizData.xcdatamodeld */,
 				2F47B15D2B8F70280073A041 /* Assets.xcassets */,
-				2F47B1622B8F70280073A041 /* Persistence.swift */,
-				2F47B1642B8F70280073A041 /* VaderAppen.xcdatamodeld */,
 				2F47B15F2B8F70280073A041 /* Preview Content */,
+				2F47B1B12B920B410073A041 /* SavedLocation.swift */,
+				2F47B1B32B920D300073A041 /* SavedLocationItemView.swift */,
 			);
 			path = VaderAppen;
 			sourceTree = "<group>";
@@ -143,10 +155,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F47B1632B8F70280073A041 /* Persistence.swift in Sources */,
-				2F47B1662B8F70280073A041 /* VaderAppen.xcdatamodeld in Sources */,
+				E1BD3B6E2B97470800F80535 /* QuizData.xcdatamodeld in Sources */,
 				2F47B15C2B8F70260073A041 /* ContentView.swift in Sources */,
+				E1BD3B6B2B9746C200F80535 /* QuizCoreData.swift in Sources */,
 				2F47B15A2B8F70260073A041 /* VaderAppenApp.swift in Sources */,
+				2F47B1B42B920D300073A041 /* SavedLocationItemView.swift in Sources */,
+				E1BD3B672B90BFDC00F80535 /* SavedLocationsView.swift in Sources */,
+				E1BD3B692B90E49E00F80535 /* QuizView.swift in Sources */,
+				2F47B1B22B920B410073A041 /* SavedLocation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -352,13 +368,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		2F47B1642B8F70280073A041 /* VaderAppen.xcdatamodeld */ = {
+		E1BD3B6C2B97470800F80535 /* QuizData.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				2F47B1652B8F70280073A041 /* VaderAppen.xcdatamodel */,
+				E1BD3B6D2B97470800F80535 /* QuizData.xcdatamodel */,
 			);
-			currentVersion = 2F47B1652B8F70280073A041 /* VaderAppen.xcdatamodel */;
-			path = VaderAppen.xcdatamodeld;
+			currentVersion = E1BD3B6D2B97470800F80535 /* QuizData.xcdatamodel */;
+			path = QuizData.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
