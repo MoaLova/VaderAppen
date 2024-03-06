@@ -38,7 +38,7 @@ struct ContentView: View{
                 .sheet(isPresented: $showingAnotherView) {
                     
                 } content: {
-                    SwiftUIView()
+                    SavedLocationsView()
                 }
                 
                 
@@ -112,7 +112,6 @@ struct ContentView: View{
                       } content: {
                          QuizView()
                       }
-
             }
                 
                 ZStack{

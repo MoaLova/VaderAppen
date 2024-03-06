@@ -18,11 +18,13 @@ struct FlyingCloudsModifier: AnimatableModifier {
     }
 
     func body(content: Content) -> some View {
+        var position: CGPoint = self.position
+        let direction: CGFloat = self.direction
         content
             .position(position)
             .onAppear {
                 withAnimation(Animation.easeInOut(duration: 2.0).repeatForever()) {
-                    self.position.x += 200 * self.direction
+                    position.x += 200 * direction
                 }
             }
     }

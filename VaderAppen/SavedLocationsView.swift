@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct SwiftUIView: View {
+struct SavedLocationsView: View {
     @State var showingAnotherView = false
     @State var text: String = ""
     @State var locationSaved: [SavedLocation] = [
@@ -37,7 +37,7 @@ struct SwiftUIView: View {
 
                 VStack {
                     ForEach(locationSaved, id: \.id) { location in
-                        CloudView(locationSaved: location)
+                        CloudView(locationSaved: location, direction: 1.0)
                             .modifier(FlyingCloudsModifier(position: CGPoint(x: 200, y: -10), direction: 1.0))
                     }
                 }
@@ -85,6 +85,6 @@ struct SwiftUIView: View {
 
 struct SwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
-        SwiftUIView()
+        SavedLocationsView()
     }
 }
