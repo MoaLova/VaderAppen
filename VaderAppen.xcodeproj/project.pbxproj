@@ -17,6 +17,7 @@
 		E1BD3B692B90E49E00F80535 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BD3B682B90E49E00F80535 /* QuizView.swift */; };
 		E1BD3B6B2B9746C200F80535 /* QuizCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BD3B6A2B9746C200F80535 /* QuizCoreData.swift */; };
 		E1BD3B6E2B97470800F80535 /* QuizData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E1BD3B6C2B97470800F80535 /* QuizData.xcdatamodeld */; };
+		EC6DC11A2B98C18700A4EF4B /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6DC1192B98C18700A4EF4B /* WeatherModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		E1BD3B682B90E49E00F80535 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
 		E1BD3B6A2B9746C200F80535 /* QuizCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizCoreData.swift; sourceTree = "<group>"; };
 		E1BD3B6D2B97470800F80535 /* QuizData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = QuizData.xcdatamodel; sourceTree = "<group>"; };
+		EC6DC1192B98C18700A4EF4B /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 			children = (
 				2F47B1592B8F70260073A041 /* VaderAppenApp.swift */,
 				E1BD3B662B90BFDC00F80535 /* SavedLocationsView.swift */,
+				EC6DC1192B98C18700A4EF4B /* WeatherModel.swift */,
 				E1BD3B682B90E49E00F80535 /* QuizView.swift */,
 				2F47B15B2B8F70260073A041 /* ContentView.swift */,
 				E1BD3B6A2B9746C200F80535 /* QuizCoreData.swift */,
@@ -159,6 +162,7 @@
 				2F47B15C2B8F70260073A041 /* ContentView.swift in Sources */,
 				E1BD3B6B2B9746C200F80535 /* QuizCoreData.swift in Sources */,
 				2F47B15A2B8F70260073A041 /* VaderAppenApp.swift in Sources */,
+				EC6DC11A2B98C18700A4EF4B /* WeatherModel.swift in Sources */,
 				2F47B1B42B920D300073A041 /* SavedLocationItemView.swift in Sources */,
 				E1BD3B672B90BFDC00F80535 /* SavedLocationsView.swift in Sources */,
 				E1BD3B692B90E49E00F80535 /* QuizView.swift in Sources */,
