@@ -7,9 +7,8 @@
 
 import Foundation
 import SwiftUI
-
 struct FlyingCloudsModifier: AnimatableModifier {
-    var position: CGPoint
+    @Binding var position: CGPoint
     var direction: CGFloat
 
     var animatableData: CGPoint {
@@ -18,13 +17,13 @@ struct FlyingCloudsModifier: AnimatableModifier {
     }
 
     func body(content: Content) -> some View {
-        var position: CGPoint = self.position
-        let direction: CGFloat = self.direction
         content
             .position(position)
             .onAppear {
                 withAnimation(Animation.easeInOut(duration: 2.0).repeatForever()) {
-                    position.x += 200 * direction
+                    var newPosition = self.position
+                    newPosition.x += 200 * self.direction
+                    self.position = newPosition
                 }
             }
     }

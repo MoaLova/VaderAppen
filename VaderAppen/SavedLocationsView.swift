@@ -10,13 +10,20 @@ import Foundation
 struct SavedLocationsView: View {
     @State var showingAnotherView = false
     @State var text: String = ""
-    @State var locationSaved: [SavedLocation] = [
+
+    @State private var cloudPosition1 = CGPoint(x: 200, y: -10)
+    @State private var cloudPosition2 = CGPoint(x: 100, y: -10)
+    @State private var cloudPosition3 = CGPoint(x: 0, y: -10)
+
+    // Define locationSaved here
+    let locationSaved: [SavedLocation] = [
         SavedLocation(location: "Malmö"),
         SavedLocation(location: "London"),
         SavedLocation(location: "Madrid")
     ]
 
     var body: some View {
+        // Rest of your code
         VStack {
             HStack {
                 Text("07.00")
@@ -33,11 +40,12 @@ struct SavedLocationsView: View {
                     .frame(width: 340, height: 550)
                     .foregroundColor(.white)
                     .position(x: 200, y: -10)
+
                 VStack {
-                    ForEach(locationSaved.indices, id: \.self) { index in
-                        CloudView(locationSaved: locationSaved[index], direction: 1)
-                            .modifier(FlyingCloudsModifier(position: CGPoint(x: 200 * CGFloat(index), y: -10), direction: CGFloat(index % 2 == 0 ? 1 : -1)))
-                    }
+                    CloudView(locationSaved: locationSaved[0], cloudPosition: $cloudPosition1, direction: 1)
+                    CloudView(locationSaved: locationSaved[1], cloudPosition: $cloudPosition2, direction: 1)
+                    CloudView(locationSaved: locationSaved[2], cloudPosition: $cloudPosition3, direction: 1)
+                }
                 }
             }
 
@@ -78,7 +86,7 @@ struct SavedLocationsView: View {
             }
         }
     }
-}
+
 
 struct SavedLocationsView_Previews: PreviewProvider {
     static var previews: some View {

@@ -9,21 +9,21 @@
 import Foundation
 import SwiftUI
 
-
 struct CloudView: View {
     var locationSaved: SavedLocation
+    @Binding var cloudPosition: CGPoint
     var direction: CGFloat
 
     var body: some View {
         Image(systemName: "cloud")
             .resizable()
             .foregroundColor(.blue)
-            .frame(width: 40, height: 40)
+            .frame(width: 100, height: 1000)
             .overlay(
                 Text(locationSaved.location)
                     .foregroundColor(.black)
                     .font(.headline)
             )
-            .modifier(FlyingCloudsModifier(position: CGPoint(x: 200, y: -10), direction: direction))
+            .modifier(FlyingCloudsModifier(position: $cloudPosition, direction: direction))
     }
 }
