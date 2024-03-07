@@ -32,4 +32,3 @@ struct SavedLocationItemView: View {
     SavedLocationItemView(locationSaved: SavedLocation(location: "location"))
 }
 
-
