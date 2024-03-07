@@ -7,29 +7,29 @@
 
 import SwiftUI
 
+    
 struct SavedLocationItemView: View {
     
     @State var locationSaved: SavedLocation
     
     var body: some View{
-       
-        HStack{
-          Image(systemName: "icloud")
-          .resizable()
-            .foregroundColor(.blue)
-            .frame(width: 140, height: 90)
-            .overlay(
+        ZStack {
+            Image(systemName: "icloud")
+                .resizable()
+                .foregroundColor(.blue)
+                .frame(width: 140, height: 90)
+            
             Text(locationSaved.location)
-            .foregroundColor(.black)
-            .font(.headline)
-           )
-           
+                .foregroundColor(.black)
+                .font(.title3)
+                .offset(y: 7) // Adjust the offset value as needed
         }
     }
 }
 
-#Preview {
-    SavedLocationItemView(locationSaved: SavedLocation(location: "location"))
+// Preview
+struct SavedLocationItemView_Previews: PreviewProvider {
+    static var previews: some View {
+        SavedLocationItemView(locationSaved: SavedLocation(location: "location"))
+    }
 }
-
-
