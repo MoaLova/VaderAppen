@@ -26,7 +26,6 @@ struct SavedLocationsView: View {
     ]
 
     var body: some View {
-       
         VStack {
             HStack {
                 Text("07.00")
@@ -51,7 +50,6 @@ struct SavedLocationsView: View {
                     CloudView(locationSaved: locationSaved[3], cloudPosition: $cloudPosition4, direction: -1)
                     CloudView(locationSaved: locationSaved[4], cloudPosition: $cloudPosition5, direction: 1)
                 }
-                }
             }
 
             HStack {
@@ -69,7 +67,7 @@ struct SavedLocationsView: View {
                             .resizable()
                             .foregroundColor(.black)
                             .frame(width: 80, height: 80)
-                            .position(x: 80, y: 200)
+                            .position(x: 80, y: -500)
                     }
                     .sheet(isPresented: $showingAnotherView) {
 
@@ -91,7 +89,7 @@ struct SavedLocationsView: View {
             }
         }
     }
-
+}
 
 struct SavedLocationsView_Previews: PreviewProvider {
     static var previews: some View {
