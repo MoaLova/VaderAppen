@@ -20,7 +20,7 @@ struct FlyingCloudsModifier: AnimatableModifier {
         content
             .position(position)
             .onAppear {
-                withAnimation(Animation.easeInOut(duration: 2.0).repeatForever()) {
+                withAnimation(Animation.easeInOut(duration: 6.0).repeatForever()) {
                     var newPosition = self.position
                     newPosition.x += 200 * self.direction
                     self.position = newPosition

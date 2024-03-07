@@ -18,7 +18,7 @@ struct CloudView: View {
         Image(systemName: "cloud")
             .resizable()
             .foregroundColor(.blue)
-            .frame(width: 100, height: 1000)
+            .frame(width: 150, height: 100)
             .overlay(
                 Text(locationSaved.location)
                     .foregroundColor(.black)
