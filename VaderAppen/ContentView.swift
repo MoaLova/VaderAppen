@@ -88,7 +88,9 @@ struct ContentView: View{
             }
             
             HStack{
-                
+                NavigationView{
+                    WeatherView()
+            }
                 ZStack{
                  Rectangle()
                     .stroke(Color.black, lineWidth: 3)

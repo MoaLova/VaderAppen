@@ -55,6 +55,11 @@
             value = "YES"
             isEnabled = "YES">
          </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "OPENWEATHERMAP_API_KEY"
+            value = "3c73acdc0f41c548c2a6b2bf65f0fa97"
+            isEnabled = "YES">
+         </EnvironmentVariable>
       </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction

@@ -2,10 +2,7 @@
 //  WeatherService.swift
 //  VaderAppen
 //
-//  Created by Sarah Lidberg on 2024-03-06.
-//
 
-import Foundation
 //en API-service-klass som är en singelton (shared), den hanterar API-anrop
 
 import Foundation
@@ -32,3 +29,4 @@ class WeatherService {
         }.resume()
     }
 }
+
