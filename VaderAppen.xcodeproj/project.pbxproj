@@ -13,6 +13,7 @@
 		2F47B1612B8F70280073A041 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F47B1602B8F70280073A041 /* Preview Assets.xcassets */; };
 		2F47B1B22B920B410073A041 /* SavedLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F47B1B12B920B410073A041 /* SavedLocation.swift */; };
 		2F47B1B42B920D300073A041 /* SavedLocationItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F47B1B32B920D300073A041 /* SavedLocationItemView.swift */; };
+		2F7996532B99C3D400279F24 /* CLoudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7996522B99C3D400279F24 /* CLoudView.swift */; };
 		E1BD3B672B90BFDC00F80535 /* SavedLocationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BD3B662B90BFDC00F80535 /* SavedLocationsView.swift */; };
 		E1BD3B692B90E49E00F80535 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BD3B682B90E49E00F80535 /* QuizView.swift */; };
 		E1BD3B6B2B9746C200F80535 /* QuizCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BD3B6A2B9746C200F80535 /* QuizCoreData.swift */; };
@@ -31,6 +32,7 @@
 		2F47B1602B8F70280073A041 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2F47B1B12B920B410073A041 /* SavedLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedLocation.swift; sourceTree = "<group>"; };
 		2F47B1B32B920D300073A041 /* SavedLocationItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedLocationItemView.swift; sourceTree = "<group>"; };
+		2F7996522B99C3D400279F24 /* CLoudView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLoudView.swift; sourceTree = "<group>"; };
 		E1BD3B662B90BFDC00F80535 /* SavedLocationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedLocationsView.swift; sourceTree = "<group>"; };
 		E1BD3B682B90E49E00F80535 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
 		E1BD3B6A2B9746C200F80535 /* QuizCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizCoreData.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 				2F47B15F2B8F70280073A041 /* Preview Content */,
 				2F47B1B12B920B410073A041 /* SavedLocation.swift */,
 				2F47B1B32B920D300073A041 /* SavedLocationItemView.swift */,
+				2F7996522B99C3D400279F24 /* CLoudView.swift */,
 			);
 			path = VaderAppen;
 			sourceTree = "<group>";
@@ -170,6 +173,7 @@
 				EC6DC11E2B98C28E00A4EF4B /* WeatherView.swift in Sources */,
 				EC6DC1202B98C30B00A4EF4B /* File.swift in Sources */,
 				EC6DC11C2B98C1DF00A4EF4B /* WeatherService.swift in Sources */,
+				2F7996532B99C3D400279F24 /* CLoudView.swift in Sources */,
 				E1BD3B6E2B97470800F80535 /* QuizData.xcdatamodeld in Sources */,
 				2F47B15C2B8F70260073A041 /* ContentView.swift in Sources */,
 				E1BD3B6B2B9746C200F80535 /* QuizCoreData.swift in Sources */,
