@@ -17,8 +17,6 @@ struct SavedLocationsView: View {
     @State private var cloudPosition4 = CGPoint(x: 300, y: -160)
     @State private var cloudPosition5 = CGPoint(x: 100, y: -100)
 
-
-    // Define locationSaved here
     let locationSaved: [SavedLocation] = [
         SavedLocation(location: "Malmö"),
         SavedLocation(location: "London"),
@@ -50,8 +48,8 @@ struct SavedLocationsView: View {
                     CloudView(locationSaved: locationSaved[0], cloudPosition: $cloudPosition1, direction: 1)
                     CloudView(locationSaved: locationSaved[1], cloudPosition: $cloudPosition2, direction: -1)
                     CloudView(locationSaved: locationSaved[2], cloudPosition: $cloudPosition3, direction: 1)
-                    CloudView(locationSaved: locationSaved[2], cloudPosition: $cloudPosition4, direction: -1)
-                    CloudView(locationSaved: locationSaved[2], cloudPosition: $cloudPosition5, direction: 1)
+                    CloudView(locationSaved: locationSaved[3], cloudPosition: $cloudPosition4, direction: -1)
+                    CloudView(locationSaved: locationSaved[4], cloudPosition: $cloudPosition5, direction: 1)
                 }
                 }
             }

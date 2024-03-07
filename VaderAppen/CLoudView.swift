@@ -18,11 +18,12 @@ struct CloudView: View {
         Image(systemName: "cloud")
             .resizable()
             .foregroundColor(.blue)
-            .frame(width: 150, height: 100)
+            .frame(width: 160, height: 100)
             .overlay(
                 Text(locationSaved.location)
                     .foregroundColor(.black)
-                    .font(.headline)
+                    .font(.title3)
+                    .offset(y: 7) 
             )
             .modifier(FlyingCloudsModifier(position: $cloudPosition, direction: direction))
     }
