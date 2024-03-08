@@ -40,7 +40,7 @@ struct SavedLocationsView: View {
                 Rectangle()
                     .stroke(Color.black, lineWidth: 3)
                     .frame(width: 340, height: 550)
-                    .foregroundColor(.white)
+                    .background(.blue)
                     .position(x: 200, y: -20)
 
                 VStack {
