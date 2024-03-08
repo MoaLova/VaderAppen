@@ -10,7 +10,7 @@ import OpenMeteoSdk
 
 class MeteoDataModel {
     
-    struct HourlyWeather: Decodable{
+    struct HourlyWeather: Decodable, Hashable{
         let time : String
         let temperature : String
         let location: String
