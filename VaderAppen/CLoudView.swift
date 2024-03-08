@@ -15,13 +15,13 @@ struct CloudView: View {
     var direction: CGFloat
 
     var body: some View {
-        Image(systemName: "cloud")
+        Image(systemName: "cloud.fill")
             .resizable()
-            .foregroundColor(.blue)
+            .foregroundColor(.gray)
             .frame(width: 160, height: 100)
             .overlay(
                 Text(locationSaved.location)
-                    .foregroundColor(.black)
+                    .foregroundColor(.white)
                     .font(.title3)
                     .offset(y: 7) 
             )
