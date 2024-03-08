@@ -39,7 +39,7 @@ struct ContentView: View{
                 }
                 
                 Text("07.00")
-                    .position(x:55, y: 30 )
+                    .position(x:60, y: 30 )
                 
                 
                 Button(action: {
@@ -77,8 +77,6 @@ struct ContentView: View{
                                 .frame(height: 530)
                                 .padding(.horizontal)
                         }
-                        
-                        
                     }
                     .padding(.vertical)
                 }
