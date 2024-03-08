@@ -22,12 +22,11 @@ struct SavedLocationItemView: View {
             Text(locationSaved.location)
                 .foregroundColor(.black)
                 .font(.title3)
-                .offset(y: 7) // Adjust the offset value as needed
+                .offset(y: 7) 
         }
     }
 }
 
-// Preview
 struct SavedLocationItemView_Previews: PreviewProvider {
     static var previews: some View {
         SavedLocationItemView(locationSaved: SavedLocation(location: "location"))
