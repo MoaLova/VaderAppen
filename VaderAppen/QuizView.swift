@@ -18,7 +18,7 @@ struct QuizView: View {
             HStack {
                 Text("07.00")
                     .position(x: 50, y: 10)
-
+                
                 Button(action: {
                     print("nein")
                 }) {
@@ -29,74 +29,47 @@ struct QuizView: View {
                         .position(x: 130, y: 10)
                 }
             }
-
+            
             Text("Weather Quiz")
                 .position(x: 190, y: -180)
                 .font(.title)
-
-            ZStack {
+            
+            VStack {
                 Image(systemName: "rainbow")
-                    .resizable()
-                    .frame(width: 300, height: 150)
-                    .position(x: 200, y: -300)
-                    .symbolRenderingMode(.multicolor)
-
-                VStack {
-                    Spacer()
-
-                    Text(questionsVM.currentQuestion.question)
-                        .multilineTextAlignment(.center)
-
-                    Spacer()
-
-                    Button(action: {
-                        handleAnswer(answer: questionsVM.currentQuestion.correctAnswer)
-                    }) {
-                        Image(systemName: "sun.max.fill")
-                            .resizable()
-                            .foregroundColor(.yellow)
-                            .frame(width: 100, height: 100)
-                            .position(x: 100, y: -160)
-                    }
-
-                    Button(action: {
-                        handleAnswer(answer: questionsVM.currentQuestion.incorrectAnswers[0])
-                    }) {
-                        Image(systemName: "drop.fill")
-                            .resizable()
-                            .foregroundColor(.blue)
-                            .frame(width: 60, height: 70)
-                            .position(x: 100, y: -60)
-                    }
-
-                    Button(action: {
-                        handleAnswer(answer: questionsVM.currentQuestion.incorrectAnswers[1])
-                    }) {
-                        Image(systemName: "wind")
-                            .resizable()
-                            .foregroundColor(.black)
-                            .frame(width: 80, height: 80)
-                            .position(x: 100, y: 40)
-                    }
-
-                    Button(action: {
-                        handleAnswer(answer: questionsVM.currentQuestion.incorrectAnswers[2])
-                    }) {
-                        Image(systemName: "icloud.fill")
-                            .resizable()
-                            .foregroundColor(.gray)
-                            .frame(width: 100, height: 80)
-                            .position(x: 100, y: 140)
-                    }
-
-                    Spacer()
+                                  .resizable()
+                                  .frame(width: 300, height: 150)
+                                  .position(x: 200, y: -330)
+                                  .symbolRenderingMode(.multicolor)
+                              Text(questionsVM.currentQuestion.question).position(x: 200, y: -310)
+                              
+              
+               
+                Button(action: {
+                    handleAnswer(answer: questionsVM.currentQuestion.correctAnswer)
+                }) {
+                    Text(questionsVM.currentQuestion.correctAnswer)
                 }
+                Button(action: {
+                    handleAnswer(answer: questionsVM.currentQuestion.incorrectAnswers[0])
+                }) {
+                    Text(questionsVM.currentQuestion.incorrectAnswers[0])
+                }
+                Button(action: {
+                    handleAnswer(answer: questionsVM.currentQuestion.incorrectAnswers[1])
+                }) {
+                    Text(questionsVM.currentQuestion.incorrectAnswers[1])
+                }
+                Button(action: {
+                    handleAnswer(answer: questionsVM.currentQuestion.incorrectAnswers[2])
+                }) {
+                    Text(questionsVM.currentQuestion.incorrectAnswers[2])
+                }
+              
+                
             }
             .onAppear {
                 nextQuestion()
-            }
-        }
-    }
+            }}}
 
     func handleAnswer(answer: String) {
         // Implement your answer handling logic here
