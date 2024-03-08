@@ -133,9 +133,8 @@ import SwiftUI
         
         var body: some View {
             HStack {
-                Text(hourlyWeather.time)
+                Text(String(hourlyWeather.longitude))
                 Spacer()
-                Text(hourlyWeather.temperature)
             }
             .padding()
             .background(Color.gray.opacity(0.2))
