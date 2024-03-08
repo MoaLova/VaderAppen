@@ -20,26 +20,26 @@ struct ContentView: View{
     var body: some View{
         VStack{
             HStack{
-                Text("07.00")
-                    .position(x:50, y: 10 )
-                
-                
+
                 Button(action: {
                     self.showingAnotherView.toggle()
                     print("GoToSavedLocationView")
                     
                     
-                }){Image(systemName: "goforward")
+                }){Image(systemName: "globe.europe.africa.fill")
                         .resizable()
-                        .foregroundColor(.pink)
+                        .foregroundColor(.blue)
                         .frame(width: 50, height: 50)
-                        .position(x: 50, y: 15)
+                        .position(x: 60, y: 20)
                     }
                 .sheet(isPresented: $showingAnotherView) {
                     
                 } content: {
                     SavedLocationsView()
                 }
+                
+                Text("07.00")
+                    .position(x:60, y: 30 )
                 
                 
                 Button(action: {
@@ -49,13 +49,11 @@ struct ContentView: View{
                         .resizable()
                         .foregroundColor(.pink)
                         .frame(width: 50, height: 50)
-                        .position(x: 50, y: 10)
+                        .position(x: 50, y: 20)
                     }
                 
                 
             }
-            
-                
                 
                 Text("Location")
                 .position(x: 190, y: -120)
@@ -85,7 +83,9 @@ struct ContentView: View{
                 .frame(width: 360, height: 556)
                 .clipped()
                 .position(x: 200, y: -10)
-            }
+                
+                }
+            
             
             HStack{
                 NavigationView{
