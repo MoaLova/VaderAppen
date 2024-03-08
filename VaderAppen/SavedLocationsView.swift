@@ -11,11 +11,11 @@ struct SavedLocationsView: View {
     @State var showingAnotherView = false
     @State var text: String = ""
 
-    @State private var cloudPosition1 = CGPoint(x: 100, y: -340)
-    @State private var cloudPosition2 = CGPoint(x: 300, y: -280)
-    @State private var cloudPosition3 = CGPoint(x: 100, y: -220)
-    @State private var cloudPosition4 = CGPoint(x: 300, y: -160)
-    @State private var cloudPosition5 = CGPoint(x: 100, y: -100)
+    @State private var cloudPosition1 = CGPoint(x: 100, y: -240)
+    @State private var cloudPosition2 = CGPoint(x: 300, y: -170)
+    @State private var cloudPosition3 = CGPoint(x: 100, y: -100)
+    @State private var cloudPosition4 = CGPoint(x: 300, y: -30)
+    @State private var cloudPosition5 = CGPoint(x: 100, y: 40)
 
     let locationSaved: [SavedLocation] = [
         SavedLocation(location: "Malmö"),
@@ -33,7 +33,7 @@ struct SavedLocationsView: View {
             }
 
             Text("Saved locations")
-                .position(x: 190, y: -200)
+                .position(x: 190, y: -130)
                 .font(.title)
 
             ZStack {
@@ -41,7 +41,7 @@ struct SavedLocationsView: View {
                     .stroke(Color.black, lineWidth: 3)
                     .frame(width: 340, height: 550)
                     .foregroundColor(.white)
-                    .position(x: 200, y: -120)
+                    .position(x: 200, y: -20)
 
                 VStack {
                     CloudView(locationSaved: locationSaved[0], cloudPosition: $cloudPosition1, direction: 1)
@@ -67,7 +67,7 @@ struct SavedLocationsView: View {
                             .resizable()
                             .foregroundColor(.black)
                             .frame(width: 80, height: 80)
-                            .position(x: 80, y: -500)
+                            .position(x: 80, y: 137)
                     }
                     .sheet(isPresented: $showingAnotherView) {
 
