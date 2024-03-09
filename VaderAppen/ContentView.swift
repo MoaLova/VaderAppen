@@ -8,12 +8,11 @@
 //Hej
 // nej
 import SwiftUI
-
-
-
     struct ContentView: View {
-        
-        @State private var hourlyWeatherData: [MeteoDataModel.HourlyWeather] = []
+        @State private var citys: [MeteoDataModel.City] = []
+        @State private var hourlyWeatherData: [MeteoDataModel.WeatherData] = []
+        @State private var currentUnitsData: [MeteoDataModel.Current] = []
+        @State private var currentCity =  MeteoDataModel.City.tokyo
         @State private var isLoading = false
         @State private var meteoDataModel = MeteoDataModel()
         @State private var text: String = ""
@@ -58,9 +57,10 @@ import SwiftUI
                     
                     ScrollView {
                         LazyVStack(spacing: 10) {
-                            ForEach(hourlyWeatherData, id: \.self) { hourlyWeather in
-                                HourlyWeatherRow(hourlyWeather: hourlyWeather)
-                            }
+                                ForEach(hourlyWeatherData, id: \.self) { hourlyWeather in
+                                    HourlyWeatherRow(hourlyWeather: hourlyWeather, currentCity: currentCity)
+                                }
+                           
                         }
                         .padding(.horizontal)
                     }
@@ -113,14 +113,15 @@ import SwiftUI
             .onAppear {
                 isLoading = true
                 // Fetch and populate hourly weather data
-                fetchHourlyWeatherData()
+                fetchHourlyWeatherData(currentCity)
+               
             }
         }
         
         // Function to fetch hourly weather data
-        private func fetchHourlyWeatherData() {
-            meteoDataModel.fetchHourlyWeatherData { fetchedHourlyWeatherData in
-                if let fetchedHourlyWeatherData = fetchedHourlyWeatherData {
+        private func fetchHourlyWeatherData(_ currentCity: MeteoDataModel.City) {
+            meteoDataModel.fetchWeatherData(currentCity) { fetchedWeatherData in
+                if let fetchedHourlyWeatherData = fetchedWeatherData {
                     self.hourlyWeatherData = fetchedHourlyWeatherData
                     isLoading = false
                 }
@@ -129,11 +130,12 @@ import SwiftUI
     }
 
     struct HourlyWeatherRow: View {
-        let hourlyWeather: MeteoDataModel.HourlyWeather
-        
+        let hourlyWeather: MeteoDataModel.WeatherData
+        let currentCity: MeteoDataModel.City
         var body: some View {
-            HStack {
+            VStack {
                 Text(String(hourlyWeather.longitude))
+                Text(String(hourlyWeather.current.temperature_2m))
                 Spacer()
             }
             .padding()
