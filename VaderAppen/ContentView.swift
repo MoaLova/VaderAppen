@@ -143,10 +143,11 @@ import SwiftUI
                 Text("wind speed:")
                 Text(String(hourlyWeather.current.wind_speed_10m))
                 Text("hourly temperature:")
+
                 ForEach(hourlyWeather.minutely_15.time.indices, id: \.self) { index in
                     HStack {
-                        Text(hourlyWeather.minutely_15.time[index])
-                        Text(String(hourlyWeather.minutely_15.temperature_2m[index]))
+                        Text("\(hourlyWeather.minutely_15.time[index]): ")
+                        Text("\(hourlyWeather.minutely_15.temperature_2m[index]) \(hourlyWeather.minutely_15_units.temperature_2m)")
                     }
                 }
                 Spacer()
