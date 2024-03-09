@@ -9,10 +9,11 @@
 // nej
 import SwiftUI
     struct ContentView: View {
+       // @State private var hourly: [MeteoDataModel.Minutely15]
         @State private var citys: [MeteoDataModel.City] = []
         @State private var hourlyWeatherData: [MeteoDataModel.WeatherData] = []
         @State private var currentUnitsData: [MeteoDataModel.Current] = []
-        @State private var currentCity =  MeteoDataModel.City.tokyo
+        @State private var currentCity =  MeteoDataModel.City.stockholm
         @State private var isLoading = false
         @State private var meteoDataModel = MeteoDataModel()
         @State private var text: String = ""
@@ -58,7 +59,7 @@ import SwiftUI
                     ScrollView {
                         LazyVStack(spacing: 10) {
                                 ForEach(hourlyWeatherData, id: \.self) { hourlyWeather in
-                                    HourlyWeatherRow(hourlyWeather: hourlyWeather, currentCity: currentCity)
+                                    HourlyWeatherRow(hourlyWeather: hourlyWeather, currentCity: currentCity )
                                 }
                            
                         }
@@ -134,8 +135,20 @@ import SwiftUI
         let currentCity: MeteoDataModel.City
         var body: some View {
             VStack {
-                Text(String(hourlyWeather.longitude))
+                Text("Stockholm nu")
+                Text("temperature:")
                 Text(String(hourlyWeather.current.temperature_2m))
+                Text("precipitation:")
+                Text(String(hourlyWeather.current.precipitation))
+                Text("wind speed:")
+                Text(String(hourlyWeather.current.wind_speed_10m))
+                Text("hourly temperature:")
+                ForEach(hourlyWeather.minutely_15.time.indices, id: \.self) { index in
+                    HStack {
+                        Text(hourlyWeather.minutely_15.time[index])
+                        Text(String(hourlyWeather.minutely_15.temperature_2m[index]))
+                    }
+                }
                 Spacer()
             }
             .padding()
