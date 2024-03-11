@@ -27,8 +27,8 @@ class MeteoDataModel {
     }
     struct WeatherData: Decodable, Hashable{
         let current: Current
-        let minutely_15: Minutely15
-        let minutely_15_units: Minutely15Units
+       // let minutely_15: Minutely15
+       // let minutely_15_units: Minutely15Units
         let hourly: Hourly
         let daily: Daily
      
@@ -67,18 +67,18 @@ class MeteoDataModel {
         
     }
     
-    struct Minutely15: Decodable, Hashable{
-        let time: [String]
-        let temperature_2m: [Float]
-
-    }
-    struct Minutely15Units: Decodable, Hashable {
-        let temperature_2m: String
-
-        var temperatureFloat: Float? {
-            return Float(temperature_2m)
-        }
-    }
+//    struct Minutely15: Decodable, Hashable{
+//        let time: [String]
+//        let temperature_2m: [Float]
+//
+//    }
+//    struct Minutely15Units: Decodable, Hashable {
+//        let temperature_2m: String
+//
+//        var temperatureFloat: Float? {
+//            return Float(temperature_2m)
+//        }
+//    }
     
     
     func fetchWeatherData(_ currentCity: City,completion: @escaping ([WeatherData]?) -> Void) {
