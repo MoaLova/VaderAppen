@@ -6,11 +6,13 @@
 //
 
 
-import Foundation
+struct Question: Equatable {
+    var question: String
+    var correctAnswer: String
+    var incorrectAnswers: [String]
 
-// modell
-struct Question {
-    var question : String                   // när är det julafton
-    var correctAnswer : String              // 24 dec
-    var incorrectAnswers : [String]         // 4 maj, 6 april, 27 oktober
+    var allAnswers: [String] {
+        return [correctAnswer] + incorrectAnswers
+    }
+
 }
