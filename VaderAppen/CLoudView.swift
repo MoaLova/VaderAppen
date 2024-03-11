@@ -17,12 +17,12 @@ struct CloudView: View {
     var body: some View {
         Image(systemName: "cloud.fill")
             .resizable()
-            .foregroundColor(.gray)
+            .foregroundColor(.white)
             .frame(width: 160, height: 100)
             .overlay(
                 Text(locationSaved.location)
-                    .foregroundColor(.white)
-                    .font(.title3)
+                    .foregroundColor(.black)
+                    .font(.title2)
                     .offset(y: 7) 
             )
             .modifier(FlyingCloudsModifier(position: $cloudPosition, direction: direction))

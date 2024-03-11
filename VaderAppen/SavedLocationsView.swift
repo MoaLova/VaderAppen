@@ -40,17 +40,52 @@ struct SavedLocationsView: View {
                 Rectangle()
                     .stroke(Color.black, lineWidth: 3)
                     .frame(width: 340, height: 550)
-                    .foregroundColor(.white)
+                    .background(.blue)
                     .position(x: 200, y: -20)
-
+                
                 VStack {
+              
+
                     CloudView(locationSaved: locationSaved[0], cloudPosition: $cloudPosition1, direction: 1)
+                        .onTapGesture {
+                            self.showingAnotherView.toggle()
+                            print("GoToContentView")
+                           
+                        }
+
                     CloudView(locationSaved: locationSaved[1], cloudPosition: $cloudPosition2, direction: -1)
+                        .onTapGesture {
+                            self.showingAnotherView.toggle()
+                            print("GoToContentView")
+                           
+                        }
+
                     CloudView(locationSaved: locationSaved[2], cloudPosition: $cloudPosition3, direction: 1)
+                        .onTapGesture {
+                            self.showingAnotherView.toggle()
+                            print("GoToContentView")
+                        
+                        }
+
                     CloudView(locationSaved: locationSaved[3], cloudPosition: $cloudPosition4, direction: -1)
+                        .onTapGesture {
+                            self.showingAnotherView.toggle()
+                            print("GoToContentView")
+                           
+                        }
+
                     CloudView(locationSaved: locationSaved[4], cloudPosition: $cloudPosition5, direction: 1)
+                        .onTapGesture {
+                            self.showingAnotherView.toggle()
+                            print("GoToContentView")
+                            
+                        }
+
+                  
                 }
-            }
+                .sheet(isPresented: $showingAnotherView) {
+                    ContentView()
+                }}
 
             HStack {
                 ZStack {
