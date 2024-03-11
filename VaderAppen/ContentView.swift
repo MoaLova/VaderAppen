@@ -146,11 +146,31 @@ import SwiftUI
                 Text("wind speed:")
                 Text(String(hourlyWeather.current.wind_speed_10m))
                 Text("hourly temperature:")
+                 
+               
+              
+//                Text("Sunrise: \(hourlyWeather.daily.sunrise)")
+//                Text("Sunset: \(hourlyWeather.daily.sunset)")
+//                Text("UV Index Max: \(hourlyWeather.daily.uv_index_max)")
+//                Text("Precipitation Hours: \(hourlyWeather.daily.precipitation_hours)")
+              //  Text("Daylight Duration: \(hourlyWeather.daily.daylight_duration)")
 
-                ForEach(hourlyWeather.minutely_15.time.indices, id: \.self) { index in
-                    HStack {
-                        Text("\(hourlyWeather.minutely_15.time[index]): ")
-                        Text("\(hourlyWeather.minutely_15.temperature_2m[index]) \(hourlyWeather.minutely_15_units.temperature_2m)")
+                
+                
+                VStack {
+                    ForEach(hourlyWeather.daily.time.indices, id: \.self) { index in
+                        VStack {
+                            Text("Date: \(hourlyWeather.daily.time[index])")
+                            Text("Max Temperature: \(hourlyWeather.daily.temperature_2m_max[index])°C")
+                            Text("Min Temperature: \(hourlyWeather.daily.temperature_2m_min[index])°C")
+                        }
+                    }
+
+                    ForEach(hourlyWeather.hourly.time.indices, id: \.self) { index in
+                        HStack {
+                            Text("\(hourlyWeather.hourly.time[index]): ")
+                            Text("\(hourlyWeather.hourly.temperature_2m[index]) \(hourlyWeather.minutely_15_units.temperature_2m)")
+                        }
                     }
                 }
                 Spacer()
