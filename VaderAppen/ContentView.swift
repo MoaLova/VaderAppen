@@ -7,7 +7,7 @@
 
 //Hej
 // nej
-import SwiftUI
+
 import CoreData
     
 import SwiftUI
@@ -138,40 +138,49 @@ import SwiftUI
         let currentCity: MeteoDataModel.City
         var body: some View {
             VStack {
-                Text("Stockholm nu")
-                Text("temperature:")
-                Text(String(hourlyWeather.current.temperature_2m))
-                Text("precipitation:")
-                Text(String(hourlyWeather.current.precipitation))
-                Text("wind speed:")
-                Text(String(hourlyWeather.current.wind_speed_10m))
-                Text("hourly temperature:")
+                Text("Stockholm")
+                
+                Text(" \(hourlyWeather.current.time) ")
+                Text("temperature \(hourlyWeather.current.temperature_2m) °C")
+                Text("precipitation \(hourlyWeather.current.precipitation) mm")
+                Text("wind \(hourlyWeather.current.wind_speed_10m) m/s")
+                
+                
+                
+                
+                ForEach(hourlyWeather.hourly.time.indices, id: \.self) { index in
+                    VStack {
+                        Text("\(hourlyWeather.hourly.time[index]): ")
+                        Text("\(hourlyWeather.hourly.temperature_2m[index]) \(hourlyWeather.minutely_15_units.temperature_2m)")
+                        Text("\(hourlyWeather.hourly.relative_humidity_2m[index]) Humidity")
+                        Text("\(hourlyWeather.hourly.precipitation[index]) mm")
+                        Text("\(hourlyWeather.hourly.uv_index[index]) UV")
+                        Text("\(hourlyWeather.hourly.wind_speed_10m[index]) m/s")
+                        
+                        
+                    }
+                }
                  
                
               
-//                Text("Sunrise: \(hourlyWeather.daily.sunrise)")
-//                Text("Sunset: \(hourlyWeather.daily.sunset)")
-//                Text("UV Index Max: \(hourlyWeather.daily.uv_index_max)")
-//                Text("Precipitation Hours: \(hourlyWeather.daily.precipitation_hours)")
-              //  Text("Daylight Duration: \(hourlyWeather.daily.daylight_duration)")
+
 
                 
                 
-                VStack {
+             VStack {
                     ForEach(hourlyWeather.daily.time.indices, id: \.self) { index in
                         VStack {
                             Text("Date: \(hourlyWeather.daily.time[index])")
                             Text("Max Temperature: \(hourlyWeather.daily.temperature_2m_max[index])°C")
                             Text("Min Temperature: \(hourlyWeather.daily.temperature_2m_min[index])°C")
+                            Text("Precipitation: \(hourlyWeather.daily.precipitation_hours[index])mm")
+                            Text("UV-index: \(hourlyWeather.daily.uv_index_max[index])")
+                            Text("Sunrise: \(hourlyWeather.daily.sunrise[index])")
+                            Text("Sunset: \(hourlyWeather.daily.sunset[index])")
                         }
                     }
 
-                    ForEach(hourlyWeather.hourly.time.indices, id: \.self) { index in
-                        HStack {
-                            Text("\(hourlyWeather.hourly.time[index]): ")
-                            Text("\(hourlyWeather.hourly.temperature_2m[index]) \(hourlyWeather.minutely_15_units.temperature_2m)")
-                        }
-                    }
+                    
                 }
                 Spacer()
             }
