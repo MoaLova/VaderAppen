@@ -9,6 +9,8 @@
 // nej
 import SwiftUI
 import CoreData
+    
+import SwiftUI
     struct ContentView: View {
        // @State private var hourly: [MeteoDataModel.Minutely15]
         @State private var citys: [MeteoDataModel.City] = []
@@ -33,31 +35,6 @@ import CoreData
                             .foregroundColor(.pink)
                             .frame(width: 50, height: 50)
                             .position(x: 50, y: 15)
-
-
-
-struct ContentView: View{
-    
-    @State var showingAnotherView = false
-    @State var showingAnotherView1 = false
-    
-    @State var text : String = ""
-    
-    var body: some View{
-        VStack{
-            HStack{
-
-                Button(action: {
-                    self.showingAnotherView.toggle()
-                    print("GoToSavedLocationView")
-                    
-                    
-                }){Image(systemName: "globe.europe.africa.fill")
-                        .resizable()
-                        .foregroundColor(.blue)
-                        .frame(width: 50, height: 50)
-                        .position(x: 60, y: 20)
-
                     }
                     
                     Button(action: {
@@ -71,15 +48,9 @@ struct ContentView: View{
                     }
                 }
                 
-
                 Text("Location")
                     .position(x: 190, y: -120)
                     .font(.title)
-
-                Text("07.00")
-                    .position(x:60, y: 30 )
-                
-
                 
                 ZStack {
                     Rectangle()
@@ -88,7 +59,6 @@ struct ContentView: View{
                         .foregroundColor(.white)
                         .position(x: 200, y: -10)
                     
-
                     ScrollView {
                         LazyVStack(spacing: 10) {
                                 ForEach(hourlyWeatherData, id: \.self) { hourlyWeather in
@@ -100,28 +70,6 @@ struct ContentView: View{
                     }
                     .frame(width: 360, height: 556)
                     .clipped()
-
-                }){Image(systemName: "heart.fill")
-                        .resizable()
-                        .foregroundColor(.pink)
-                        .frame(width: 50, height: 50)
-                        .position(x: 50, y: 20)
-                    }
-                
-                
-            }
-                
-                Text("Location")
-                .position(x: 190, y: -120)
-                .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                
-            ZStack {
-                Rectangle()
-                
-                    .stroke(Color.black, lineWidth: 3)
-                    .frame(width: 340, height: 556)
-                    .foregroundColor(.white)
-
                     .position(x: 200, y: -10)
                     
                     if isLoading {
@@ -165,25 +113,12 @@ struct ContentView: View{
                             .position(x: 60, y: 116)
                     }
                 }
-
             }
             .onAppear {
                 isLoading = true
                 // Fetch and populate hourly weather data
                 fetchHourlyWeatherData(currentCity)
                
-
-                .frame(width: 360, height: 556)
-                .clipped()
-                .position(x: 200, y: -10)
-                
-                }
-            
-            
-            HStack{
-                NavigationView{
-                    WeatherView()
-
             }
         }
         

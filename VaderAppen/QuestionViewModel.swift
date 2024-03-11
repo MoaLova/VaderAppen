@@ -31,7 +31,5 @@ class QuestionsViewModel : ObservableObject {
         let rand = Int.random(in: 0..<questions.count)
         currentQuestion = questions[rand]
     }
-    
-    
-    
+  
 }
