@@ -7,16 +7,15 @@
 
 //Hej
 // nej
-import SwiftUI
+
 import CoreData
     
 import SwiftUI
     struct ContentView: View {
-       // @State private var hourly: [MeteoDataModel.Minutely15]
         @State private var citys: [MeteoDataModel.City] = []
         @State private var hourlyWeatherData: [MeteoDataModel.WeatherData] = []
         @State private var currentUnitsData: [MeteoDataModel.Current] = []
-        @State private var currentCity =  MeteoDataModel.City.stockholm
+        @State private var currentCity =  MeteoDataModel.City.tokyo
         @State private var isLoading = false
         @State private var meteoDataModel = MeteoDataModel()
         @State private var text: String = ""
@@ -24,40 +23,40 @@ import SwiftUI
         var body: some View {
             VStack {
                 HStack {
-                    Text("07.00")
-                        .position(x: 50, y: 10)
                     
                     Button(action: {
-                        // Handle action
                     }) {
-                        Image(systemName: "goforward")
+                        Image(systemName: "globe.europe.africa.fill")
                             .resizable()
-                            .foregroundColor(.pink)
+                            .foregroundColor(.blue)
                             .frame(width: 50, height: 50)
-                            .position(x: 50, y: 15)
+                            .position(CGPoint(x: 60.0, y: 28.0))
+                          
                     }
                     
+                    Text("Stockholm")
+                        .font(.custom("Copperplate", size: 23))
+                        .position(CGPoint(x: 55.0, y: 28.0))
+                    
                     Button(action: {
-                        // Handle action
+                        
                     }) {
                         Image(systemName: "heart.fill")
                             .resizable()
                             .foregroundColor(.pink)
                             .frame(width: 50, height: 50)
-                            .position(x: 50, y: 10)
+                            .position(CGPoint(x: 60.0, y: 28.0))
+                           
                     }
                 }
                 
-                Text("Location")
-                    .position(x: 190, y: -120)
-                    .font(.title)
-                
+             
                 ZStack {
                     Rectangle()
                         .stroke(Color.black, lineWidth: 3)
                         .frame(width: 340, height: 556)
                         .foregroundColor(.white)
-                        .position(x: 200, y: -10)
+                        .position(x: 200, y: 100)
                     
                     ScrollView {
                         LazyVStack(spacing: 10) {
@@ -70,59 +69,55 @@ import SwiftUI
                     }
                     .frame(width: 360, height: 556)
                     .clipped()
-                    .position(x: 200, y: -10)
+                    .position(x: 200, y: 100)
                     
                     if isLoading {
                         ProgressView()
                             .progressViewStyle(CircularProgressViewStyle())
                             .scaleEffect(2)
-                            .position(x: 200, y: -10)
+                            
                     }
                 }
                 
                 HStack {
-                    NavigationView {
-                        WeatherView()
-                    }
+                  
                     
                     ZStack {
                         Rectangle()
                             .stroke(Color.black, lineWidth: 3)
                             .frame(width: 100, height: 100)
-                            .position(x: 80, y: 140)
+                            .position(x: 80, y: 200)
                         
                         Button(action: {
-                            // Handle action
+                           
                         }) {
                             Image(systemName: "questionmark")
                                 .resizable()
                                 .foregroundColor(.black)
                                 .frame(width: 80, height: 80)
-                                .position(x: 80, y: 140)
+                                .position(x: 80, y: 200)
                         }
                     }
                     
                     ZStack {
                         Rectangle()
                             .frame(width: 225, height: 55)
-                            .position(x: 60, y: 116)
+                            .position(x: 60, y: 175)
                         
                         TextField("Search location", text: $text)
                             .frame(width: 220, height: 50)
                             .background(Color.white)
-                            .position(x: 60, y: 116)
+                            .position(x: 60, y: 175)
                     }
                 }
             }
             .onAppear {
                 isLoading = true
-                // Fetch and populate hourly weather data
                 fetchHourlyWeatherData(currentCity)
                
             }
         }
         
-        // Function to fetch hourly weather data
         private func fetchHourlyWeatherData(_ currentCity: MeteoDataModel.City) {
             meteoDataModel.fetchWeatherData(currentCity) { fetchedWeatherData in
                 if let fetchedHourlyWeatherData = fetchedWeatherData {
@@ -138,45 +133,87 @@ import SwiftUI
         let currentCity: MeteoDataModel.City
         var body: some View {
             VStack {
-                Text("Stockholm nu")
-                Text("temperature:")
-                Text(String(hourlyWeather.current.temperature_2m))
-                Text("precipitation:")
-                Text(String(hourlyWeather.current.precipitation))
-                Text("wind speed:")
-                Text(String(hourlyWeather.current.wind_speed_10m))
-                Text("hourly temperature:")
-                 
-               
               
-//                Text("Sunrise: \(hourlyWeather.daily.sunrise)")
-//                Text("Sunset: \(hourlyWeather.daily.sunset)")
-//                Text("UV Index Max: \(hourlyWeather.daily.uv_index_max)")
-//                Text("Precipitation Hours: \(hourlyWeather.daily.precipitation_hours)")
-              //  Text("Daylight Duration: \(hourlyWeather.daily.daylight_duration)")
-
+                Text(" \(hourlyWeather.current.time) ")
+                    .font(.custom("Copperplate", size: 24))
+            
+                 Text("temperature: \(String(format: "%.2f", hourlyWeather.current.temperature_2m)) °C")
+                    .font(.custom("Copperplate", size: 24))
+                
+                Text("precipitation: \(String(format: "%.2f",hourlyWeather.current.precipitation)) mm")
+                    .font(.custom("Copperplate", size: 24))
+                
+                Text("wind: \(String(format: "%.2f",hourlyWeather.current.wind_speed_10m)) m/s")
+                    .font(.custom("Copperplate", size: 24))
+                
+                Divider()
+                Divider()
+                Divider()
                 
                 
-                VStack {
-                    ForEach(hourlyWeather.daily.time.indices, id: \.self) { index in
-                        VStack {
-                            Text("Date: \(hourlyWeather.daily.time[index])")
-                            Text("Max Temperature: \(hourlyWeather.daily.temperature_2m_max[index])°C")
-                            Text("Min Temperature: \(hourlyWeather.daily.temperature_2m_min[index])°C")
-                        }
-                    }
-
-                    ForEach(hourlyWeather.hourly.time.indices, id: \.self) { index in
-                        HStack {
-                            Text("\(hourlyWeather.hourly.time[index]): ")
-                            Text("\(hourlyWeather.hourly.temperature_2m[index]) \(hourlyWeather.minutely_15_units.temperature_2m)")
-                        }
+                ForEach(hourlyWeather.hourly.time.indices, id: \.self) { index in
+                    VStack {
+                        Text("\(hourlyWeather.hourly.time[index]): ")
+                            .font(.custom("Copperplate", size: 24))
+                        
+                       
+                        Text("temperature \(String(format: "%.2f", hourlyWeather.hourly.temperature_2m[index])) °C")
+                            .font(.custom("Copperplate", size: 24))
+                        
+                        Text("humidity \(String(format: "%.2f", hourlyWeather.hourly.relative_humidity_2m[index])) %")
+                            .font(.custom("Copperplate", size: 24))
+                       
+                        Text("precipitation \(String(format: "%.2f", hourlyWeather.hourly.precipitation[index])) mm")
+                            .font(.custom("Copperplate", size: 24))
+                        
+                        Text("UV-index \(String(format: "%.2f", hourlyWeather.hourly.uv_index[index])) ")
+                            .font(.custom("Copperplate", size: 24))
+                       
+                        Text("wind \(String(format: "%.2f", hourlyWeather.hourly.wind_speed_10m[index])) m/s")
+                            .font(.custom("Copperplate", size: 24))
                     }
                 }
+
+                 
+               
+              Divider()
+                Divider()
+                Divider()
+
+                
+                
+             VStack {
+                 ForEach(hourlyWeather.daily.time.indices, id: \.self) { index in
+                     
+                         Text("Date: \(hourlyWeather.daily.time[index])")
+                         .font(.custom("Copperplate", size: 24))
+                         
+                         Text("Max Temperature: \(String(format: "%.2f", hourlyWeather.daily.temperature_2m_max[index]))°C")
+                         .font(.custom("Copperplate", size: 24))
+                         Text("Min Temperature: \(String(format: "%.2f", hourlyWeather.daily.temperature_2m_min[index]))°C")
+                         .font(.custom("Copperplate", size: 24))
+                         
+                         Text("Precipitation: \(String(format: "%.2f", hourlyWeather.daily.precipitation_hours[index]))mm")
+                         .font(.custom("Copperplate", size: 24))
+                         
+                         Text("UV-index: \(String(format: "%.2f", hourlyWeather.daily.uv_index_max[index]))")
+                         .font(.custom("Copperplate", size: 24))
+                         
+                         Text("Sunrise: \(hourlyWeather.daily.sunrise[index])")
+                         .font(.custom("Copperplate", size: 24))
+                         
+                         Text("Sunset: \(hourlyWeather.daily.sunset[index])")
+                         .font(.custom("Copperplate", size: 24))
+                     }
+                 }
+
+
+                    
+                
                 Spacer()
             }
             .padding()
-            .background(Color.gray.opacity(0.2))
+            .background(Color.gray.opacity(0))
             .cornerRadius(10)
         }
     }
