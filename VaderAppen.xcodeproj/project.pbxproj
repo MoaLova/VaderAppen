@@ -25,6 +25,8 @@
 		EC6DC11C2B98C1DF00A4EF4B /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6DC11B2B98C1DF00A4EF4B /* WeatherService.swift */; };
 		EC6DC11E2B98C28E00A4EF4B /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6DC11D2B98C28E00A4EF4B /* WeatherView.swift */; };
 		EC6DC1202B98C30B00A4EF4B /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6DC11F2B98C30B00A4EF4B /* WeatherViewModel.swift */; };
+		EC6DC1232B9B3D7400A4EF4B /* OpenMeteoSdk in Frameworks */ = {isa = PBXBuildFile; productRef = EC6DC1222B9B3D7400A4EF4B /* OpenMeteoSdk */; };
+		EC6DC1292B9B4B6000A4EF4B /* MeteoDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6DC1282B9B4B6000A4EF4B /* MeteoDataModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +49,7 @@
 		EC6DC11B2B98C1DF00A4EF4B /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
 		EC6DC11D2B98C28E00A4EF4B /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
 		EC6DC11F2B98C30B00A4EF4B /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
+		EC6DC1282B9B4B6000A4EF4B /* MeteoDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteoDataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC6DC1232B9B3D7400A4EF4B /* OpenMeteoSdk in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +85,7 @@
 			children = (
 				2F47B1592B8F70260073A041 /* VaderAppenApp.swift */,
 				2F47B15B2B8F70260073A041 /* ContentView.swift */,
+				EC6DC1282B9B4B6000A4EF4B /* MeteoDataModel.swift */,
 				D22645332B9A196B00964E00 /* Persistence.swift */,
 				EC6DC11B2B98C1DF00A4EF4B /* WeatherService.swift */,
 				EC6DC1192B98C18700A4EF4B /* WeatherModel.swift */,
@@ -125,6 +130,9 @@
 			dependencies = (
 			);
 			name = VaderAppen;
+			packageProductDependencies = (
+				EC6DC1222B9B3D7400A4EF4B /* OpenMeteoSdk */,
+			);
 			productName = VaderAppen;
 			productReference = 2F47B1562B8F70260073A041 /* VaderAppen.app */;
 			productType = "com.apple.product-type.application";
@@ -153,6 +161,9 @@
 				Base,
 			);
 			mainGroup = 2F47B14D2B8F70260073A041;
+			packageReferences = (
+				EC6DC1212B9B3D7400A4EF4B /* XCRemoteSwiftPackageReference "sdk" */,
+			);
 			productRefGroup = 2F47B1572B8F70260073A041 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -187,6 +198,7 @@
 				2F47B15C2B8F70260073A041 /* ContentView.swift in Sources */,
 				2F7996552B99C4F000279F24 /* FlyingCloudsModifier.swift in Sources */,
 				E1BD3B6B2B9746C200F80535 /* QuizCoreData.swift in Sources */,
+				EC6DC1292B9B4B6000A4EF4B /* MeteoDataModel.swift in Sources */,
 				2F47B15A2B8F70260073A041 /* VaderAppenApp.swift in Sources */,
 				D22645342B9A196B00964E00 /* Persistence.swift in Sources */,
 				EC6DC11A2B98C18700A4EF4B /* WeatherModel.swift in Sources */,
@@ -398,6 +410,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		EC6DC1212B9B3D7400A4EF4B /* XCRemoteSwiftPackageReference "sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/open-meteo/sdk.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EC6DC1222B9B3D7400A4EF4B /* OpenMeteoSdk */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EC6DC1212B9B3D7400A4EF4B /* XCRemoteSwiftPackageReference "sdk" */;
+			productName = OpenMeteoSdk;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		D22645352B9A1C4500964E00 /* WeatherAppModel.xcdatamodeld */ = {
