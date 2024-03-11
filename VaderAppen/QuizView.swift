@@ -7,86 +7,65 @@
 
 import SwiftUI
 
+import SwiftUI
+
 struct QuizView: View {
     @State var text: String = ""
     @StateObject var questionsVM = QuestionsViewModel()
-    
+    @State var buttons: [AnswerButton] = []
+    @State var correctCount: Int = 0
+    @State var incorrectCount: Int = 0
+
     var body: some View {
-        
-        Text("Weather Quiz")
-            .font(.title)
-            .padding(20)
-        Spacer()
-        
         VStack {
+            HStack {
+                Image(systemName: "checkmark.icloud")
+                    .foregroundColor(.green)
+                Text("\(correctCount)")
+                
+                Text("Weather Quiz")
+                    .font(.title)
+                    .padding(20)
+                    .frame(maxWidth: .infinity)
+                
+                Image(systemName: "xmark.icloud")
+                    .foregroundColor(.red)
+                Text("\(incorrectCount)")
+            }
+            Spacer()
+
             Image(systemName: "rainbow")
                 .resizable()
                 .frame(width: 300, height: 150)
                 .symbolRenderingMode(.multicolor)
-            
+
             Text(questionsVM.currentQuestion.question)
-                           .padding(10)
-                           .fixedSize(horizontal: false, vertical: true)
+                .padding(10)
+                .fixedSize(horizontal: false, vertical: true)
+
             Spacer()
-            
-            Button(action: {
-                handleAnswer(answer: questionsVM.currentQuestion.correctAnswer)
-            }) {
-                Image(systemName:"sun.max.fill")
-                    .resizable()
-                    .foregroundColor(.yellow)
-                    .frame(width: 80, height: 80)
-                    .padding()
-                Text(questionsVM.currentQuestion.correctAnswer)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                   
+
+            ForEach(buttons) { button in
+                button.view
             }
-            
-            Button(action: {
-                handleAnswer(answer: questionsVM.currentQuestion.incorrectAnswers[0])
-            }) {
-                Image(systemName:"drop.fill")
-                .resizable()
-                .foregroundColor(.blue)
-                .frame(width: 60, height: 70)
-                .padding()
-                Text(questionsVM.currentQuestion.incorrectAnswers[0])
-                    .frame(maxWidth: .infinity, alignment: .leading)
-            }
-            
-            Button(action: {
-                handleAnswer(answer: questionsVM.currentQuestion.incorrectAnswers[1])
-            }) {
-                Image(systemName:"wind")
-                 .resizable()
-                   .foregroundColor(.black)
-                    .frame(width: 80, height: 80)
-                    .padding()
-                Text(questionsVM.currentQuestion.incorrectAnswers[1])
-                    .frame(maxWidth: .infinity, alignment: .leading)
-            }
-            
-            Button(action: {
-                handleAnswer(answer: questionsVM.currentQuestion.incorrectAnswers[2])
-            }) {
-                Image(systemName:"icloud.fill")
-                  .resizable()
-                  .foregroundColor(.gray)
-                  .frame(width: 100, height: 80)
-                  .padding()
-                Text(questionsVM.currentQuestion.incorrectAnswers[2])
-                    .frame(maxWidth: .infinity, alignment: .leading)
-            }
+
             Spacer()
-            
-            
-        }.onAppear {
+        }
+        .padding()
+        .onAppear {
             nextQuestion()
         }
-        
     }
-    
+
     func handleAnswer(answer: String) {
+        if answer == questionsVM.currentQuestion.correctAnswer {
+            // Increment correct count
+            correctCount += 1
+        } else {
+            // Increment incorrect count
+            incorrectCount += 1
+        }
+
         // Implement your answer handling logic here
         print("Selected answer: \(answer)")
         // You might want to check if the answer is correct and proceed accordingly
@@ -94,12 +73,60 @@ struct QuizView: View {
     }
 
     func nextQuestion() {
-        // Implement logic to load the next question
-        // This might involve updating your QuestionsViewModel
         questionsVM.nextQuestion()
+        let currentQuestion = questionsVM.currentQuestion
+        let shuffledAnswers = currentQuestion.allAnswers.shuffled()
+        buttons = shuffledAnswers.enumerated().map { (index, answer) in
+            let iconName: String
+            let iconColor: Color
+            switch index {
+            case 0:
+                iconName = "sun.max.fill"
+                iconColor = .yellow
+            case 1:
+                iconName = "drop.fill"
+                iconColor = .blue
+            case 2:
+                iconName = "wind"
+                iconColor = .black
+            case 3:
+                iconName = "icloud.fill"
+                iconColor = .gray
+            default:
+                iconName = ""
+                iconColor = .clear
+            }
+            return AnswerButton(answer: answer, iconName: iconName, iconColor: iconColor, action: handleAnswer)
+        }
+
     }
 }
-    #Preview {
+
+struct AnswerButton: Identifiable {
+    let id = UUID()
+    let answer: String
+    let iconName: String
+    let iconColor: Color
+    let action: (String) -> Void
+
+    var view: some View {
+        Button(action: {
+            action(answer)
+        }) {
+            Image(systemName: iconName)
+                .resizable()
+                .foregroundColor(iconColor)
+                .frame(width: 80, height: 80)
+                .padding()
+
+            Text(answer)
+                .frame(maxWidth: .infinity, alignment: .leading)
+        }
+    }
+}
+
+struct QuizView_Previews: PreviewProvider {
+    static var previews: some View {
         QuizView()
     }
-
+}
