@@ -59,9 +59,9 @@ import CoreLocation
                 ZStack {
                     Rectangle()
                         .stroke(Color.black, lineWidth: 3)
-                        .frame(width: 350, height: 630)
+                        .frame(width: 350, height: 600)
                         .foregroundColor(.white)
-                        .position(x: 200, y: 230)
+                        .position(x: 200, y: 240)
                     
                    
                         LazyVStack(spacing: 10) {
@@ -70,13 +70,13 @@ import CoreLocation
                             }
                             
                         }
-                        .position(CGPoint(x: 200.0, y: -10.0))
+                        .position(CGPoint(x: 200.0, y: 0.0))
                         
                 }
                 
                 ZStack {
                     Text("Hourly:")
-                        .position(CGPoint(x: 180.0, y: -50.0))
+                        .position(CGPoint(x: 180.0, y: -20.0))
                         .font(.custom("Copperplate", size: 24))
                     Image(systemName: "cloud")
                         .resizable()
@@ -88,7 +88,7 @@ import CoreLocation
                                 .foregroundColor(.white)
                                 .frame(width: 325, height: 160)
                         )
-                        .position(CGPoint(x: 200.0, y: -10.0))
+                        .position(CGPoint(x: 200.0, y: 20.0))
 
                     ScrollView {
                         LazyVStack(spacing: 10) {
@@ -98,7 +98,7 @@ import CoreLocation
                         }
                     }
                     .frame(width: 250, height: 100)
-                    .position(CGPoint(x: 210.0, y: 10.0))
+                    .position(CGPoint(x: 210.0, y: 40.0))
                 }
                 
                 ZStack {
@@ -106,10 +106,10 @@ import CoreLocation
                         .stroke(Color.black, lineWidth: 3)
                         .frame(width: 320, height: 260)
                         .foregroundColor(.white)
-                        .position(CGPoint(x: 200.0, y: 80.0))
+                        .position(CGPoint(x: 200.0, y: 140.0))
 
                     Text("Forecast 7-days")
-                        .position(CGPoint(x: 200.0, y: -30.0))
+                        .position(CGPoint(x: 200.0, y: 30.0))
                         .font(.custom("Copperplate", size: 28))
                     ScrollView {
                         LazyVStack(spacing: 0) {
@@ -119,7 +119,7 @@ import CoreLocation
                         }
                     }
                     .frame(width: 320, height: 220) // Set the frame of the ScrollView to match the Rectangle
-                    .position(CGPoint(x: 200.0, y: 90.0))
+                    .position(CGPoint(x: 200.0, y: 150.0))
                 }
      
                     if isLoading {
@@ -136,7 +136,7 @@ import CoreLocation
                         Rectangle()
                             .stroke(Color.black, lineWidth: 3)
                             .frame(width: 70, height: 70)
-                            .position(x: 60, y: 130)
+                            .position(x: 60, y: 210)
                         
                         Button(action: {
                            
@@ -145,35 +145,33 @@ import CoreLocation
                                 .resizable()
                                 .foregroundColor(.black)
                                 .frame(width: 60, height: 60)
-                                .position(x: 60, y: 130)
+                                .position(x: 60, y: 210)
                         }
 
                         
                     }.frame(width: 300, height: 150)
                         .position(x: 150, y: 75)
-                }
+                
             }
-
-                    }
                     
                     ZStack {
                         Rectangle()
                             .frame(width: 225, height: 35)
-                            .position(x: 60, y: 166)
+                            .position(x: 240, y: 64)
                         
                         Rectangle()
                             .frame(width: 225, height: 35)
-                            .position(x: 60, y: 205)
+                            .position(x: 240, y: 102)
                         
                         TextField("Add Latitude", text:$latitudeText)
                                         .frame(width: 220, height: 30)
                                         .background(Color.white)
-                                        .position(x: 60, y: 166)
+                                        .position(x: 240, y: 64)
                                     
                                     TextField("Add Longitude", text: $longitudeText)
                                         .frame(width: 220, height: 30)
                                         .background(Color.white)
-                                        .position(x: 60, y: 205)
+                                        .position(x: 240, y: 102)
                                     
                                     Button(action: {
                                         // Save latitude and longitude
@@ -195,7 +193,7 @@ import CoreLocation
                                     .position(x: 60, y:250)
                                 }
                             }
-                        }
+
 
             .onAppear {
                 isLoading = true
