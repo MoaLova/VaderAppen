@@ -102,7 +102,6 @@
 				2FDDEA3F2B9B9FA3005557CD /* Questions.swift */,
 				E1BD3B6C2B97470800F80535 /* QuizData.xcdatamodeld */,
 				2F47B15D2B8F70280073A041 /* Assets.xcassets */,
-				2F47B1602B8F70280073A041 /* Preview Assets.xcassets */,
 				2F47B15F2B8F70280073A041 /* Preview Content */,
 				2F47B1B12B920B410073A041 /* SavedLocation.swift */,
 				E1BD3B662B90BFDC00F80535 /* SavedLocationsView.swift */,
@@ -116,6 +115,7 @@
 		2F47B15F2B8F70280073A041 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				2F47B1602B8F70280073A041 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
