@@ -10,30 +10,32 @@ import OpenMeteoSdk
 
 class MeteoDataModel {
 
-    enum City {
+    enum City: String, CaseIterable, Identifiable {
         case stockholm
         case newYork
         case tokyo
         case custom
+        
+        var id: String { self.rawValue }
 
         var coordinates: (latitude: Double, longitude: Double) {
             switch self {
-            case .stockholm:
-                return (latitude: 59.3293, longitude: 18.0686)
-            case .newYork:
-                return (latitude: 40.7128, longitude: -74.0060)
-            case .tokyo:
-                return (latitude: 35.682839, longitude: 139.759455)
-            case .custom:
-                // Return values for custom case
-                return (latitude: MeteoDataModel.customLatitudeValue, longitude: MeteoDataModel.customLongitudeValue)
+                case .stockholm:
+                    return (latitude: 59.3293, longitude: 18.0686)
+                case .newYork:
+                    return (latitude: 40.7128, longitude: -74.0060)
+                case .tokyo:
+                    return (latitude: 35.682839, longitude: 139.759455)
+                case .custom:
+                    // Return values for custom case
+                    return (latitude: City.customLatitudeValue, longitude: City.customLongitudeValue)
             }
         }
+        
+        // Add static variables for custom latitude and longitude
+        static var customLatitudeValue: Double = 0.0
+        static var customLongitudeValue: Double = 0.0
     }
-    
-    // Add static variables for custom latitude and longitude
-    static var customLatitudeValue: Double = 0.0
-    static var customLongitudeValue: Double = 0.0
 
     
     

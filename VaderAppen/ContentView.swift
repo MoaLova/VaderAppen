@@ -29,6 +29,8 @@ import CoreLocation
             VStack {
                 HStack {
                     
+                  
+                    
                     Button(action: {
                     }) {
                         Image(systemName: "globe.europe.africa.fill")
@@ -39,9 +41,21 @@ import CoreLocation
                           
                     }
                     
-                    Text("\(cityName)")
-                        .font(.custom("Copperplate", size: 23))
-                        .position(CGPoint(x: 55.0, y: 28.0))
+                    Picker("Select City", selection: $currentCity) {
+                        ForEach(MeteoDataModel.City.allCases, id: \.self) { city in
+                            if city == .custom {
+                                Text(cityName)
+                            } else {
+                                Text(city.rawValue.capitalized)
+                            }
+                        }
+                    }
+                    .pickerStyle(MenuPickerStyle())
+                    .position(CGPoint(x: 55.0, y: 28.0))
+                    .onChange(of: currentCity) { _ in
+                        isLoading = true
+                        fetchHourlyWeatherData(currentCity)
+                    }
                     
                     Button(action: {
                         
@@ -176,8 +190,9 @@ import CoreLocation
                                     Button(action: {
                                         // Save latitude and longitude
                                         if let latitude = Double(latitudeText), let longitude = Double(longitudeText) {
-                                            MeteoDataModel.customLatitudeValue = latitude
-                                            MeteoDataModel.customLongitudeValue = longitude
+                                            MeteoDataModel.City
+                                            .customLatitudeValue = latitude
+                                            MeteoDataModel.City.customLongitudeValue = longitude
                                             
                                             isLoading = true
                                                                                    fetchHourlyWeatherData(.custom)
@@ -190,7 +205,7 @@ import CoreLocation
                                     }, label: {
                                         Text("Show location")
                                     })
-                                    .position(x: 60, y:250)
+                                    .position(x: 240, y:135)
                                 }
                             }
 
