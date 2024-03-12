@@ -38,6 +38,7 @@ enum City: CaseIterable {
 }
 
 class MeteoDataModel {
+
     enum City {
         case stockholm
         case newYork
@@ -85,6 +86,13 @@ class MeteoDataModel {
             }
         }
     }
+
+    
+    // Add static variables for custom latitude and longitude
+    static var customLatitudeValue: Double = 0.0
+    static var customLongitudeValue: Double = 0.0
+
+    
     
     struct WeatherData: Decodable, Hashable{
         let current: Current
