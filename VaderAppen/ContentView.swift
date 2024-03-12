@@ -9,8 +9,9 @@
 // nej
 
 import CoreData
-    
 import SwiftUI
+import CoreLocation
+
     struct ContentView: View {
         @State private var citys: [MeteoDataModel.City] = []
         @State private var hourlyWeatherData: [MeteoDataModel.WeatherData] = []
@@ -22,6 +23,7 @@ import SwiftUI
         
         @State private var latitudeText = ""
         @State private var longitudeText = ""
+        @State private var cityName: String = ""
         
         var body: some View {
             VStack {
@@ -37,7 +39,7 @@ import SwiftUI
                           
                     }
                     
-                    Text("Stockholm")
+                    Text("\(cityName)")
                         .font(.custom("Copperplate", size: 23))
                         .position(CGPoint(x: 55.0, y: 28.0))
                     
@@ -129,12 +131,14 @@ import SwiftUI
                                             
                                             isLoading = true
                                                                                    fetchHourlyWeatherData(.custom)
+                                            
+                                            fetchCityName()
                                         } else {
                                             // Handle invalid input
                                             print("Invalid latitude or longitude")
                                         }
                                     }, label: {
-                                        Text("Save location")
+                                        Text("Show location")
                                     })
                                     .position(x: 60, y:250)
                                 }
@@ -146,6 +150,32 @@ import SwiftUI
                
             }
         }
+        
+        
+        func fetchCityName() {
+                guard let latitude = Double(latitudeText),
+                      let longitude = Double(longitudeText) else {
+                    print("Invalid latitude or longitude")
+                    return
+                }
+                
+                let location = CLLocation(latitude: latitude, longitude: longitude)
+                
+                let geocoder = CLGeocoder()
+                geocoder.reverseGeocodeLocation(location) { placemarks, error in
+                    guard let placemark = placemarks?.first else {
+                        print("Error: \(error?.localizedDescription ?? "Unknown error")")
+                        return
+                    }
+                    
+                    if let city = placemark.locality {
+                        self.cityName = city
+                    } else {
+                        self.cityName = "City not found"
+                    }
+                }
+            }
+        
         
         private func fetchHourlyWeatherData(_ currentCity: MeteoDataModel.City) {
             meteoDataModel.fetchWeatherData(currentCity) { fetchedWeatherData in
