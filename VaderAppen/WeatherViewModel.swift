@@ -2,7 +2,7 @@
 //  File.swift
 //  VaderAppen
 //
-//  Created by Sarah Lidberg on 2024-03-06.
+//  Created by on 2024-03-06.
 //
 
 //WeatherViewModel: Klassen som fungerar som en brygga mellan din modell och vy. Den ska hantera all logik för datatransformation så att vyn kan förbli så dum (icke-logisk) som möjligt.

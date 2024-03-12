@@ -285,29 +285,32 @@ struct HourlyWeather: View {
     let currentCity: MeteoDataModel.City
 
     var body: some View {
-        ForEach(hourlyWeather.hourly.time.indices, id: \.self) { index in
-            VStack {
-                Text("Time: \(hourlyWeather.hourly.time[index]): ")
-                    .font(.custom("Copperplate", size: 20))
-                    .padding(.top)
-                
-                Text("Temperature: \(String(format: "%.2f", hourlyWeather.hourly.temperature_2m[index])) °C")
-                    .font(.custom("Copperplate", size: 20))
+        VStack {
+            ForEach(hourlyWeather.hourly.time.indices, id: \.self) { index in
+                if currentCity == .custom {
+                    Text("Time: \(hourlyWeather.hourly.time[index]): ")
+                        .font(.custom("Copperplate", size: 20))
+                        .padding(.top)
+                    
+                    Text("Temperature: \(String(format: "%.2f", hourlyWeather.hourly.temperature_2m[index])) °C")
+                        .font(.custom("Copperplate", size: 20))
 
-                Text("Humidity: \(String(format: "%.2f", hourlyWeather.hourly.relative_humidity_2m[index])) %")
-                    .font(.custom("Copperplate", size: 20))
-                  
-                Text("Precipitation: \(String(format: "%.2f", hourlyWeather.hourly.precipitation[index])) mm")
-                    .font(.custom("Copperplate", size: 20))
+                    Text("Humidity: \(String(format: "%.2f", hourlyWeather.hourly.relative_humidity_2m[index])) %")
+                        .font(.custom("Copperplate", size: 20))
+                      
+                    Text("Precipitation: \(String(format: "%.2f", hourlyWeather.hourly.precipitation[index])) mm")
+                        .font(.custom("Copperplate", size: 20))
 
-                Text("UV-index: \(String(format: "%.2f", hourlyWeather.hourly.uv_index[index])) ")
-                    .font(.custom("Copperplate", size: 20))
+                    Text("UV-index: \(String(format: "%.2f", hourlyWeather.hourly.uv_index[index])) ")
+                        .font(.custom("Copperplate", size: 20))
 
-                Text("Wind \(String(format: "%.2f", hourlyWeather.hourly.wind_speed_10m[index])) m/s")
-                    .font(.custom("Copperplate", size: 20))
-                    .padding(.bottom)
-            
-            Divider()
+                    Text("Wind \(String(format: "%.2f", hourlyWeather.hourly.wind_speed_10m[index])) m/s")
+                        .font(.custom("Copperplate", size: 20))
+                        .padding(.bottom)
+                } else {
+                    HourlyWeatherRow(hourlyWeather: hourlyWeather, currentCity: currentCity)
+                }
+                Divider()
             }
         }
     }
@@ -318,37 +321,40 @@ struct DailyWeather: View {
     let currentCity: MeteoDataModel.City
 
     var body: some View {
-        ForEach(hourlyWeather.hourly.time.indices, id: \.self) { index in
-            VStack {
-                ForEach(hourlyWeather.daily.time.indices, id: \.self) { index in
-                        Text("Date: \(hourlyWeather.daily.time[index])")
+        VStack {
+            ForEach(hourlyWeather.daily.time.indices, id: \.self) { index in
+                if currentCity == .custom {
+                    Text("Date: \(hourlyWeather.daily.time[index])")
                         .font(.custom("Copperplate", size: 24))
                         .padding(.top)
-                        
-                        Text("Max Temperature: \(String(format: "%.2f", hourlyWeather.daily.temperature_2m_max[index]))°C")
+                    
+                    Text("Max Temperature: \(String(format: "%.2f", hourlyWeather.daily.temperature_2m_max[index]))°C")
                         .font(.custom("Copperplate", size: 24))
-                        Text("Min Temperature: \(String(format: "%.2f", hourlyWeather.daily.temperature_2m_min[index]))°C")
+                    Text("Min Temperature: \(String(format: "%.2f", hourlyWeather.daily.temperature_2m_min[index]))°C")
                         .font(.custom("Copperplate", size: 24))
-                        
-                        Text("Precipitation: \(String(format: "%.2f", hourlyWeather.daily.precipitation_hours[index]))mm")
+                    
+                    Text("Precipitation: \(String(format: "%.2f", hourlyWeather.daily.precipitation_hours[index]))mm")
                         .font(.custom("Copperplate", size: 24))
-                        
-                        Text("UV-index: \(String(format: "%.2f", hourlyWeather.daily.uv_index_max[index]))")
+                    
+                    Text("UV-index: \(String(format: "%.2f", hourlyWeather.daily.uv_index_max[index]))")
                         .font(.custom("Copperplate", size: 24))
-                        
-                        Text("Sunrise: \(hourlyWeather.daily.sunrise[index])")
+                    
+                    Text("Sunrise: \(hourlyWeather.daily.sunrise[index])")
                         .font(.custom("Copperplate", size: 24))
-                        
-                        Text("Sunset: \(hourlyWeather.daily.sunset[index])")
+                    
+                    Text("Sunset: \(hourlyWeather.daily.sunset[index])")
                         .font(.custom("Copperplate", size: 24))
                         .padding(.bottom)
                     Divider()
-                   
-                    }
+                } else {
+                    // Display using HourlyWeatherRow
+                    HourlyWeatherRow(hourlyWeather: hourlyWeather, currentCity: currentCity)
                 }
+            }
         }
     }
 }
+
 
 
     struct ContentView_Previews: PreviewProvider {
