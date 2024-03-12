@@ -8,33 +8,34 @@
 import Foundation
 import OpenMeteoSdk
 
-class MeteoDataModel {
 
-    enum City: String, CaseIterable, Identifiable {
-        case stockholm
-        case newYork
-        case tokyo
-        case custom
-        
-        var id: String { self.rawValue }
+struct City {
+    let name: String
+    let coordinates: (latitude: Double, longitude: Double)
+}
 
-        var coordinates: (latitude: Double, longitude: Double) {
-            switch self {
-                case .stockholm:
-                    return (latitude: 59.3293, longitude: 18.0686)
-                case .newYork:
-                    return (latitude: 40.7128, longitude: -74.0060)
-                case .tokyo:
-                    return (latitude: 35.682839, longitude: 139.759455)
-                case .custom:
-                    // Return values for custom case
-                    return (latitude: City.customLatitudeValue, longitude: City.customLongitudeValue)
+class MeteoDataModel{
+    
+    var cities: [City] = []
+        var allCityCases: [City] = []
+
+        // Initialize with default cities
+        init() {
+            allCityCases = [
+                City(name: "Stockholm", coordinates: (59.3293, 18.0686)),
+                City(name: "New York", coordinates: (40.7128, -74.0060)),
+                City(name: "Tokyo", coordinates: (35.682839, 139.759455))
+            ]
+            cities = allCityCases
+        }
+    
+    func addCustomLocation(name: String, latitude: Double, longitude: Double) {
+            let newCustomCity = City(name: name, coordinates: (latitude, longitude))
+            if !cities.contains(newCustomCity) {
+                cities.append(newCustomCity)
             }
         }
-        
-        // Add static variables for custom latitude and longitude
-        static var customLatitudeValue: Double = 0.0
-        static var customLongitudeValue: Double = 0.0
+    
     }
 
     
@@ -81,19 +82,9 @@ class MeteoDataModel {
         let time: String
         
     }
+
+   
     
-//    struct Minutely15: Decodable, Hashable{
-//        let time: [String]
-//        let temperature_2m: [Float]
-//
-//    }
-//    struct Minutely15Units: Decodable, Hashable {
-//        let temperature_2m: String
-//
-//        var temperatureFloat: Float? {
-//            return Float(temperature_2m)
-//        }
-//    }
     
     
     func fetchWeatherData(_ currentCity: City,completion: @escaping ([WeatherData]?) -> Void) {
@@ -102,6 +93,10 @@ class MeteoDataModel {
             completion(nil)
             return
         }
+        
+        
+            
+            
 
         URLSession.shared.dataTask(with: url) { data, response, error in
             guard let data = data else {

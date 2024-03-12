@@ -58,8 +58,11 @@ import CoreLocation
                     }
                     
                     Button(action: {
-                        
-                    }) {
+                                    meteoDataModel.addCustomLocation(latitude: Double(latitudeText) ?? 0.0,
+                                                                     longitude: Double(longitudeText) ?? 0.0)
+                                    // Reload the picker to reflect the changes
+                                    citys = meteoDataModel.cities
+                                }) {
                         Image(systemName: "heart.fill")
                             .resizable()
                             .foregroundColor(.pink)
