@@ -6,17 +6,18 @@
 
 import SwiftUI
 import Foundation
+import CoreData
 
-struct SavedLocationsView: View {
+struct SavedLocationsView: View { 
     @State var showingAnotherView = false
     @State var text: String = ""
-
+    
     @State private var cloudPosition1 = CGPoint(x: 100, y: -240)
     @State private var cloudPosition2 = CGPoint(x: 300, y: -170)
     @State private var cloudPosition3 = CGPoint(x: 100, y: -100)
     @State private var cloudPosition4 = CGPoint(x: 300, y: -30)
     @State private var cloudPosition5 = CGPoint(x: 100, y: 40)
-
+    
     let locationSaved: [SavedLocation] = [
         SavedLocation(location: "Malmö"),
         SavedLocation(location: "London"),
@@ -31,11 +32,11 @@ struct SavedLocationsView: View {
                 Text("07.00")
                     .position(x: 50, y: 10)
             }
-
+            
             Text("Saved locations")
                 .position(x: 190, y: -140)
                 .font(.title)
-
+            
             ZStack {
                 Rectangle()
                     .stroke(Color.black, lineWidth: 3)
@@ -44,56 +45,56 @@ struct SavedLocationsView: View {
                     .position(x: 200, y: -20)
                 
                 VStack {
-              
-
+                    
+                    
                     CloudView(locationSaved: locationSaved[0], cloudPosition: $cloudPosition1, direction: 1)
                         .onTapGesture {
                             self.showingAnotherView.toggle()
                             print("GoToContentView")
-                           
+                            
                         }
-
+                    
                     CloudView(locationSaved: locationSaved[1], cloudPosition: $cloudPosition2, direction: -1)
                         .onTapGesture {
                             self.showingAnotherView.toggle()
                             print("GoToContentView")
-                           
+                            
                         }
-
+                    
                     CloudView(locationSaved: locationSaved[2], cloudPosition: $cloudPosition3, direction: 1)
                         .onTapGesture {
                             self.showingAnotherView.toggle()
                             print("GoToContentView")
-                        
+                            
                         }
-
+                    
                     CloudView(locationSaved: locationSaved[3], cloudPosition: $cloudPosition4, direction: -1)
                         .onTapGesture {
                             self.showingAnotherView.toggle()
                             print("GoToContentView")
-                           
+                            
                         }
-
+                    
                     CloudView(locationSaved: locationSaved[4], cloudPosition: $cloudPosition5, direction: 1)
                         .onTapGesture {
                             self.showingAnotherView.toggle()
                             print("GoToContentView")
                             
                         }
-
-                  
+                    
+                    
                 }
                 .sheet(isPresented: $showingAnotherView) {
                     ContentView()
                 }}
-
+            
             HStack {
                 ZStack {
                     Rectangle()
                         .stroke(Color.black, lineWidth: 3)
                         .frame(width: 100, height: 100)
                         .position(x: 80, y: 140)
-
+                    
                     Button(action: {
                         self.showingAnotherView.toggle()
                         print("GoToQuizView")
@@ -105,17 +106,17 @@ struct SavedLocationsView: View {
                             .position(x: 80, y: 137)
                     }
                     .sheet(isPresented: $showingAnotherView) {
-
+                        
                     } content: {
                         QuizView()
                     }
                 }
-
+                
                 ZStack {
                     Rectangle()
                         .frame(width: 225, height: 55)
                         .position(x: 60, y: 116)
-
+                    
                     TextField("Search location", text: $text)
                         .frame(width: 220, height: 50)
                         .background(Color.white)

@@ -15,8 +15,8 @@ struct PersistenceController {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
         for _ in 0..<5 {
-            let newItem = Item(context: viewContext)
-            newItem.weather = String()
+            let newItem = Location(context: viewContext)
+            newItem.location = String()
         }
         do {
             try viewContext.save()
@@ -32,7 +32,7 @@ struct PersistenceController {
     let container: NSPersistentContainer
 
     init(inMemory: Bool = false) {
-        container = NSPersistentContainer(name: "VaderAppen")
+        container = NSPersistentContainer(name: "SavedLocationEntity")
         if inMemory {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
         }

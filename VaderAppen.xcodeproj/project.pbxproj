@@ -18,7 +18,9 @@
 		2FDDEA3E2B9B9CDD005557CD /* QuestionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDDEA3D2B9B9CDD005557CD /* QuestionViewModel.swift */; };
 		2FDDEA402B9B9FA3005557CD /* Questions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDDEA3F2B9B9FA3005557CD /* Questions.swift */; };
 		D22645342B9A196B00964E00 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22645332B9A196B00964E00 /* Persistence.swift */; };
-		D22645372B9A1C4500964E00 /* WeatherAppModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D22645352B9A1C4500964E00 /* WeatherAppModel.xcdatamodeld */; };
+		D24411C22BA0BBC10026DBF5 /* LocationSaveData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D24411C02BA0BBC10026DBF5 /* LocationSaveData.xcdatamodeld */; };
+		D24411C62BA0DE6A0026DBF5 /* SavedLocationsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24411C52BA0DE6A0026DBF5 /* SavedLocationsListView.swift */; };
+		D24411C82BA0DEE60026DBF5 /* AddLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24411C72BA0DEE60026DBF5 /* AddLocationView.swift */; };
 		E1BD3B672B90BFDC00F80535 /* SavedLocationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BD3B662B90BFDC00F80535 /* SavedLocationsView.swift */; };
 		E1BD3B692B90E49E00F80535 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BD3B682B90E49E00F80535 /* QuizView.swift */; };
 		E1BD3B6B2B9746C200F80535 /* QuizCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BD3B6A2B9746C200F80535 /* QuizCoreData.swift */; };
@@ -44,7 +46,9 @@
 		2FDDEA3D2B9B9CDD005557CD /* QuestionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewModel.swift; sourceTree = "<group>"; };
 		2FDDEA3F2B9B9FA3005557CD /* Questions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Questions.swift; sourceTree = "<group>"; };
 		D22645332B9A196B00964E00 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
-		D22645362B9A1C4500964E00 /* VaderAppenModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VaderAppenModel.xcdatamodel; sourceTree = "<group>"; };
+		D24411C12BA0BBC10026DBF5 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		D24411C52BA0DE6A0026DBF5 /* SavedLocationsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedLocationsListView.swift; sourceTree = "<group>"; };
+		D24411C72BA0DEE60026DBF5 /* AddLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationView.swift; sourceTree = "<group>"; };
 		E1BD3B662B90BFDC00F80535 /* SavedLocationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedLocationsView.swift; sourceTree = "<group>"; };
 		E1BD3B682B90E49E00F80535 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
 		E1BD3B6A2B9746C200F80535 /* QuizCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizCoreData.swift; sourceTree = "<group>"; };
@@ -93,7 +97,7 @@
 				D22645332B9A196B00964E00 /* Persistence.swift */,
 				EC6DC11B2B98C1DF00A4EF4B /* WeatherService.swift */,
 				EC6DC1192B98C18700A4EF4B /* WeatherModel.swift */,
-				D22645352B9A1C4500964E00 /* WeatherAppModel.xcdatamodeld */,
+				D24411C02BA0BBC10026DBF5 /* LocationSaveData.xcdatamodeld */,
 				EC6DC11D2B98C28E00A4EF4B /* WeatherView.swift */,
 				EC6DC11F2B98C30B00A4EF4B /* WeatherViewModel.swift */,
 				E1BD3B682B90E49E00F80535 /* QuizView.swift */,
@@ -102,10 +106,11 @@
 				2FDDEA3F2B9B9FA3005557CD /* Questions.swift */,
 				E1BD3B6C2B97470800F80535 /* QuizData.xcdatamodeld */,
 				2F47B15D2B8F70280073A041 /* Assets.xcassets */,
-				2F47B1602B8F70280073A041 /* Preview Assets.xcassets */,
 				2F47B15F2B8F70280073A041 /* Preview Content */,
 				2F47B1B12B920B410073A041 /* SavedLocation.swift */,
 				E1BD3B662B90BFDC00F80535 /* SavedLocationsView.swift */,
+				D24411C52BA0DE6A0026DBF5 /* SavedLocationsListView.swift */,
+				D24411C72BA0DEE60026DBF5 /* AddLocationView.swift */,
 				2F47B1B32B920D300073A041 /* SavedLocationItemView.swift */,
 				2F7996522B99C3D400279F24 /* CLoudView.swift */,
 				2F7996542B99C4F000279F24 /* FlyingCloudsModifier.swift */,
@@ -116,6 +121,7 @@
 		2F47B15F2B8F70280073A041 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				2F47B1602B8F70280073A041 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -200,18 +206,20 @@
 				EC6DC1202B98C30B00A4EF4B /* WeatherViewModel.swift in Sources */,
 				EC6DC11C2B98C1DF00A4EF4B /* WeatherService.swift in Sources */,
 				2F7996532B99C3D400279F24 /* CLoudView.swift in Sources */,
+				D24411C82BA0DEE60026DBF5 /* AddLocationView.swift in Sources */,
 				E1BD3B6E2B97470800F80535 /* QuizData.xcdatamodeld in Sources */,
 				2F47B15C2B8F70260073A041 /* ContentView.swift in Sources */,
 				2F7996552B99C4F000279F24 /* FlyingCloudsModifier.swift in Sources */,
 				E1BD3B6B2B9746C200F80535 /* QuizCoreData.swift in Sources */,
 				EC6DC1292B9B4B6000A4EF4B /* MeteoDataModel.swift in Sources */,
+				D24411C62BA0DE6A0026DBF5 /* SavedLocationsListView.swift in Sources */,
 				2F47B15A2B8F70260073A041 /* VaderAppenApp.swift in Sources */,
 				2FDDEA402B9B9FA3005557CD /* Questions.swift in Sources */,
 				D22645342B9A196B00964E00 /* Persistence.swift in Sources */,
 				EC6DC11A2B98C18700A4EF4B /* WeatherModel.swift in Sources */,
-				D22645372B9A1C4500964E00 /* WeatherAppModel.xcdatamodeld in Sources */,
 				2F47B1B42B920D300073A041 /* SavedLocationItemView.swift in Sources */,
 				E1BD3B672B90BFDC00F80535 /* SavedLocationsView.swift in Sources */,
+				D24411C22BA0BBC10026DBF5 /* LocationSaveData.xcdatamodeld in Sources */,
 				E1BD3B692B90E49E00F80535 /* QuizView.swift in Sources */,
 				2FDDEA3E2B9B9CDD005557CD /* QuestionViewModel.swift in Sources */,
 				2F47B1B22B920B410073A041 /* SavedLocation.swift in Sources */,
@@ -439,13 +447,13 @@
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
-		D22645352B9A1C4500964E00 /* WeatherAppModel.xcdatamodeld */ = {
+		D24411C02BA0BBC10026DBF5 /* LocationSaveData.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				D22645362B9A1C4500964E00 /* VaderAppenModel.xcdatamodel */,
+				D24411C12BA0BBC10026DBF5 /* Model.xcdatamodel */,
 			);
-			currentVersion = D22645362B9A1C4500964E00 /* VaderAppenModel.xcdatamodel */;
-			path = WeatherAppModel.xcdatamodeld;
+			currentVersion = D24411C12BA0BBC10026DBF5 /* Model.xcdatamodel */;
+			path = LocationSaveData.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
