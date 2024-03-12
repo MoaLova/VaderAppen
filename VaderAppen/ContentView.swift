@@ -15,10 +15,13 @@ import SwiftUI
         @State private var citys: [MeteoDataModel.City] = []
         @State private var hourlyWeatherData: [MeteoDataModel.WeatherData] = []
         @State private var currentUnitsData: [MeteoDataModel.Current] = []
-        @State private var currentCity =  MeteoDataModel.City.tokyo
+        @State private var currentCity =  MeteoDataModel.City.custom
         @State private var isLoading = false
         @State private var meteoDataModel = MeteoDataModel()
         @State private var text: String = ""
+        
+        @State private var latitudeText = ""
+        @State private var longitudeText = ""
         
         var body: some View {
             VStack {
@@ -101,16 +104,42 @@ import SwiftUI
                     
                     ZStack {
                         Rectangle()
-                            .frame(width: 225, height: 55)
-                            .position(x: 60, y: 175)
+                            .frame(width: 225, height: 35)
+                            .position(x: 60, y: 166)
                         
-                        TextField("Search location", text: $text)
-                            .frame(width: 220, height: 50)
-                            .background(Color.white)
-                            .position(x: 60, y: 175)
-                    }
-                }
-            }
+                        Rectangle()
+                            .frame(width: 225, height: 35)
+                            .position(x: 60, y: 205)
+                        
+                        TextField("Add Latitude", text:$latitudeText)
+                                        .frame(width: 220, height: 30)
+                                        .background(Color.white)
+                                        .position(x: 60, y: 166)
+                                    
+                                    TextField("Add Longitude", text: $longitudeText)
+                                        .frame(width: 220, height: 30)
+                                        .background(Color.white)
+                                        .position(x: 60, y: 205)
+                                    
+                                    Button(action: {
+                                        // Save latitude and longitude
+                                        if let latitude = Double(latitudeText), let longitude = Double(longitudeText) {
+                                            MeteoDataModel.customLatitudeValue = latitude
+                                            MeteoDataModel.customLongitudeValue = longitude
+                                            
+                                            isLoading = true
+                                                                                   fetchHourlyWeatherData(.custom)
+                                        } else {
+                                            // Handle invalid input
+                                            print("Invalid latitude or longitude")
+                                        }
+                                    }, label: {
+                                        Text("Save location")
+                                    })
+                                    .position(x: 60, y:250)
+                                }
+                            }
+                        }
             .onAppear {
                 isLoading = true
                 fetchHourlyWeatherData(currentCity)
