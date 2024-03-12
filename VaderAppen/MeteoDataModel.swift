@@ -9,10 +9,12 @@ import Foundation
 import OpenMeteoSdk
 
 class MeteoDataModel {
+
     enum City {
         case stockholm
         case newYork
         case tokyo
+        case custom
 
         var coordinates: (latitude: Double, longitude: Double) {
             switch self {
@@ -22,9 +24,20 @@ class MeteoDataModel {
                 return (latitude: 40.7128, longitude: -74.0060)
             case .tokyo:
                 return (latitude: 35.682839, longitude: 139.759455)
+            case .custom:
+                // Return values for custom case
+                return (latitude: MeteoDataModel.customLatitudeValue, longitude: MeteoDataModel.customLongitudeValue)
             }
         }
     }
+    
+    // Add static variables for custom latitude and longitude
+    static var customLatitudeValue: Double = 0.0
+    static var customLongitudeValue: Double = 0.0
+
+    
+    
+    
     struct WeatherData: Decodable, Hashable{
         let current: Current
        // let minutely_15: Minutely15
