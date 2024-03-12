@@ -54,7 +54,7 @@ import SwiftUI
                 ZStack {
                     Rectangle()
                         .stroke(Color.black, lineWidth: 3)
-                        .frame(width: 340, height: 556)
+                        .frame(width: 350, height: 630)
                         .foregroundColor(.white)
                         .position(x: 200, y: 230)
                     
@@ -65,16 +65,25 @@ import SwiftUI
                             }
                             
                         }
-                        .position(CGPoint(x: 200.0, y: 20.0))
+                        .position(CGPoint(x: 200.0, y: -10.0))
                         
                 }
                 
                 ZStack {
-                    Image(systemName: "cloud.fill")
+                    Text("Hourly:")
+                        .position(CGPoint(x: 180.0, y: -50.0))
+                        .font(.custom("Copperplate", size: 24))
+                    Image(systemName: "cloud")
                         .resizable()
-                        .frame(width: 300, height: 150)
+                        .frame(width: 340, height: 180)
                         .foregroundColor(.blue)
-                        .position(CGPoint(x: 200.0, y: 0.0))
+                        .overlay(
+                            Image(systemName: "cloud")
+                                .resizable()
+                                .foregroundColor(.white)
+                                .frame(width: 325, height: 160)
+                        )
+                        .position(CGPoint(x: 200.0, y: -10.0))
 
                     ScrollView {
                         LazyVStack(spacing: 10) {
@@ -83,17 +92,20 @@ import SwiftUI
                             }
                         }
                     }
-                    .frame(width: 300, height: 150)
-                    .position(CGPoint(x: 200.0, y: 0.0))
+                    .frame(width: 250, height: 100)
+                    .position(CGPoint(x: 210.0, y: 10.0))
                 }
                 
                 ZStack {
                     Rectangle()
                         .stroke(Color.black, lineWidth: 3)
-                        .frame(width: 300, height: 250)
+                        .frame(width: 320, height: 260)
                         .foregroundColor(.white)
-                        .position(CGPoint(x: 200.0, y: 60.0))
+                        .position(CGPoint(x: 200.0, y: 80.0))
 
+                    Text("Forecast 7-days")
+                        .position(CGPoint(x: 200.0, y: -30.0))
+                        .font(.custom("Copperplate", size: 28))
                     ScrollView {
                         LazyVStack(spacing: 0) {
                             ForEach(hourlyWeatherData, id: \.self) { hourlyWeather in
@@ -101,8 +113,8 @@ import SwiftUI
                             }
                         }
                     }
-                    .frame(width: 300, height: 250) // Set the frame of the ScrollView to match the Rectangle
-                    .position(CGPoint(x: 200.0, y: 60.0))
+                    .frame(width: 320, height: 220) // Set the frame of the ScrollView to match the Rectangle
+                    .position(CGPoint(x: 200.0, y: 90.0))
                 }
      
                     if isLoading {
@@ -118,8 +130,8 @@ import SwiftUI
                     ZStack {
                         Rectangle()
                             .stroke(Color.black, lineWidth: 3)
-                            .frame(width: 100, height: 100)
-                            .position(x: 80, y: 200)
+                            .frame(width: 70, height: 70)
+                            .position(x: 60, y: 130)
                         
                         Button(action: {
                            
@@ -127,23 +139,12 @@ import SwiftUI
                             Image(systemName: "questionmark")
                                 .resizable()
                                 .foregroundColor(.black)
-                                .frame(width: 80, height: 80)
-                                .position(x: 80, y: 200)
+                                .frame(width: 60, height: 60)
+                                .position(x: 60, y: 130)
                         }
                         
                     }.frame(width: 300, height: 150)
                         .position(x: 150, y: 75)
-                    
-                    ZStack {
-                        Rectangle()
-                            .frame(width: 225, height: 55)
-                            .position(x: 60, y: 175)
-                        
-                        TextField("Search location", text: $text)
-                            .frame(width: 220, height: 50)
-                            .background(Color.white)
-                            .position(x: 60, y: 175)
-                    }
                 }
             }
             .onAppear {
@@ -198,24 +199,23 @@ struct HourlyWeather: View {
         ForEach(hourlyWeather.hourly.time.indices, id: \.self) { index in
             VStack {
                 Text("Time: \(hourlyWeather.hourly.time[index]): ")
-                    .font(.custom("Copperplate", size: 24))
+                    .font(.custom("Copperplate", size: 20))
                     .padding(.top)
                 
                 Text("Temperature: \(String(format: "%.2f", hourlyWeather.hourly.temperature_2m[index])) °C")
-                    .font(.custom("Copperplate", size: 24))
+                    .font(.custom("Copperplate", size: 20))
 
                 Text("Humidity: \(String(format: "%.2f", hourlyWeather.hourly.relative_humidity_2m[index])) %")
-                    .font(.custom("Copperplate", size: 24))
+                    .font(.custom("Copperplate", size: 20))
                   
                 Text("Precipitation: \(String(format: "%.2f", hourlyWeather.hourly.precipitation[index])) mm")
-                    .font(.custom("Copperplate", size: 24))
+                    .font(.custom("Copperplate", size: 20))
 
                 Text("UV-index: \(String(format: "%.2f", hourlyWeather.hourly.uv_index[index])) ")
-                    .font(.custom("Copperplate", size: 24))
+                    .font(.custom("Copperplate", size: 20))
 
                 Text("Wind \(String(format: "%.2f", hourlyWeather.hourly.wind_speed_10m[index])) m/s")
-                    .font(.custom("Copperplate", size: 24))
-                    .padding(.bottom)
+                    .font(.custom("Copperplate", size: 20))
                     .padding(.bottom)
             
             Divider()
