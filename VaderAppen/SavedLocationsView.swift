@@ -10,6 +10,8 @@ import Foundation
 struct SavedLocationsView: View {
     @State var showingAnotherView = false
     @State var text: String = ""
+    @State private var savedLocationsViewCoordinates: (latitude: Double, longitude: Double)?
+
 
     @State private var cloudPosition1 = CGPoint(x: 100, y: -240)
     @State private var cloudPosition2 = CGPoint(x: 300, y: -170)

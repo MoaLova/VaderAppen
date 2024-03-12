@@ -13,6 +13,13 @@ import SwiftUI
 import CoreLocation
 
     struct ContentView: View {
+        
+        @StateObject var viewModel = VaderAppenViewModel()
+        @State private var newLatitude: String = ""
+        @State private var newLongitude: String = ""
+        @State var showingAnotherView = false
+        @State var showingAnotherView1 = false
+        @State private var savedLocationsViewCoordinates: Coordinate?
         @State private var citys: [MeteoDataModel.City] = []
         @State private var hourlyWeatherData: [MeteoDataModel.WeatherData] = []
         @State private var currentUnitsData: [MeteoDataModel.Current] = []
@@ -30,6 +37,8 @@ import CoreLocation
                 HStack {
                     
                     Button(action: {
+                        self.showingAnotherView1.toggle()
+                        print("GoTOSavedLovationView")
                     }) {
                         Image(systemName: "globe.europe.africa.fill")
                             .resizable()
@@ -38,21 +47,54 @@ import CoreLocation
                             .position(CGPoint(x: 60.0, y: 28.0))
                           
                     }
+                    .sheet(isPresented: $showingAnotherView1){
+                    }content: {
+                        SavedLocationsView()
+                    }
                     
                     Text("\(cityName)")
                         .font(.custom("Copperplate", size: 23))
                         .position(CGPoint(x: 55.0, y: 28.0))
                     
                     Button(action: {
-                        
-                    }) {
-                        Image(systemName: "heart.fill")
-                            .resizable()
-                            .foregroundColor(.pink)
-                            .frame(width: 50, height: 50)
-                            .position(CGPoint(x: 60.0, y: 28.0))
+                                   addCity()
+
+                                   // Save latitude and longitude when heart button is tapped
+                                   if let latitude = Double(latitudeText), let longitude = Double(longitudeText) {
+                                       MeteoDataModel.customLatitudeValue = latitude
+                                       MeteoDataModel.customLongitudeValue = longitude
+
+                                       isLoading = true
+                                       fetchHourlyWeatherData(.custom)
+
+                                       fetchCityName()
+
+                                       // Pass latitude and longitude to SavedLocationsView
+                                       savedLocationsViewCoordinates = Coordinate(latitude: Int(latitude), longitude: Int(longitude))
+                                   } else {
+                                       // Handle invalid input
+                                       print("Invalid latitude or longitude")
+                                   }
+                               }) {
+                                   Image(systemName: "heart.fill")
+                                       .resizable()
+                                       .foregroundColor(.pink)
+                                       .frame(width: 50, height: 50)
+                                       .position(CGPoint(x: 60.0, y: 28.0))
+                               }
+
+                               // ...
+                           }
+                           .onChange(of: savedLocationsViewCoordinates) { newCoordinates in
+                               guard let coordinates = newCoordinates else { return }
+
+                               // Here, you can save the coordinates to your cloud or perform any other necessary action
+                               print("Received new coordinates: \(coordinates.latitude), \(coordinates.longitude)")
+                           }
+                           .onAppear {
+                               isLoading = true
+                               fetchHourlyWeatherData(currentCity)
                            
-                    }
                 }
                 
              
@@ -236,7 +278,23 @@ import CoreLocation
                 }
             }
         }
+        
+        func addCity(){
+            print("Before saving: Longitude - \(newLongitude), Latitude - \(newLatitude)")
+            if newLatitude.isEmpty || newLongitude.isEmpty {
+                return
+            }
+            viewModel.addCordinates(latitude: Int(newLatitude) ?? 0, longitude: Int(newLatitude) ?? 0)
+            newLatitude = ""
+            newLongitude = ""
+            
+        }
+        
     }
+struct Coordinate: Equatable {
+    var latitude: Int
+    var longitude: Int
+}
 
     struct HourlyWeatherRow: View {
         let hourlyWeather: MeteoDataModel.WeatherData
@@ -312,6 +370,7 @@ struct DailyWeather: View {
                         
                         Text("Max Temperature: \(String(format: "%.2f", hourlyWeather.daily.temperature_2m_max[index]))°C")
                         .font(.custom("Copperplate", size: 24))
+                    
                         Text("Min Temperature: \(String(format: "%.2f", hourlyWeather.daily.temperature_2m_min[index]))°C")
                         .font(.custom("Copperplate", size: 24))
                         
@@ -333,7 +392,14 @@ struct DailyWeather: View {
                 }
         }
     }
+
 }
+extension Coordinate {
+    static func == (lhs: Coordinate, rhs: Coordinate) -> Bool {
+        return lhs.latitude == rhs.latitude && lhs.longitude == rhs.longitude
+    }
+}
+
 
 
     struct ContentView_Previews: PreviewProvider {
