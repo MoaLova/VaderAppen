@@ -69,23 +69,23 @@ import SwiftUI
                         
                 }
                 
-                    ZStack {
-                        Rectangle()
-                            .stroke(Color.black, lineWidth: 3)
-                            .frame(width: 300, height: 150)
-                            .foregroundColor(.white)
-                            .position(CGPoint(x: 200.0, y: 0.0))
-                        
-                        ScrollView {
-                            LazyVStack(spacing: 0) {
-                                ForEach(hourlyWeatherData, id: \.self) { hourlyWeather in
-                                    HourlyWeather(hourlyWeather: hourlyWeather, currentCity: currentCity)
-                                }
+                ZStack {
+                    Image(systemName: "cloud.fill")
+                        .resizable()
+                        .frame(width: 300, height: 150)
+                        .foregroundColor(.blue)
+                        .position(CGPoint(x: 200.0, y: 0.0))
+
+                    ScrollView {
+                        LazyVStack(spacing: 10) {
+                            ForEach(hourlyWeatherData, id: \.self) { hourlyWeather in
+                                HourlyWeather(hourlyWeather: hourlyWeather, currentCity: currentCity)
                             }
                         }
-                        .frame(width: 300, height: 150)
-                        .position(CGPoint(x: 200.0, y: 0.0))
                     }
+                    .frame(width: 300, height: 150)
+                    .position(CGPoint(x: 200.0, y: 0.0))
+                }
                 
                 ZStack {
                     Rectangle()
