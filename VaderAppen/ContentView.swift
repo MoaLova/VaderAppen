@@ -8,6 +8,7 @@
 //Hej
 // nej
 
+
 import CoreData
 import SwiftUI
 import CoreLocation
@@ -20,31 +21,32 @@ struct ContentView: View {
     @State private var isLoading = false
     @State private var meteoDataModel = MeteoDataModel()
     @State private var text: String = ""
-    
+    @State private var selectedCity = "1"
+    @State private var showPicker = false
     @State private var latitudeText = ""
     @State private var longitudeText = ""
     @State private var cityName: String = ""
     @State var showingAnotherView = false
-    
+    @State private var selectedCloudPosition = 1
     var body: some View {
         VStack {
             HStack {
                 Button(action: {
-                self.showingAnotherView.toggle()
-                print("GoToSavedLocationView")
-
-
-                    }){Image(systemName: "globe.europe.africa.fill")
-                                        .resizable()
-                                        .foregroundColor(.blue)
-                                        .frame(width: 50, height: 50)
-                                        .position(x: 50, y: 15)
-                                    }
-                                .sheet(isPresented: $showingAnotherView) {
-
-                                } content: {
-                                    SavedLocationsView()
-                                }
+                    self.showingAnotherView.toggle()
+                    print("GoToSavedLocationView")
+                    
+                    
+                }){Image(systemName: "globe.europe.africa.fill")
+                        .resizable()
+                        .foregroundColor(.blue)
+                        .frame(width: 50, height: 50)
+                        .position(x: 50, y: 15)
+                }
+                .sheet(isPresented: $showingAnotherView) {
+                    
+                } content: {
+                    SavedLocationsView()
+                }
                 
                 Picker("Select City", selection: $currentCity) {
                     ForEach(MeteoDataModel.City.allCases, id: \.self) { city in
@@ -56,40 +58,22 @@ struct ContentView: View {
                     }
                 }
                 .pickerStyle(MenuPickerStyle())
-                .position(CGPoint(x: 55.0, y: 28.0))
+                .position(CGPoint(x: 50, y: 28.0))
                 .onChange(of: currentCity) { _ in
                     isLoading = true
                     fetchHourlyWeatherData(currentCity)
                 }
                 
-                Button(action: {
-                                saveSelectedCity(currentCity)
-                            }) {
-                                Image(systemName: "heart.fill")
-                                    .resizable()
-                                    .foregroundColor(.pink)
-                                    .frame(width: 50, height: 50)
-                                    .position(CGPoint(x: 60.0, y: 28.0))
-                }
-            }
-            
-            ZStack {
-                Rectangle()
-                    .stroke(Color.black, lineWidth: 3)
-                    .frame(width: 350, height: 600)
-                    .foregroundColor(.white)
-                    .position(x: 200, y: 240)
-                
-                
-                LazyVStack(spacing: 10) {
-                    ForEach(hourlyWeatherData, id: \.self) { hourlyWeather in
-                        HourlyWeatherRow(hourlyWeather: hourlyWeather, currentCity: currentCity )
+                // New Picker for Cloud Position
+                Picker("Select Cloud Position", selection: $selectedCloudPosition) {
+                    ForEach(1..<6) { position in
+                        Text("\(position)")
                     }
                 }
-                .position(CGPoint(x: 200.0, y: 0.0))
-                
+                .pickerStyle(MenuPickerStyle())
+                .position(CGPoint(x: 55.0, y: 0.0))
             }
-            
+        
             ZStack {
                 Text("Hourly:")
                     .position(CGPoint(x: 180.0, y: -20.0))
@@ -218,9 +202,12 @@ struct ContentView: View {
             
         }
     }
-    func saveSelectedCity(_ city: MeteoDataModel.City) {
-           UserDefaults.standard.set(city.rawValue, forKey: "selectedCity")
-       }
+    
+    func saveSelectedCity() {
+        UserDefaults.standard.set(currentCity.rawValue, forKey: "selectedCity")
+        UserDefaults.standard.set(selectedCloudPosition, forKey: "selectedCloudPosition")
+    }
+
     
     
     func fetchCityName() {
@@ -256,6 +243,7 @@ struct ContentView: View {
         }
     }
 }
+
 
 struct HourlyWeatherRow: View {
     let hourlyWeather: MeteoDataModel.WeatherData
