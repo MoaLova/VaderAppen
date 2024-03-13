@@ -25,6 +25,7 @@ struct ContentView: View {
     @State private var longitudeText = ""
     @State private var cityName: String = ""
     @State var showingAnotherView = false
+    @State var showingAnotherView1 = false
     
     var body: some View {
         VStack {
@@ -148,20 +149,21 @@ struct ContentView: View {
             HStack {
                 
                 ZStack {
-                    Rectangle()
-                        .stroke(Color.black, lineWidth: 3)
-                        .frame(width: 70, height: 70)
-                        .position(x: 60, y: 210)
+                    
                     
                     Button(action: {
-                        
+                        self.showingAnotherView1.toggle()
                     }) {
-                        Image(systemName: "questionmark")
+                        Image(systemName: "globe")
                             .resizable()
                             .foregroundColor(.black)
                             .frame(width: 60, height: 60)
-                            .position(x: 60, y: 210)
+                            .position(x: 50, y: 210)
                     }
+                    .sheet(isPresented: $showingAnotherView1) {
+                        QuizView()
+                    }
+    
                     
                     
                 }.frame(width: 300, height: 150)
