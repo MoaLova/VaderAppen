@@ -10,15 +10,15 @@ import Foundation
 import CoreData
 
 class VaderAppenViewModel: ObservableObject{
-    @Published var vader: [Item] = []
+    @Published var vader: [CityEntity] = []
     var container = PersistenceVader.shared.container
     
     init() {
         
     }
     
-    func fetchCordinates(){
-        let request = NSFetchRequest<Item>(entityName: "Item")
+    func fetchCity(){
+        let request = NSFetchRequest<CityEntity>(entityName: "CityEntity")
         
         do{
             vader = try container.viewContext.fetch(request)
@@ -26,22 +26,21 @@ class VaderAppenViewModel: ObservableObject{
             print("error fetching: \(error)")
         }
     }
-    func addCordinates(latitude: Int, longitude: Int){
+    func addCity(city: String){
         let newCity = Item(context: container.viewContext)
-        newCity.latitude = Int16(latitude)
-        newCity.longitude = Int16(longitude)
+        newCity.city = city
         
          saveData()
     }
     
     
-    func updateCity(entity: Item, newLatitude: Int, newlongitude: Int){
-        entity.latitude = Int16(newLatitude)
-        entity.longitude = Int16(newlongitude)
+    func updateCity(entity: CityEntity, newCity: String){
+        entity.city = newCity
+        
         saveData()
     }
     
-    func deleteCity(entity: Item) {
+    func deleteCity(entity: CityEntity) {
         container.viewContext.delete(entity)
         
         do{
@@ -49,7 +48,7 @@ class VaderAppenViewModel: ObservableObject{
         } catch{
             print("Error deleting entity: \(error)")
         }
-        fetchCordinates()
+        fetchCity()
     }
     func saveData(){
         do{
@@ -57,6 +56,6 @@ class VaderAppenViewModel: ObservableObject{
         }catch let error{
             print("error adding notes \(error)")
         }
-        fetchCordinates()
+        fetchCity()
     }
 }
