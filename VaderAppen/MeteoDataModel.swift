@@ -8,7 +8,30 @@
 import Foundation
 import OpenMeteoSdk
 
+extension MeteoDataModel.City {
+     var stringValue: String {
+         return self.rawValue
+     }
+
+     init?(stringValue: String) {
+         switch stringValue {
+         case MeteoDataModel.City.stockholm.rawValue:
+             self = .stockholm
+         case MeteoDataModel.City.newYork.rawValue:
+             self = .newYork
+         case MeteoDataModel.City.tokyo.rawValue:
+             self = .tokyo
+         case MeteoDataModel.City.custom.rawValue:
+             self = .custom
+         default:
+             return nil
+         }
+     }
+ }
+
 class MeteoDataModel {
+    
+    
 
     enum City: String, CaseIterable, Identifiable {
         case stockholm

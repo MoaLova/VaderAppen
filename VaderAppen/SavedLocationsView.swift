@@ -24,6 +24,11 @@ struct SavedLocationsView: View {
         SavedLocation(location: "Märsta"),
         SavedLocation(location: "Årsta")
     ]
+    
+    // Function to save the selected city "Tokyo" to UserDefaults
+    func saveSelectedCity() {
+        UserDefaults.standard.set("Tokyo", forKey: "selectedCity")
+    }
 
     var body: some View {
         VStack {
@@ -44,48 +49,44 @@ struct SavedLocationsView: View {
                     .position(x: 200, y: -20)
                 
                 VStack {
-              
-
-                    CloudView(locationSaved: locationSaved[0], cloudPosition: $cloudPosition1, direction: 1)
-                        .onTapGesture {
-                            self.showingAnotherView.toggle()
-                            print("GoToContentView")
-                           
-                        }
-
-                    CloudView(locationSaved: locationSaved[1], cloudPosition: $cloudPosition2, direction: -1)
-                        .onTapGesture {
-                            self.showingAnotherView.toggle()
-                            print("GoToContentView")
-                           
-                        }
-
-                    CloudView(locationSaved: locationSaved[2], cloudPosition: $cloudPosition3, direction: 1)
-                        .onTapGesture {
-                            self.showingAnotherView.toggle()
-                            print("GoToContentView")
-                        
-                        }
-
-                    CloudView(locationSaved: locationSaved[3], cloudPosition: $cloudPosition4, direction: -1)
-                        .onTapGesture {
-                            self.showingAnotherView.toggle()
-                            print("GoToContentView")
-                           
-                        }
-
-                    CloudView(locationSaved: locationSaved[4], cloudPosition: $cloudPosition5, direction: 1)
-                        .onTapGesture {
-                            self.showingAnotherView.toggle()
-                            print("GoToContentView")
-                            
-                        }
-
-                  
+                    if let savedCityString = UserDefaults.standard.string(forKey: "selectedCity"),
+                       let savedCity = MeteoDataModel.City(rawValue: savedCityString) {
+                        CloudView(locationSaved: SavedLocation(location: savedCity.rawValue), cloudPosition: $cloudPosition1, direction: 1)
+                            .onTapGesture {
+                                self.showingAnotherView.toggle()
+                            }
+                    } else {
+                        CloudView(locationSaved: locationSaved[0], cloudPosition: $cloudPosition1, direction: 1)
+                            .onTapGesture {
+                                saveSelectedCity() // Save "Tokyo" when cloud is tapped
+                                self.showingAnotherView.toggle()
+                            }
+                        CloudView(locationSaved: locationSaved[1], cloudPosition: $cloudPosition2, direction: -1)
+                            .onTapGesture {
+                                saveSelectedCity() // Save "Tokyo" when cloud is tapped
+                                self.showingAnotherView.toggle()
+                            }
+                        CloudView(locationSaved: locationSaved[2], cloudPosition: $cloudPosition3, direction: 1)
+                            .onTapGesture {
+                                saveSelectedCity() // Save "Tokyo" when cloud is tapped
+                                self.showingAnotherView.toggle()
+                            }
+                        CloudView(locationSaved: locationSaved[3], cloudPosition: $cloudPosition4, direction: -1)
+                            .onTapGesture {
+                                saveSelectedCity() // Save "Tokyo" when cloud is tapped
+                                self.showingAnotherView.toggle()
+                            }
+                        CloudView(locationSaved: locationSaved[4], cloudPosition: $cloudPosition5, direction: 1)
+                            .onTapGesture {
+                                saveSelectedCity() // Save "Tokyo" when cloud is tapped
+                                self.showingAnotherView.toggle()
+                            }
+                    }
                 }
                 .sheet(isPresented: $showingAnotherView) {
                     ContentView()
-                }}
+                }
+            }
 
             HStack {
                 ZStack {
@@ -96,7 +97,6 @@ struct SavedLocationsView: View {
 
                     Button(action: {
                         self.showingAnotherView.toggle()
-                        print("GoToQuizView")
                     }) {
                         Image(systemName: "questionmark")
                             .resizable()
@@ -131,3 +131,4 @@ struct SavedLocationsView_Previews: PreviewProvider {
         SavedLocationsView()
     }
 }
+
