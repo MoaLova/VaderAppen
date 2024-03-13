@@ -7,8 +7,6 @@
 
 //Hej
 // nej
-
-
 import CoreData
 import SwiftUI
 import CoreLocation
@@ -27,7 +25,7 @@ struct ContentView: View {
     @State private var longitudeText = ""
     @State private var cityName: String = ""
     @State var showingAnotherView = false
-    @State private var selectedCloudPosition = 1
+    @State private var selectedCloudPosition = 0
     var body: some View {
         VStack {
             HStack {
@@ -63,15 +61,28 @@ struct ContentView: View {
                     isLoading = true
                     fetchHourlyWeatherData(currentCity)
                 }
-                
-                // New Picker for Cloud Position
                 Picker("Select Cloud Position", selection: $selectedCloudPosition) {
-                    ForEach(1..<6) { position in
-                        Text("\(position)")
-                    }
+                                    ForEach(1..<6) { position in
+                                        Text("\(position)")
+                                    }
+                                }
+                                .pickerStyle(MenuPickerStyle())
+                                .position(CGPoint(x: 55.0, y: 0.0))
+
+                
+                Button(action: {
+                   saveSelectedCity()
+                    
+                    
+                }){Image(systemName: "heart")
+                        .resizable()
+                        .foregroundColor(.blue)
+                        .frame(width: 50, height: 50)
+                        .position(x: 50, y: 15)
                 }
-                .pickerStyle(MenuPickerStyle())
-                .position(CGPoint(x: 55.0, y: 0.0))
+               
+                
+                
             }
         
             ZStack {
@@ -204,11 +215,14 @@ struct ContentView: View {
     }
     
     func saveSelectedCity() {
-        UserDefaults.standard.set(currentCity.rawValue, forKey: "selectedCity")
-        UserDefaults.standard.set(selectedCloudPosition, forKey: "selectedCloudPosition")
-    }
+           // Save the selected city and cloud position
+           UserDefaults.standard.set(currentCity.rawValue, forKey: "selectedCity")
+           UserDefaults.standard.set(selectedCloudPosition, forKey: "selectedCloudPosition")
 
-    
+         
+       }
+   
+
     
     func fetchCityName() {
         guard let latitude = Double(latitudeText),

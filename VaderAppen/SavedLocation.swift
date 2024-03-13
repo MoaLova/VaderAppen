@@ -8,9 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct SavedLocation: Identifiable, Hashable{
-    var id = UUID()
+struct SavedLocation {
     var location: String
-   
-
+    var cloudPosition: Int
 }
