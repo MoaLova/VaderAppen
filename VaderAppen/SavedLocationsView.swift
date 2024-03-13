@@ -10,25 +10,23 @@ import Foundation
 struct SavedLocationsView: View {
     @State var showingAnotherView = false
     @State var text: String = ""
+    @State private var selectedCityIndex: Int? // Use an optional Int for selectedCityIndex
 
-    @State private var cloudPosition1 = CGPoint(x: 100, y: -240)
-    @State private var cloudPosition2 = CGPoint(x: 300, y: -170)
-    @State private var cloudPosition3 = CGPoint(x: 100, y: -100)
-    @State private var cloudPosition4 = CGPoint(x: 300, y: -30)
-    @State private var cloudPosition5 = CGPoint(x: 100, y: 40)
+    @State private var cloudPositions: [CGPoint] = [
+        CGPoint(x: 100, y: -240),
+        CGPoint(x: 300, y: -170),
+        CGPoint(x: 100, y: -100),
+        CGPoint(x: 300, y: -30),
+        CGPoint(x: 100, y: 40)
+    ]
 
     let locationSaved: [SavedLocation] = [
-        SavedLocation(location: "Malmö"),
-        SavedLocation(location: "London"),
-        SavedLocation(location: "Madrid"),
-        SavedLocation(location: "Märsta"),
-        SavedLocation(location: "Årsta")
+        SavedLocation(location: ""),
+        SavedLocation(location: ""),
+        SavedLocation(location: ""),
+        SavedLocation(location: ""),
+        SavedLocation(location: "")
     ]
-    
-    // Function to save the selected city "Tokyo" to UserDefaults
-    func saveSelectedCity() {
-        UserDefaults.standard.set("Tokyo", forKey: "selectedCity")
-    }
 
     var body: some View {
         VStack {
@@ -47,38 +45,15 @@ struct SavedLocationsView: View {
                     .frame(width: 340, height: 550)
                     .background(.blue)
                     .position(x: 200, y: -20)
-                
+
                 VStack {
-                    if let savedCityString = UserDefaults.standard.string(forKey: "selectedCity"),
-                       let savedCity = MeteoDataModel.City(rawValue: savedCityString) {
-                        CloudView(locationSaved: SavedLocation(location: savedCity.rawValue), cloudPosition: $cloudPosition1, direction: 1)
+                    ForEach(locationSaved.indices, id: \.self) { index in
+                        CloudView(locationSaved: locationSaved[index],
+                                  cloudPosition: $cloudPositions[index],
+                                  direction: index % 2 == 0 ? 1 : -1)
                             .onTapGesture {
-                                self.showingAnotherView.toggle()
-                            }
-                    } else {
-                        CloudView(locationSaved: locationSaved[0], cloudPosition: $cloudPosition1, direction: 1)
-                            .onTapGesture {
-                                saveSelectedCity() // Save "Tokyo" when cloud is tapped
-                                self.showingAnotherView.toggle()
-                            }
-                        CloudView(locationSaved: locationSaved[1], cloudPosition: $cloudPosition2, direction: -1)
-                            .onTapGesture {
-                                saveSelectedCity() // Save "Tokyo" when cloud is tapped
-                                self.showingAnotherView.toggle()
-                            }
-                        CloudView(locationSaved: locationSaved[2], cloudPosition: $cloudPosition3, direction: 1)
-                            .onTapGesture {
-                                saveSelectedCity() // Save "Tokyo" when cloud is tapped
-                                self.showingAnotherView.toggle()
-                            }
-                        CloudView(locationSaved: locationSaved[3], cloudPosition: $cloudPosition4, direction: -1)
-                            .onTapGesture {
-                                saveSelectedCity() // Save "Tokyo" when cloud is tapped
-                                self.showingAnotherView.toggle()
-                            }
-                        CloudView(locationSaved: locationSaved[4], cloudPosition: $cloudPosition5, direction: 1)
-                            .onTapGesture {
-                                saveSelectedCity() // Save "Tokyo" when cloud is tapped
+                                // Set the third index of selectedCityIndex to display in the first cloud position
+                                self.selectedCityIndex = 2
                                 self.showingAnotherView.toggle()
                             }
                     }
@@ -105,8 +80,6 @@ struct SavedLocationsView: View {
                             .position(x: 80, y: 137)
                     }
                     .sheet(isPresented: $showingAnotherView) {
-
-                    } content: {
                         QuizView()
                     }
                 }
@@ -125,7 +98,6 @@ struct SavedLocationsView: View {
         }
     }
 }
-
 struct SavedLocationsView_Previews: PreviewProvider {
     static var previews: some View {
         SavedLocationsView()

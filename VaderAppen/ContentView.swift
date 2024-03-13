@@ -25,6 +25,7 @@ struct ContentView: View {
     @State private var longitudeText = ""
     @State private var cityName: String = ""
     @State var showingAnotherView = false
+    @State private var selectedCityIndex = 0
     
     var body: some View {
         VStack {
@@ -64,6 +65,7 @@ struct ContentView: View {
                 
                 Button(action: {
                                 saveSelectedCity(currentCity)
+                    troubleshoot()
                             }) {
                                 Image(systemName: "heart.fill")
                                     .resizable()
@@ -154,7 +156,7 @@ struct ContentView: View {
                         .position(x: 60, y: 210)
                     
                     Button(action: {
-                        
+                        troubleshoot()
                     }) {
                         Image(systemName: "questionmark")
                             .resizable()
@@ -199,6 +201,7 @@ struct ContentView: View {
                         fetchHourlyWeatherData(.custom)
                         
                         fetchCityName()
+                        
                     } else {
                         // Handle invalid input
                         print("Invalid latitude or longitude")
@@ -219,8 +222,11 @@ struct ContentView: View {
         }
     }
     func saveSelectedCity(_ city: MeteoDataModel.City) {
-           UserDefaults.standard.set(city.rawValue, forKey: "selectedCity")
-       }
+            UserDefaults.standard.set(city.rawValue, forKey: "selectedCity\(selectedCityIndex)")
+            selectedCityIndex += 1
+            selectedCityIndex %= 5 // Reset to 0 if it exceeds 4
+        
+        }
     
     
     func fetchCityName() {
@@ -358,6 +364,16 @@ struct DailyWeather: View {
         }
     }
 }
+
+func troubleshoot() {
+        // Print out the selected city names
+        for index in 0..<5 {
+            if let savedCityString = UserDefaults.standard.string(forKey: "selectedCity\(index)"),
+               let savedCity = MeteoDataModel.City(rawValue: savedCityString) {
+                print("Selected City at index \(index): \(savedCity.rawValue)")
+            }
+        }
+    }
 
 
 struct ContentView_Previews: PreviewProvider {
