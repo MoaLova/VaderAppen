@@ -15,7 +15,8 @@ struct SavedLocationsView: View {
     @State private var cloudPosition3 = CGPoint(x: 100, y: -250)
     @State private var cloudPosition4 = CGPoint(x: 300, y: -200)
     @State private var cloudPosition5 = CGPoint(x: 100, y: -150)
-    
+    @State var selectedCity: String?
+   
     var savedCities: [String] {
         UserDefaults.standard.array(forKey: "selectedCities") as? [String] ?? []
     }
@@ -41,12 +42,15 @@ struct SavedLocationsView: View {
                 VStack {
                     ForEach(savedCities.indices, id: \.self) { index in
                         CloudView(locationSaved: SavedLocation(location: savedCities[index]), cloudPosition: bindingForCloudPosition(index), direction: 1) {
-                            // Handle tap action here
-                            // For example, navigate to details view for the selected city
                             self.showingAnotherView.toggle()
+                            self.selectedCity = savedCities[index]
+                            print("selectedcity \(selectedCity)")
+                            print("index \(index)")
+                            print("saved lsiat \(savedCities)")
                         }
                         .gesture(longPressToDelete(index))
                         .onTapGesture {
+                           
                             // Handle tap action here
                             // For example, navigate to details view for the selected city
                             self.showingAnotherView.toggle()
@@ -54,7 +58,7 @@ struct SavedLocationsView: View {
                     }
                 }
                 .sheet(isPresented: $showingAnotherView) {
-                    ContentView()
+                    ContentView(selectedCity: $selectedCity)
                 }
             }
         }
@@ -88,9 +92,8 @@ struct SavedLocationsView: View {
             }
     }
 }
-
 struct SavedLocationsView_Previews: PreviewProvider {
     static var previews: some View {
-        SavedLocationsView()
+        SavedLocationsView(selectedCity:("Stockholm"))
     }
 }

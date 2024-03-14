@@ -14,18 +14,20 @@ import CoreLocation
 
 struct ContentView: View {
     @State private var citys: [MeteoDataModel.City] = []
-    @State private var hourlyWeatherData: [MeteoDataModel.WeatherData] = []
-    @State private var currentUnitsData: [MeteoDataModel.Current] = []
-    @State private var currentCity = MeteoDataModel.City.custom
-    @State private var isLoading = false
-    @State private var meteoDataModel = MeteoDataModel()
-    @State private var text: String = ""
+       @State private var hourlyWeatherData: [MeteoDataModel.WeatherData] = []
+       @State private var currentUnitsData: [MeteoDataModel.Current] = []
+       @State private var currentCity = MeteoDataModel.City.custom
+       @State private var isLoading = false
+       @State private var meteoDataModel = MeteoDataModel()
+       @State private var text: String = ""
+       @Binding var selectedCity: String?  // Changed to optional
+       @State private var latitudeText = ""
+       @State private var longitudeText = ""
+       @State private var cityName: String = ""
+       @State var showingAnotherView = false
+       @State var showingAnotherView1 = false
     
-    @State private var latitudeText = ""
-    @State private var longitudeText = ""
-    @State private var cityName: String = ""
-    @State var showingAnotherView = false
-    @State var showingAnotherView1 = false
+    
     
     var body: some View {
         VStack {
@@ -41,11 +43,9 @@ struct ContentView: View {
                                         .frame(width: 50, height: 50)
                                         .position(x: 50, y: 15)
                                     }
-                                .sheet(isPresented: $showingAnotherView) {
-
-                                } content: {
-                                    SavedLocationsView()
-                                }
+                    .sheet(isPresented: $showingAnotherView) {
+                        SavedLocationsView()
+                    }
                 
                 Picker("Select City", selection: $currentCity) {
                     ForEach(MeteoDataModel.City.allCases, id: \.self) { city in
@@ -61,6 +61,7 @@ struct ContentView: View {
                 .onChange(of: currentCity) { _ in
                     isLoading = true
                     fetchHourlyWeatherData(currentCity)
+                    print("selected\(currentCity)")
                 }
                 
                 Button(action: {
@@ -211,14 +212,18 @@ struct ContentView: View {
                 .position(x: 240, y:135)
             }
             
-            
+           
         }
         
         .onAppear {
-            isLoading = true
-            fetchHourlyWeatherData(currentCity)
+            if let selectedCity = selectedCity {
+                currentCity = MeteoDataModel.City(rawValue: selectedCity) ?? .custom
+                isLoading = true
+                fetchHourlyWeatherData(currentCity)
+            }
             
         }
+        
     }
     func saveSelectedCity(_ city: MeteoDataModel.City) {
         var savedCities = UserDefaults.standard.array(forKey: "selectedCities") as? [String] ?? []
@@ -252,10 +257,12 @@ struct ContentView: View {
     }
     
     private func fetchHourlyWeatherData(_ currentCity: MeteoDataModel.City) {
+        print("fetch hourly jnlne print \(currentCity)")
         meteoDataModel.fetchWeatherData(currentCity) { fetchedWeatherData in
             if let fetchedHourlyWeatherData = fetchedWeatherData {
                 self.hourlyWeatherData = fetchedHourlyWeatherData
                 isLoading = false
+                
             }
         }
     }
@@ -365,7 +372,9 @@ struct DailyWeather: View {
 
 
 struct ContentView_Previews: PreviewProvider {
+    @State static var selectedCity: String? = "Stockholm" // Provide a default value for selectedCity
+
     static var previews: some View {
-        ContentView()
+        ContentView(selectedCity: $selectedCity) // Pass a Binding to selectedCity
     }
 }
