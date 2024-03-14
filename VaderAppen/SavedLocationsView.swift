@@ -16,7 +16,7 @@ struct SavedLocationsView: View {
     @State private var cloudPosition4 = CGPoint(x: 300, y: -200)
     @State private var cloudPosition5 = CGPoint(x: 100, y: -150)
     @State var selectedCity: String?
-   
+    
     var savedCities: [String] {
         UserDefaults.standard.array(forKey: "selectedCities") as? [String] ?? []
     }
@@ -24,7 +24,7 @@ struct SavedLocationsView: View {
     var body: some View {
         VStack {
             HStack {
-                Text("07.00")
+                Text("")
                     .position(x: 50, y: 10)
             }
             
@@ -63,9 +63,13 @@ struct SavedLocationsView: View {
                         }
                     }
                 }
+            }.sheet(isPresented: $showingAnotherView) {
+                ContentView(selectedCity: $selectedCity)
             }
         }
     }
+
+    
     
     // Function to determine cloud position based on city index
     private func bindingForCloudPosition(_ index: Int) -> Binding<CGPoint> {
