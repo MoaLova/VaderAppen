@@ -43,7 +43,7 @@ struct ContentView: View {
                 .sheet(isPresented: $showingAnotherView) {
                     
                 } content: {
-                    SavedLocationsView()
+                    SavedLocationsView(selectedCloudPosition: $selectedCloudPosition)
                 }
                 
                 Picker("Select City", selection: $currentCity) {
@@ -215,12 +215,10 @@ struct ContentView: View {
     }
     
     func saveSelectedCity() {
-           // Save the selected city and cloud position
-           UserDefaults.standard.set(currentCity.rawValue, forKey: "selectedCity")
-           UserDefaults.standard.set(selectedCloudPosition, forKey: "selectedCloudPosition")
-
-         
-       }
+        // Save the selected city and cloud position
+        UserDefaults.standard.set(currentCity.rawValue, forKey: "selectedCity")
+        UserDefaults.standard.set(selectedCloudPosition, forKey: "selectedCloudPosition")
+    }
    
 
     

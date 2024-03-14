@@ -29,6 +29,13 @@ extension MeteoDataModel.City {
      }
  }
 
+//for loop som skapar cloudview från arrayen som innehåller städerna, loopar 4 0 ...
+//använd den inten till cloudposition
+//sparat två platser ska arryen loopa två gånger
+//använd locationsaved .... . count = hur lång den är 0...location.count
+// skapa cloudviews i loopen
+// 0...locationSaved.count, gör nilcheck guard let
+//func för kolla att index finns i arryen när man sparar en location för att undivka index out of bound error
 class MeteoDataModel {
     
     
