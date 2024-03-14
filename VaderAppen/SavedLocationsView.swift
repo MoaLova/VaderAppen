@@ -10,44 +10,47 @@ import Foundation
 struct SavedLocationsView: View {
     @State var showingAnotherView = false
     @State var text: String = ""
-    @State private var cloudPosition1 = CGPoint(x: 100, y: -240)
-    @State private var cloudPosition2 = CGPoint(x: 300, y: -170)
-    @State private var cloudPosition3 = CGPoint(x: 100, y: -100)
-    @State private var cloudPosition4 = CGPoint(x: 300, y: -30)
-    @State private var cloudPosition5 = CGPoint(x: 100, y: 40)
-
-    // Function to retrieve saved cities from UserDefaults
+    @State private var cloudPosition1 = CGPoint(x: 100, y: -350)
+    @State private var cloudPosition2 = CGPoint(x: 300, y: -300)
+    @State private var cloudPosition3 = CGPoint(x: 100, y: -250)
+    @State private var cloudPosition4 = CGPoint(x: 300, y: -200)
+    @State private var cloudPosition5 = CGPoint(x: 100, y: -150)
+    
     var savedCities: [String] {
         UserDefaults.standard.array(forKey: "selectedCities") as? [String] ?? []
     }
-
+    
     var body: some View {
         VStack {
             HStack {
                 Text("07.00")
                     .position(x: 50, y: 10)
             }
-
+            
             Text("Saved locations")
                 .position(x: 190, y: -220)
                 .font(.title)
-
+            
             ZStack {
                 Rectangle()
                     .stroke(Color.black, lineWidth: 3)
                     .frame(width: 340, height: 550)
-                    .background(.blue)
+                    .background(Color.blue)
                     .position(x: 200, y: -140)
                 
                 VStack {
                     ForEach(savedCities.indices, id: \.self) { index in
-                        CloudView(locationSaved: SavedLocation(location: savedCities[index]), cloudPosition: bindingForCloudPosition(index), direction: 1)
-                            .gesture(longPressToDelete(index))
-                            .onTapGesture {
-                                // Handle tap action here
-                                // For example, navigate to details view for the selected city
-                                self.showingAnotherView.toggle()
-                            }
+                        CloudView(locationSaved: SavedLocation(location: savedCities[index]), cloudPosition: bindingForCloudPosition(index), direction: 1) {
+                            // Handle tap action here
+                            // For example, navigate to details view for the selected city
+                            self.showingAnotherView.toggle()
+                        }
+                        .gesture(longPressToDelete(index))
+                        .onTapGesture {
+                            // Handle tap action here
+                            // For example, navigate to details view for the selected city
+                            self.showingAnotherView.toggle()
+                        }
                     }
                 }
                 .sheet(isPresented: $showingAnotherView) {
@@ -56,7 +59,7 @@ struct SavedLocationsView: View {
             }
         }
     }
-
+    
     // Function to determine cloud position based on city index
     private func bindingForCloudPosition(_ index: Int) -> Binding<CGPoint> {
         switch index {
@@ -68,13 +71,11 @@ struct SavedLocationsView: View {
         default: return .constant(.zero)
         }
     }
-
+    
     // Function to create long press gesture for cloud deletion
     private func longPressToDelete(_ index: Int) -> some Gesture {
         return LongPressGesture(minimumDuration: 1.0)
             .onEnded { _ in
-                // Present confirmation alert or action sheet here
-                // Confirm deletion and remove the city from UserDefaults
                 let cityToRemove = savedCities[index]
                 let alert = UIAlertController(title: "Confirm Deletion", message: "Are you sure you want to delete \(cityToRemove)?", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
@@ -83,7 +84,6 @@ struct SavedLocationsView: View {
                     updatedCities.remove(at: index)
                     UserDefaults.standard.set(updatedCities, forKey: "selectedCities")
                 })
-                // Present the alert
                 UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: nil)
             }
     }
@@ -94,6 +94,3 @@ struct SavedLocationsView_Previews: PreviewProvider {
         SavedLocationsView()
     }
 }
-
-
-
