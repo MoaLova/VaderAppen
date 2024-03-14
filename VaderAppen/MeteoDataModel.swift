@@ -80,12 +80,12 @@ class MeteoDataModel {
                 case .oslo:
                     return (latitude: 59.9127, longitude: 10.7461)
                 case .custom:
-                    // Return values for custom case
+                    
                     return (latitude: City.customLatitudeValue, longitude: City.customLongitudeValue)
             }
         }
         
-        // Add static variables for custom latitude and longitude
+       
         static var customLatitudeValue: Double = 0.0
         static var customLongitudeValue: Double = 0.0
     }
@@ -95,8 +95,6 @@ class MeteoDataModel {
     
     struct WeatherData: Decodable, Hashable{
         let current: Current
-       // let minutely_15: Minutely15
-       // let minutely_15_units: Minutely15Units
         let hourly: Hourly
         let daily: Daily
      
@@ -134,19 +132,6 @@ class MeteoDataModel {
         let time: String
         
     }
-    
-//    struct Minutely15: Decodable, Hashable{
-//        let time: [String]
-//        let temperature_2m: [Float]
-//
-//    }
-//    struct Minutely15Units: Decodable, Hashable {
-//        let temperature_2m: String
-//
-//        var temperatureFloat: Float? {
-//            return Float(temperature_2m)
-//        }
-//    }
     
     
     func fetchWeatherData(_ currentCity: City,completion: @escaping ([WeatherData]?) -> Void) {

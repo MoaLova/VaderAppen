@@ -13,7 +13,7 @@ struct CloudView: View {
     var locationSaved: SavedLocation
     @Binding var cloudPosition: CGPoint
     var direction: CGFloat
-    let onTap: () -> Void // Closure for tap action
+    let onTap: () -> Void 
 
     var body: some View {
         Image(systemName: "cloud.fill")
@@ -30,12 +30,9 @@ struct CloudView: View {
             
             .modifier(FlyingCloudsModifier(position: $cloudPosition, direction: direction))
             .gesture(TapGesture().onEnded {
-                onTap() // Call onTap closure when tapped
+                onTap()
             })
-                    // Navigate to the respective city in ContentView
-                    // You might need to implement navigation here based on your app's navigation structure
-                    // For example, you can pass the city name to ContentView and update the state to display the respective city
-                    // This is just a placeholder, you need to adjust it according to your app's structure
+                    
                     
                 }
             }

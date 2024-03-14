@@ -20,7 +20,7 @@ struct ContentView: View {
        @State private var isLoading = false
        @State private var meteoDataModel = MeteoDataModel()
        @State private var text: String = ""
-       @Binding var selectedCity: String?  // Changed to optional
+       @Binding var selectedCity: String?  
        @State private var latitudeText = ""
        @State private var longitudeText = ""
        @State private var cityName: String = ""
@@ -71,7 +71,7 @@ struct ContentView: View {
                         .resizable()
                         .foregroundColor(.black)
                         .frame(width: 40, height: 40)
-                        .background(Color.white) // Set the background color
+                        .background(Color.white)
                         .position(x: 40, y: 28)
                         .sheet(isPresented: $showingAnotherView1) {
                             QuizView()
@@ -152,7 +152,7 @@ struct ContentView: View {
                         }
                     }
                 }
-                .frame(width: 320, height: 220) // Set the frame of the ScrollView to match the Rectangle
+                .frame(width: 320, height: 220)
                 .position(CGPoint(x: 200.0, y: 60.0))
             }
             
@@ -184,7 +184,6 @@ struct ContentView: View {
                     .position(x: 200, y: 130)
                 
                 Button(action: {
-                    // Save latitude and longitude
                     if let latitude = Double(latitudeText), let longitude = Double(longitudeText) {
                         MeteoDataModel.City
                             .customLatitudeValue = latitude
@@ -195,7 +194,6 @@ struct ContentView: View {
                         
                         fetchCityName()
                     } else {
-                        // Handle invalid input
                         print("Invalid latitude or longitude")
                     }
                 }, label: {
@@ -203,8 +201,6 @@ struct ContentView: View {
                 })
                 .position(x: 200, y:160)
             }
-            
-           
         }
         
         .onAppear {
@@ -354,7 +350,6 @@ struct DailyWeather: View {
                         .padding(.bottom)
                     Divider()
                 } else {
-                    // Display using HourlyWeatherRow
                     HourlyWeatherRow(hourlyWeather: hourlyWeather, currentCity: currentCity)
                 }
             }
@@ -364,9 +359,9 @@ struct DailyWeather: View {
 
 
 struct ContentView_Previews: PreviewProvider {
-    @State static var selectedCity: String? = "" // Provide a default value for selectedCity
+    @State static var selectedCity: String? = ""
 
     static var previews: some View {
-        ContentView(selectedCity: $selectedCity) // Pass a Binding to selectedCity
+        ContentView(selectedCity: $selectedCity)
     }
 }

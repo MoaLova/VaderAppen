@@ -47,8 +47,7 @@ struct SavedLocationsView: View {
                                 self.selectedCity = savedCities[index]
                             }
                             .onTapGesture {
-                                // Handle tap action here
-                                // For example, navigate to details view for the selected city
+                                
                                 self.showingAnotherView.toggle()
                             }
                             
@@ -71,7 +70,7 @@ struct SavedLocationsView: View {
 
     
     
-    // Function to determine cloud position based on city index
+    
     private func bindingForCloudPosition(_ index: Int) -> Binding<CGPoint> {
         switch index {
         case 0: return $cloudPosition1
@@ -83,7 +82,7 @@ struct SavedLocationsView: View {
         }
     }
     
-    // Function to remove a city from the saved list
+    
     private func removeCity(at index: Int) {
         var updatedCities = savedCities
         updatedCities.remove(at: index)

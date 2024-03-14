@@ -121,7 +121,7 @@ class QuestionsViewModel: ObservableObject {
     func nextQuestion() {
         currentQuestionIndex += 1
         if currentQuestionIndex >= questions.count {
-            currentQuestionIndex = 0 // Wrap around to the first question when reaching the end
+            currentQuestionIndex = 0 
         }
     }
 }

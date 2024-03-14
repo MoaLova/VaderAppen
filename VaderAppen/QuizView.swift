@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-import SwiftUI
-
 struct QuizView: View {
     @State var text: String = ""
     @StateObject var questionsVM = QuestionsViewModel()
@@ -59,16 +57,16 @@ struct QuizView: View {
 
     func handleAnswer(answer: String) {
         if answer == questionsVM.currentQuestion.correctAnswer {
-            // Increment correct count
+            
             correctCount += 1
         } else {
-            // Increment incorrect count
+            
             incorrectCount += 1
         }
 
-        // Implement your answer handling logic here
+        
         print("Selected answer: \(answer)")
-        // You might want to check if the answer is correct and proceed accordingly
+        
         nextQuestion()
     }
 
