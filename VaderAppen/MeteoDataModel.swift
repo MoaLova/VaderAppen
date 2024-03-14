@@ -21,6 +21,18 @@ extension MeteoDataModel.City {
              self = .newYork
          case MeteoDataModel.City.tokyo.rawValue:
              self = .tokyo
+         case MeteoDataModel.City.madrid.rawValue:
+             self = .madrid
+         case MeteoDataModel.City.paris.rawValue:
+             self = .paris
+         case MeteoDataModel.City.helsingfors.rawValue:
+             self = .helsingfors
+         case MeteoDataModel.City.köpenhamn.rawValue:
+             self = .köpenhamn
+         case MeteoDataModel.City.hongkong.rawValue:
+             self = .hongkong
+         case MeteoDataModel.City.oslo.rawValue:
+             self = .oslo
          case MeteoDataModel.City.custom.rawValue:
              self = .custom
          default:
@@ -37,8 +49,14 @@ class MeteoDataModel {
         case stockholm
         case newYork
         case tokyo
+        case madrid
+        case paris
+        case helsingfors
+        case köpenhamn
+        case hongkong
+        case oslo
         case custom
-        
+       
         var id: String { self.rawValue }
 
         var coordinates: (latitude: Double, longitude: Double) {
@@ -49,6 +67,18 @@ class MeteoDataModel {
                     return (latitude: 40.7128, longitude: -74.0060)
                 case .tokyo:
                     return (latitude: 35.682839, longitude: 139.759455)
+                case .madrid:
+                    return (latitude: 40.4165, longitude: -3.7026)
+                case .paris:
+                    return (latitude: 48.8534, longitude: 2.3488)
+                case .helsingfors:
+                    return (latitude: 60.1695, longitude: 24.9354)
+                case .köpenhamn:
+                    return (latitude: 55.6759, longitude: 12.5655)
+                case .hongkong:
+                    return (latitude: 22.2783, longitude: 114.1747)
+                case .oslo:
+                    return (latitude: 59.9127, longitude: 10.7461)
                 case .custom:
                     // Return values for custom case
                     return (latitude: City.customLatitudeValue, longitude: City.customLongitudeValue)
