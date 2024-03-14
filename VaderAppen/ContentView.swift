@@ -73,6 +73,20 @@ struct ContentView: View {
                                     .frame(width: 50, height: 50)
                                     .position(CGPoint(x: 60.0, y: 28.0))
                 }
+                Button(action: {
+                    self.showingAnotherView1.toggle()
+                }) {
+                    Image(systemName: "globe")
+                        .resizable()
+                        .foregroundColor(.black)
+                        .frame(width: 60, height: 60)
+                        .background(Color.yellow) // Set the background color
+                        .border(Color.red, width: 2) // Add a border with red color and width 2
+                        .position(x: 50, y: 21)
+                        .sheet(isPresented: $showingAnotherView1) {
+                            QuizView()
+                        }
+                }
             }
             
             ZStack {
@@ -147,30 +161,25 @@ struct ContentView: View {
                 
             }
             
-            HStack {
+            
                 
-                ZStack {
-                    
-                    
-                    Button(action: {
-                        self.showingAnotherView1.toggle()
-                    }) {
-                        Image(systemName: "globe")
-                            .resizable()
-                            .foregroundColor(.black)
-                            .frame(width: 60, height: 60)
-                            .position(x: 50, y: 210)
-                    }
+            Button(action: {
+                self.showingAnotherView1.toggle()
+            }) {
+                Image(systemName: "globe")
+                    .resizable()
+                    .foregroundColor(.black)
+                    .frame(width: 60, height: 60)
+                    .background(Color.yellow) // Set the background color
+                    .border(Color.red, width: 2) // Add a border with red color and width 2
+                    .position(x: 50, y: 200)
                     .sheet(isPresented: $showingAnotherView1) {
                         QuizView()
                     }
-    
-                    
-                    
-                }.frame(width: 300, height: 150)
-                .position(x: 150, y: 75)
-                
             }
+
+                
+            
             
             ZStack {
                 Rectangle()
@@ -372,7 +381,7 @@ struct DailyWeather: View {
 
 
 struct ContentView_Previews: PreviewProvider {
-    @State static var selectedCity: String? = "Stockholm" // Provide a default value for selectedCity
+    @State static var selectedCity: String? = "" // Provide a default value for selectedCity
 
     static var previews: some View {
         ContentView(selectedCity: $selectedCity) // Pass a Binding to selectedCity
