@@ -7,27 +7,19 @@
 import SwiftUI
 import Foundation
 
+
 struct SavedLocationsView: View {
     @State var showingAnotherView = false
     @State var text: String = ""
-
     @State private var cloudPosition1 = CGPoint(x: 100, y: -240)
-    @State private var cloudPosition2 = CGPoint(x: 300, y: -170)
-    @State private var cloudPosition3 = CGPoint(x: 100, y: -100)
-    @State private var cloudPosition4 = CGPoint(x: 300, y: -30)
-    @State private var cloudPosition5 = CGPoint(x: 100, y: 40)
+        @State private var cloudPosition2 = CGPoint(x: 300, y: -170)
+        @State private var cloudPosition3 = CGPoint(x: 100, y: -100)
+        @State private var cloudPosition4 = CGPoint(x: 300, y: -30)
+        @State private var cloudPosition5 = CGPoint(x: 100, y: 40)
 
-    let locationSaved: [SavedLocation] = [
-        SavedLocation(location: "Malmö"),
-        SavedLocation(location: "London"),
-        SavedLocation(location: "Madrid"),
-        SavedLocation(location: "Märsta"),
-        SavedLocation(location: "Årsta")
-    ]
-    
-    // Function to save the selected city "Tokyo" to UserDefaults
-    func saveSelectedCity() {
-        UserDefaults.standard.set("Tokyo", forKey: "selectedCity")
+    // Function to retrieve saved cities from UserDefaults
+    var savedCities: [String] {
+        UserDefaults.standard.array(forKey: "selectedCities") as? [String] ?? []
     }
 
     var body: some View {
@@ -49,37 +41,12 @@ struct SavedLocationsView: View {
                     .position(x: 200, y: -20)
                 
                 VStack {
-                    if let savedCityString = UserDefaults.standard.string(forKey: "selectedCity"),
-                       let savedCity = MeteoDataModel.City(rawValue: savedCityString) {
-                        CloudView(locationSaved: SavedLocation(location: savedCity.rawValue), cloudPosition: $cloudPosition1, direction: 1)
-                            .onTapGesture {
-                                self.showingAnotherView.toggle()
-                            }
-                    } else {
-                        CloudView(locationSaved: locationSaved[0], cloudPosition: $cloudPosition1, direction: 1)
-                            .onTapGesture {
-                                saveSelectedCity() // Save "Tokyo" when cloud is tapped
-                                self.showingAnotherView.toggle()
-                            }
-                        CloudView(locationSaved: locationSaved[1], cloudPosition: $cloudPosition2, direction: -1)
-                            .onTapGesture {
-                                saveSelectedCity() // Save "Tokyo" when cloud is tapped
-                                self.showingAnotherView.toggle()
-                            }
-                        CloudView(locationSaved: locationSaved[2], cloudPosition: $cloudPosition3, direction: 1)
-                            .onTapGesture {
-                                saveSelectedCity() // Save "Tokyo" when cloud is tapped
-                                self.showingAnotherView.toggle()
-                            }
-                        CloudView(locationSaved: locationSaved[3], cloudPosition: $cloudPosition4, direction: -1)
-                            .onTapGesture {
-                                saveSelectedCity() // Save "Tokyo" when cloud is tapped
-                                self.showingAnotherView.toggle()
-                            }
-                        CloudView(locationSaved: locationSaved[4], cloudPosition: $cloudPosition5, direction: 1)
-                            .onTapGesture {
-                                saveSelectedCity() // Save "Tokyo" when cloud is tapped
-                                self.showingAnotherView.toggle()
+                    ForEach(savedCities.indices, id: \.self) { index in
+                                           CloudView(locationSaved: SavedLocation(location: savedCities[index]), cloudPosition: bindingForCloudPosition(index), direction: 1)
+                                               .onTapGesture {
+                           
+                                // Handle tap action here
+                                // For example, navigate to details view for the selected city
                             }
                     }
                 }
@@ -87,41 +54,18 @@ struct SavedLocationsView: View {
                     ContentView()
                 }
             }
+        }
+    }
 
-            HStack {
-                ZStack {
-                    Rectangle()
-                        .stroke(Color.black, lineWidth: 3)
-                        .frame(width: 100, height: 100)
-                        .position(x: 80, y: 140)
-
-                    Button(action: {
-                        self.showingAnotherView.toggle()
-                    }) {
-                        Image(systemName: "questionmark")
-                            .resizable()
-                            .foregroundColor(.black)
-                            .frame(width: 80, height: 80)
-                            .position(x: 80, y: 137)
-                    }
-                    .sheet(isPresented: $showingAnotherView) {
-
-                    } content: {
-                        QuizView()
-                    }
-                }
-
-                ZStack {
-                    Rectangle()
-                        .frame(width: 225, height: 55)
-                        .position(x: 60, y: 116)
-
-                    TextField("Search location", text: $text)
-                        .frame(width: 220, height: 50)
-                        .background(Color.white)
-                        .position(x: 60, y: 116)
-                }
-            }
+    // Function to determine cloud position based on city index
+    private func bindingForCloudPosition(_ index: Int) -> Binding<CGPoint> {
+        switch index {
+        case 0: return $cloudPosition1
+        case 1: return $cloudPosition2
+        case 2: return $cloudPosition3
+        case 3: return $cloudPosition4
+        case 4: return $cloudPosition5
+        default: return .constant(.zero)
         }
     }
 }

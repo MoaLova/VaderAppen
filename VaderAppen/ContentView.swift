@@ -221,8 +221,10 @@ struct ContentView: View {
         }
     }
     func saveSelectedCity(_ city: MeteoDataModel.City) {
-           UserDefaults.standard.set(city.rawValue, forKey: "selectedCity")
-       }
+        var savedCities = UserDefaults.standard.array(forKey: "selectedCities") as? [String] ?? []
+        savedCities.append(city.rawValue)
+        UserDefaults.standard.set(savedCities, forKey: "selectedCities")
+    }
     
     
     func fetchCityName() {
