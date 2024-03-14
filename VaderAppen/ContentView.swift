@@ -41,7 +41,7 @@ struct ContentView: View {
                                         .resizable()
                                         .foregroundColor(.blue)
                                         .frame(width: 50, height: 50)
-                                        .position(x: 50, y: 15)
+                                        .position(x: 60, y: 28)
                                     }
                     .sheet(isPresented: $showingAnotherView) {
                         SavedLocationsView()
@@ -57,7 +57,7 @@ struct ContentView: View {
                     }
                 }
                 .pickerStyle(MenuPickerStyle())
-                .position(CGPoint(x: 55.0, y: 28.0))
+                .position(CGPoint(x: 50.0, y: 28.0))
                 .onChange(of: currentCity) { _ in
                     isLoading = true
                     fetchHourlyWeatherData(currentCity)
@@ -65,28 +65,29 @@ struct ContentView: View {
                 }
                 
                 Button(action: {
-                                saveSelectedCity(currentCity)
-                            }) {
-                                Image(systemName: "heart.fill")
-                                    .resizable()
-                                    .foregroundColor(.pink)
-                                    .frame(width: 50, height: 50)
-                                    .position(CGPoint(x: 60.0, y: 28.0))
-                }
-                Button(action: {
                     self.showingAnotherView1.toggle()
                 }) {
-                    Image(systemName: "globe")
+                    Image(systemName: "questionmark")
                         .resizable()
                         .foregroundColor(.black)
-                        .frame(width: 60, height: 60)
-                        .background(Color.yellow) // Set the background color
-                        .border(Color.red, width: 2) // Add a border with red color and width 2
-                        .position(x: 50, y: 21)
+                        .frame(width: 40, height: 40)
+                        .background(Color.white) // Set the background color
+                        .position(x: 40, y: 28)
                         .sheet(isPresented: $showingAnotherView1) {
                             QuizView()
                         }
                 }
+                
+                Button(action: {
+                    saveSelectedCity(currentCity)
+                }) {
+                    Image(systemName: "heart.fill")
+                        .resizable()
+                        .foregroundColor(.pink)
+                        .frame(width: 50, height: 50)
+                        .position(CGPoint(x: 35.0, y: 28.0))
+                }
+                
             }
             
             ZStack {
@@ -94,7 +95,7 @@ struct ContentView: View {
                     .stroke(Color.black, lineWidth: 3)
                     .frame(width: 350, height: 600)
                     .foregroundColor(.white)
-                    .position(x: 200, y: 240)
+                    .position(x: 200, y: 210)
                 
                 
                 LazyVStack(spacing: 10) {
@@ -102,13 +103,13 @@ struct ContentView: View {
                         HourlyWeatherRow(hourlyWeather: hourlyWeather, currentCity: currentCity )
                     }
                 }
-                .position(CGPoint(x: 200.0, y: 0.0))
+                .position(CGPoint(x: 200.0, y: -20.0))
                 
             }
             
             ZStack {
                 Text("Hourly:")
-                    .position(CGPoint(x: 180.0, y: -20.0))
+                    .position(CGPoint(x: 180.0, y: -70.0))
                     .font(.custom("Copperplate", size: 24))
                 Image(systemName: "cloud")
                     .resizable()
@@ -120,7 +121,7 @@ struct ContentView: View {
                             .foregroundColor(.white)
                             .frame(width: 325, height: 160)
                     )
-                    .position(CGPoint(x: 200.0, y: 20.0))
+                    .position(CGPoint(x: 200.0, y: -30.0))
                 
                 ScrollView {
                     LazyVStack(spacing: 10) {
@@ -130,7 +131,7 @@ struct ContentView: View {
                     }
                 }
                 .frame(width: 250, height: 100)
-                .position(CGPoint(x: 210.0, y: 40.0))
+                .position(CGPoint(x: 210.0, y: 0.0))
             }
             
             ZStack {
@@ -138,11 +139,12 @@ struct ContentView: View {
                     .stroke(Color.black, lineWidth: 3)
                     .frame(width: 320, height: 260)
                     .foregroundColor(.white)
-                    .position(CGPoint(x: 200.0, y: 140.0))
+                    .position(CGPoint(x: 200.0, y: 50.0))
                 
                 Text("Forecast 7-days")
-                    .position(CGPoint(x: 200.0, y: 30.0))
+                    .position(CGPoint(x: 200.0, y: -55.0))
                     .font(.custom("Copperplate", size: 28))
+                
                 ScrollView {
                     LazyVStack(spacing: 0) {
                         ForEach(hourlyWeatherData, id: \.self) { hourlyWeather in
@@ -151,7 +153,7 @@ struct ContentView: View {
                     }
                 }
                 .frame(width: 320, height: 220) // Set the frame of the ScrollView to match the Rectangle
-                .position(CGPoint(x: 200.0, y: 150.0))
+                .position(CGPoint(x: 200.0, y: 60.0))
             }
             
             if isLoading {
@@ -162,43 +164,24 @@ struct ContentView: View {
             }
             
             
-                
-            Button(action: {
-                self.showingAnotherView1.toggle()
-            }) {
-                Image(systemName: "globe")
-                    .resizable()
-                    .foregroundColor(.black)
-                    .frame(width: 60, height: 60)
-                    .background(Color.yellow) // Set the background color
-                    .border(Color.red, width: 2) // Add a border with red color and width 2
-                    .position(x: 50, y: 200)
-                    .sheet(isPresented: $showingAnotherView1) {
-                        QuizView()
-                    }
-            }
-
-                
-            
-            
             ZStack {
                 Rectangle()
                     .frame(width: 225, height: 35)
-                    .position(x: 240, y: 64)
+                    .position(x: 200, y: 80)
                 
                 Rectangle()
                     .frame(width: 225, height: 35)
-                    .position(x: 240, y: 102)
+                    .position(x: 200, y: 130)
                 
                 TextField("Add Latitude", text:$latitudeText)
                     .frame(width: 220, height: 30)
                     .background(Color.white)
-                    .position(x: 240, y: 64)
+                    .position(x: 200, y: 80)
                 
                 TextField("Add Longitude", text: $longitudeText)
                     .frame(width: 220, height: 30)
                     .background(Color.white)
-                    .position(x: 240, y: 102)
+                    .position(x: 200, y: 130)
                 
                 Button(action: {
                     // Save latitude and longitude
@@ -218,7 +201,7 @@ struct ContentView: View {
                 }, label: {
                     Text("Show location")
                 })
-                .position(x: 240, y:135)
+                .position(x: 200, y:160)
             }
             
            
