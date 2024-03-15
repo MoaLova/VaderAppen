@@ -5,9 +5,6 @@
 //  Created by Moa.Svensson on 2024-02-28.
 //
 
-//Hej
-// nej
-
 import CoreData
 import SwiftUI
 import CoreLocation
@@ -19,6 +16,7 @@ struct ContentView: View {
        @State private var currentCity = MeteoDataModel.City.custom
        @State private var isLoading = false
        @State private var meteoDataModel = MeteoDataModel()
+    @State private var meteoViewModel = MeteoViewModel()
        @State private var text: String = ""
        @Binding var selectedCity: String?  
        @State private var latitudeText = ""
@@ -246,7 +244,7 @@ struct ContentView: View {
     
     private func fetchHourlyWeatherData(_ currentCity: MeteoDataModel.City) {
         print("fetch hourly jnlne print \(currentCity)")
-        meteoDataModel.fetchWeatherData(currentCity) { fetchedWeatherData in
+        meteoViewModel.fetchWeatherData(currentCity) { fetchedWeatherData in
             if let fetchedHourlyWeatherData = fetchedWeatherData {
                 self.hourlyWeatherData = fetchedHourlyWeatherData
                 isLoading = false

@@ -19,6 +19,7 @@
 		2FDDEA402B9B9FA3005557CD /* Questions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDDEA3F2B9B9FA3005557CD /* Questions.swift */; };
 		D22645342B9A196B00964E00 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22645332B9A196B00964E00 /* Persistence.swift */; };
 		D22645372B9A1C4500964E00 /* NotInUse.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D22645352B9A1C4500964E00 /* NotInUse.xcdatamodeld */; };
+		E1B4DA392BA3C6D10015DA33 /* MeteoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B4DA382BA3C6D10015DA33 /* MeteoViewModel.swift */; };
 		E1BD3B672B90BFDC00F80535 /* SavedLocationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BD3B662B90BFDC00F80535 /* SavedLocationsView.swift */; };
 		E1BD3B692B90E49E00F80535 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BD3B682B90E49E00F80535 /* QuizView.swift */; };
 		EC6DC1232B9B3D7400A4EF4B /* OpenMeteoSdk in Frameworks */ = {isa = PBXBuildFile; productRef = EC6DC1222B9B3D7400A4EF4B /* OpenMeteoSdk */; };
@@ -39,6 +40,7 @@
 		2FDDEA3F2B9B9FA3005557CD /* Questions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Questions.swift; sourceTree = "<group>"; };
 		D22645332B9A196B00964E00 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		D22645362B9A1C4500964E00 /* VaderAppenModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VaderAppenModel.xcdatamodel; sourceTree = "<group>"; };
+		E1B4DA382BA3C6D10015DA33 /* MeteoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteoViewModel.swift; sourceTree = "<group>"; };
 		E1BD3B662B90BFDC00F80535 /* SavedLocationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedLocationsView.swift; sourceTree = "<group>"; };
 		E1BD3B682B90E49E00F80535 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
 		EC6DC1282B9B4B6000A4EF4B /* MeteoDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteoDataModel.swift; sourceTree = "<group>"; };
@@ -75,22 +77,18 @@
 		2F47B1582B8F70260073A041 /* VaderAppen */ = {
 			isa = PBXGroup;
 			children = (
+				E1B4DA372BA3C2980015DA33 /* View */,
+				E1B4DA352BA3C26B0015DA33 /* ViewModels */,
 				2F47B1592B8F70260073A041 /* VaderAppenApp.swift */,
-				2F47B15B2B8F70260073A041 /* ContentView.swift */,
-				EC6DC1282B9B4B6000A4EF4B /* MeteoDataModel.swift */,
+				E1B4DA362BA3C2820015DA33 /* Model */,
 				D22645332B9A196B00964E00 /* Persistence.swift */,
 				D22645352B9A1C4500964E00 /* NotInUse.xcdatamodeld */,
-				E1BD3B682B90E49E00F80535 /* QuizView.swift */,
-				2FDDEA3D2B9B9CDD005557CD /* QuestionViewModel.swift */,
-				2FDDEA3F2B9B9FA3005557CD /* Questions.swift */,
+				EC6DC1282B9B4B6000A4EF4B /* MeteoDataModel.swift */,
+				2F47B15B2B8F70260073A041 /* ContentView.swift */,
+				E1BD3B662B90BFDC00F80535 /* SavedLocationsView.swift */,
 				2F47B15D2B8F70280073A041 /* Assets.xcassets */,
 				2F47B1602B8F70280073A041 /* Preview Assets.xcassets */,
 				2F47B15F2B8F70280073A041 /* Preview Content */,
-				2F47B1B12B920B410073A041 /* SavedLocation.swift */,
-				E1BD3B662B90BFDC00F80535 /* SavedLocationsView.swift */,
-				2F47B1B32B920D300073A041 /* SavedLocationItemView.swift */,
-				2F7996522B99C3D400279F24 /* CloudView.swift */,
-				2F7996542B99C4F000279F24 /* FlyingCloudsModifier.swift */,
 			);
 			path = VaderAppen;
 			sourceTree = "<group>";
@@ -100,6 +98,35 @@
 			children = (
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		E1B4DA352BA3C26B0015DA33 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				2F47B1B32B920D300073A041 /* SavedLocationItemView.swift */,
+				2FDDEA3D2B9B9CDD005557CD /* QuestionViewModel.swift */,
+				2F7996522B99C3D400279F24 /* CloudView.swift */,
+				E1B4DA382BA3C6D10015DA33 /* MeteoViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		E1B4DA362BA3C2820015DA33 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2F47B1B12B920B410073A041 /* SavedLocation.swift */,
+				2FDDEA3F2B9B9FA3005557CD /* Questions.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E1B4DA372BA3C2980015DA33 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2F7996542B99C4F000279F24 /* FlyingCloudsModifier.swift */,
+				E1BD3B682B90E49E00F80535 /* QuizView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -187,6 +214,7 @@
 				D22645342B9A196B00964E00 /* Persistence.swift in Sources */,
 				D22645372B9A1C4500964E00 /* NotInUse.xcdatamodeld in Sources */,
 				2F47B1B42B920D300073A041 /* SavedLocationItemView.swift in Sources */,
+				E1B4DA392BA3C6D10015DA33 /* MeteoViewModel.swift in Sources */,
 				E1BD3B672B90BFDC00F80535 /* SavedLocationsView.swift in Sources */,
 				E1BD3B692B90E49E00F80535 /* QuizView.swift in Sources */,
 				2FDDEA3E2B9B9CDD005557CD /* QuestionViewModel.swift in Sources */,

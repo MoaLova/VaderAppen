@@ -11,6 +11,4 @@ import SwiftUI
 struct SavedLocation: Identifiable, Hashable{
     var id = UUID()
     var location: String
-   
-
 }

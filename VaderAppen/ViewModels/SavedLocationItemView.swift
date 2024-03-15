@@ -27,8 +27,3 @@ struct SavedLocationItemView: View {
     }
 }
 
-struct SavedLocationItemView_Previews: PreviewProvider {
-    static var previews: some View {
-        SavedLocationItemView(locationSaved: SavedLocation(location: "location"))
-    }
-}
