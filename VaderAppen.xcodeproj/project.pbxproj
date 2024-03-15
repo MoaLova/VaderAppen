@@ -84,11 +84,8 @@
 				E1B4DA372BA3C2980015DA33 /* View */,
 				E1B4DA352BA3C26B0015DA33 /* ViewModels */,
 				E1B4DA362BA3C2820015DA33 /* Model */,
-				D22645332B9A196B00964E00 /* Persistence.swift */,
-				D22645352B9A1C4500964E00 /* NotInUse.xcdatamodeld */,
-				2F47B15B2B8F70260073A041 /* ContentView.swift */,
 				2F47B1592B8F70260073A041 /* VaderAppenApp.swift */,
-				2F47B15D2B8F70280073A041 /* Assets.xcassets */,
+				ECC2B6532BA3D642009EC297 /* no functions */,
 				2F47B1602B8F70280073A041 /* Preview Assets.xcassets */,
 				2F47B15F2B8F70280073A041 /* Preview Content */,
 			);
@@ -128,11 +125,22 @@
 		E1B4DA372BA3C2980015DA33 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2F47B15B2B8F70260073A041 /* ContentView.swift */,
 				E1BD3B662B90BFDC00F80535 /* SavedLocationsView.swift */,
 				2F7996542B99C4F000279F24 /* FlyingCloudsModifier.swift */,
 				E1BD3B682B90E49E00F80535 /* QuizView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		ECC2B6532BA3D642009EC297 /* no functions */ = {
+			isa = PBXGroup;
+			children = (
+				2F47B15D2B8F70280073A041 /* Assets.xcassets */,
+				D22645332B9A196B00964E00 /* Persistence.swift */,
+				D22645352B9A1C4500964E00 /* NotInUse.xcdatamodeld */,
+			);
+			path = "no functions";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

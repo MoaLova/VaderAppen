@@ -1,9 +1,13 @@
+
 //
 //  ContentView.swift
 //  VaderAppen
 //
 //  Created by Moa.Svensson on 2024-02-28.
-//
+
+//          Bygd i MVVM
+//Grupp 3: Leonardo,Moa,Lucas,Elin,Alex,Ibrahim
+
 
 import CoreData
 import SwiftUI
@@ -24,7 +28,7 @@ struct ContentView: View {
        @State private var cityName: String = ""
        @State var showingAnotherView = false
        @State var showingAnotherView1 = false
-    
+        var contentViewModel = ContentViewModel()
     
     
     var body: some View {
@@ -36,10 +40,10 @@ struct ContentView: View {
 
 
                     }){Image(systemName: "globe.europe.africa.fill")
-                                        .resizable()
-                                        .foregroundColor(.blue)
-                                        .frame(width: 50, height: 50)
-                                        .position(x: 60, y: 28)
+                        .resizable()
+                        .foregroundColor(.blue)
+                        .frame(width: 50, height: 50)
+                        .position(x: 60, y: 28)
                                     }
                     .sheet(isPresented: $showingAnotherView) {
                         SavedLocationsView()
@@ -77,7 +81,7 @@ struct ContentView: View {
                 }
                 
                 Button(action: {
-                    saveSelectedCity(currentCity)
+                    contentViewModel.saveSelectedCity(currentCity)
                 }) {
                     Image(systemName: "heart.fill")
                         .resizable()
@@ -197,7 +201,7 @@ struct ContentView: View {
                 }, label: {
                     Text("Show location")
                 })
-                .position(x: 200, y:160)
+                .position(x: 200, y:105)
             }
         }
         
@@ -211,15 +215,12 @@ struct ContentView: View {
         }
         
     }
-    func saveSelectedCity(_ city: MeteoDataModel.City) {
-        var savedCities = UserDefaults.standard.array(forKey: "selectedCities") as? [String] ?? []
-        savedCities.append(city.rawValue)
-        UserDefaults.standard.set(savedCities, forKey: "selectedCities")
-    }
+  
     
     
     
     // Den här funcen tillhör inom mvvm en ViewModel men vi får det inte funka att visa stadens namn ifall vi flyttar in den i en ViewModel
+    
     func fetchCityName() {
         guard let latitude = Double(latitudeText),
               let longitude = Double(longitudeText) else {
