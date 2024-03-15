@@ -218,6 +218,8 @@ struct ContentView: View {
     }
     
     
+    
+    // Den här funcen tillhör inom mvvm en ViewModel men vi får det inte funka att visa stadens namn ifall vi flyttar in den i en ViewModel
     func fetchCityName() {
         guard let latitude = Double(latitudeText),
               let longitude = Double(longitudeText) else {
