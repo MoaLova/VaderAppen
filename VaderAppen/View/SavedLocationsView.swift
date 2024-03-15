@@ -10,11 +10,11 @@ import Foundation
 struct SavedLocationsView: View {
     @State var showingAnotherView = false
     @State var text: String = ""
-    @State private var cloudPosition1 = CGPoint(x: 100, y: -350)
-    @State private var cloudPosition2 = CGPoint(x: 300, y: -300)
-    @State private var cloudPosition3 = CGPoint(x: 100, y: -250)
-    @State private var cloudPosition4 = CGPoint(x: 300, y: -200)
-    @State private var cloudPosition5 = CGPoint(x: 100, y: -150)
+    @State  var cloudPosition1 = CGPoint(x: 100, y: -350)
+    @State  var cloudPosition2 = CGPoint(x: 300, y: -300)
+    @State  var cloudPosition3 = CGPoint(x: 100, y: -250)
+    @State  var cloudPosition4 = CGPoint(x: 300, y: -200)
+    @State  var cloudPosition5 = CGPoint(x: 100, y: -150)
     @State var selectedCity: String?
     
     var savedCities: [String] {
@@ -47,14 +47,14 @@ struct SavedLocationsView: View {
                                 self.selectedCity = savedCities[index]
                             }
                             .onTapGesture {
-                                
                                 self.showingAnotherView.toggle()
                             }
                             
                             Spacer()
                             
                             Button(action: {
-                                removeCity(at: index)
+                                let viewModel = SavedLocationsViewModel()
+                                viewModel.removeCity(at: index)
                             }) {
                                 Image(systemName: "trash")
                                     .foregroundColor(.red)
@@ -68,9 +68,6 @@ struct SavedLocationsView: View {
         }
     }
 
-    
-    
-    
     private func bindingForCloudPosition(_ index: Int) -> Binding<CGPoint> {
         switch index {
         case 0: return $cloudPosition1
@@ -81,13 +78,6 @@ struct SavedLocationsView: View {
         default: return .constant(.zero)
         }
     }
-    
-    
-    private func removeCity(at index: Int) {
-        var updatedCities = savedCities
-        updatedCities.remove(at: index)
-        UserDefaults.standard.set(updatedCities, forKey: "selectedCities")
-    }
 }
 
 struct SavedLocationsView_Previews: PreviewProvider {
@@ -95,4 +85,5 @@ struct SavedLocationsView_Previews: PreviewProvider {
         SavedLocationsView(selectedCity:("Stockholm"))
     }
 }
+
 
